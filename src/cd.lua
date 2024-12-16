@@ -2,12 +2,12 @@
 	[[open source code]]
 	thanks for using pshade ultimate
 	
-	pshade is made by youtuber called @Im_patrick feel free to subs
+	pshade is made by content creator on youtube called @Im_patrick feel free to subs
 	
-	some code might be obfuscated for privacy or security reason
+	some code might be obfuscated for privacy or security reason (example : feedback)
 	this is not mean to be edited/stolen
 	
-	This script is still in beta stage so make sure to use the loadstring on the web
+	This script is still in beta stage so make sure to use the loadstring so it can always be updated
 ]=]
 
 if _G.pshade then return warn"pshade already loaded!" end
@@ -18,36 +18,43 @@ if not game:IsLoaded() then game["Loaded"]:Wait() end
 local update = [=[
 	> more adjustment stuff
 	> new ui and old ui combination
-	> support most executor
+	> gui dragging fix
+	> shader load faster
 ]=]
 
 local light
 
+local game=game
+local xpcall=xpcall
+local type=type
+local next=next
+local pcall=pcall
+local typeof=typeof
+
 local findclass=game["FindFirstChildOfClass"]
-local getclass=game["GetChildren"]
+local getchild=game["GetChildren"]
 local clone=game["Clone"]
 local destroy=game["Destroy"]
 local find=game['FindFirstChild']
 
 local ins=Instance['new']
 local ws=findclass(game,'Workspace')
-local cam=ws['Camera']
+local cam=find(ws,"Camera")
 local lg=findclass(game,"Lighting")
 local terr=findclass(ws,"Terrain")
 local uis=findclass(game,"UserInputService")
 local tween=findclass(game,"TweenService")
-local HttpService=findclass(game,"HttpService")
+local http=findclass(game,"HttpService")
 local market=findclass(game,"MarketplaceService")
 local rs=findclass(game,"RunService")
 local plrs=findclass(game,"Players")
 local lp=plrs['LocalPlayer']
 local pg=lp['PlayerGui']
-local cg=findclass(game,"CoreGui") or lp['PlayerGui']
 local mouse=lp:GetMouse()
 local sett1=settings()
 local fenv=getfenv()
-local shp=fenv['sethiddenproperty'] or fenv['sethiddenprop']
-local ghp=fenv['gethiddenproperty'] or fenv['gethiddenprop']
+local shp=fenv['sethiddenproperty'] or fenv['sethiddenprop'] or function() return end
+local ghp=fenv['gethiddenproperty'] or fenv['gethiddenprop'] or function() return end
 local httpget=function(a) return loadstring(game:HttpGet(a))() end --fenv['HttpGet']
 local read,write,file=fenv['readfile'],fenv['writefile'],fenv['isfile']
 local mrandom,schar, mfloor,mhuge=math['random'],string['char'],math['floor'],math['huge']
@@ -71,7 +78,6 @@ local wshade=true
 local randomstring='https://raw.githubusercontent.com/randomstring0/pshade-ultimate/refs/heads/main/'
 local src=randomstring..'src/'
 local lan=httpget(randomstring..'lan/every.json')
-
 
 local sc=httpget(src..'ui')
 local image=sc["mainmage"]
@@ -103,8 +109,8 @@ local shader
 local check=true
 
 local adjust={
-	reflect=nil,
-	waterspeed=nil,
+	['reflect']=nil,
+	['waterspeed']=nil,
 }
 
 local tween=function(i,p,d)
@@ -122,7 +128,7 @@ local drag=function(n,s)
 
 	n['InputBegan']:Connect(function(i)
 		if i['UserInputType'] == Enum['UserInputType']['MouseButton1'] or i['UserInputType'] == Enum['UserInputType']['Touch'] then
-			dr,ds,sp=true,i['Position'],n['Position']
+			dr,ds,sp=true,i['Position'],s['Position']
 			i['Changed']:Connect(function()
 				if i['UserInputState'] == Enum['UserInputState']['End'] then
 					dr=false
@@ -144,10 +150,6 @@ local drag=function(n,s)
 	end)
 end
 
-drag(main,image)
-drag(icon['button'],icon)
-
-sc['Parent']=cg
 local notif=function(t,d)
 	coroutine['wrap'](function()
 		local n=clone(ntf)
@@ -260,7 +262,7 @@ pcall(function()
 end)
 
 terr['ChildRemoved']:Connect(function(a)
-	local v=a:Clone()
+	local v=clone(a)
 	v['Parent']=terr
 	if v:IsA("Clouds") then
 		cloud=v
@@ -268,7 +270,7 @@ terr['ChildRemoved']:Connect(function(a)
 end)
 
 lg['ChildRemoved']:Connect(function(a)
-	local v=a:Clone()
+	local v=clone(a)
 	v['Parent']=lg
 	if not v:IsA("Sky") and not v:IsA("Atmosphere") then
 		table['insert'](restore,v)
@@ -298,7 +300,6 @@ for _,v in pairs(restore) do
 	clone(v)['Parent']=sv
 end
 
-
 local backup={
 	['lighting']={
 		['ClockTime']=lg['ClockTime'],
@@ -327,19 +328,7 @@ local backup={
 	}
 }
 
-
 default={
-	['fhnchvhfjsd']=-colorcor['Brightness'],
-	['ugtbbjhygt']=colorcor['Contrast'],
-	['tfbghuugbnjhg']=colorcor['Saturation'],
-	['fvrtccvghghj']=colorcor['TintColor'],
-
-	['jnfdhbnfcvh']=bloom['Intensity'],
-	['fvtyghj']=bloom['Size'],
-	['ygbhnj']=bloom['Threshold'],
-
-	['njnfg']=blur['Size'],
-
 	['yfbghj']=lg['Ambient'], 
 	['tgvbyd']=lg['ClockTime'], 
 	['ghuybhuyhj']=lg['GeographicLatitude'], 
@@ -351,6 +340,21 @@ default={
 	['hgnujuu7thgr']=lg['GlobalShadows'],
 	['hyhnngtf']=lg['OutdoorAmbient'],
 	['hdfr7thgr']=lg['ExposureCompensation'],
+	
+	['fhnchvhfjsd']=colorcor['Brightness'],
+	['ugtbbjhygt']=colorcor['Contrast'],
+	['tfbghuugbnjhg']=colorcor['Saturation'],
+	['fvrtccvghghj']=colorcor['TintColor'],
+
+	['jnfdhbnfcvh']=bloom['Intensity'],
+	['fvtyghj']=bloom['Size'],
+	['ygbhnj']=bloom['Threshold'],
+
+	['njnfg']=blur['Size'],
+	['jdfkd']=depth['FarIntensity'],
+	['fvgsdfg']=depth['FocusDistance'],
+	['sdkvkflv']=depth['InFocusRadius'],
+	['hbjhd']=depth['NearIntensity'],
 
 	['gyhgtg']=cloud['Cover'],
 	['ygbhggv']=cloud['Density'],
@@ -361,13 +365,7 @@ default={
 	['sjdjncdjf']=atmosphere['Color'],
 	['efjdjfk']=atmosphere['Decay'],
 	['sejfd']=atmosphere['Glare'],
-	['jddfjsd']=atmosphere['Haze'],
-
-	['jdfkd']=depth['FarIntensity'],
-	['fvgsdfg']=depth['FocusDistance'],
-	['sdkvkflv']=depth['InFocusRadius'],
-	['hbjhd']=depth['NearIntensity']
-
+	['jddfjsd']=atmosphere['Haze']
 }
 
 light = default
@@ -400,7 +398,6 @@ end
 local snap=function(v,s)
 	return mfloor(v/s+0.5)*s
 end
-
 
 local find=function(t,i,c)
 	local t=t:lower()
@@ -464,32 +461,32 @@ local abs=function(c,w)
 end
 
 wl={
-	dof=true,
-	cor=true,
-	sray=false,
-	bl=true,
-	blr=false,
-	rays=false,
-	sflare=false,
-	mblur=false
+	['dof']=true,
+	['cor']=true,
+	['sray']=false,
+	['bl']=true,
+	['blr']=false,
+	['rays']=false,
+	['sflare']=false,
+	['mblur']=false
 }
 
 local defsky={
-	bk=sky['SkyboxBk'],
-	dn=sky['SkyboxDn'],
-	ft=sky['SkyboxFt'],
-	lt=sky['SkyboxLf'],
-	rt=sky['SkyboxRt'],
-	up=sky['SkyboxUp']
+	['bk']=sky['SkyboxBk'],
+	['dn']=sky['SkyboxDn'],
+	['ft']=sky['SkyboxFt'],
+	['lt']=sky['SkyboxLf'],
+	['rt']=sky['SkyboxRt'],
+	['up']=sky['SkyboxUp']
 }
 
 local cussky={
-	bk='rbxassetid://9544505500',
-	dn='rbxassetid://9544547905',
-	ft='rbxassetid://9544504852',
-	lt='rbxassetid://9544547694',
-	rt='rbxassetid://9544547542',
-	up='rbxassetid://9544547398'
+	['bk']='rbxassetid://9544505500',
+	['dn']='rbxassetid://9544547905',
+	['ft']='rbxassetid://9544504852',
+	['lt']='rbxassetid://9544547694',
+	['rt']='rbxassetid://9544547542',
+	['up']='rbxassetid://9544547398'
 }
 
 sre['Name']='flare'
@@ -534,9 +531,50 @@ mblur['Size']=0
 
 ws['Changed']:Connect(function(p)
 	if wl['mblur'] and p=="CurrentCamera" then
-		mblur['Size']=25
+		mblur['Size']=26
 	end
 end)
+
+local shader={
+	['morning']=httpget(randomstring..'shr/morning.json'),
+	['midday']=httpget(randomstring..'shr/midday.json'),
+	['afternoon']=httpget(randomstring..'shr/afternoon.json'),
+	['evening']=httpget(randomstring..'shr/evening%2Cjson'),
+	['night']=httpget(randomstring..'shr/night.json'),
+	['midnight']=httpget(randomstring..'shr/midnight.json'),
+	['morninglite']=httpget(randomstring..'shr/morning1.json'),
+	['middaylite']=httpget(randomstring..'shr/midday1.json'),
+	['afternoonlite']=httpget(randomstring..'shr/afternoon1.json'),
+	['eveninglite']=httpget(randomstring..'shr/night1.json'),
+	['nightlite']=httpget(randomstring..'shr/night1.json'),
+	['midnightlite']=httpget(randomstring..'shr/midnight1.json'),
+	['black']=httpget(randomstring..'shr/black.json'),
+	['green']=httpget(randomstring..'shr/green.json'),
+	['red']=httpget(randomstring..'shr/red.json'),
+	['yellow']=httpget(randomstring..'shr/yellow.json'),
+	['pink']=httpget(randomstring..'shr/pink.json'),
+	['gray']=httpget(randomstring..'shr/gray.json'),
+	['white']=httpget(randomstring..'shr/white.json'),
+	['purple']=httpget(randomstring..'shr/purple.json'),
+	['blacklite']=httpget(randomstring..'shr/black1.json'),
+	['greenlite']=httpget(randomstring..'shr/green1.json'),
+	['redlite']=httpget(randomstring..'shr/red1.json'),
+	['yellowlite']=httpget(randomstring..'shr/yellow1.json'),
+	['pinklite']=httpget(randomstring..'shr/pink1.json'),
+	['graylite']=httpget(randomstring..'shr/gray1.json'),
+	['whitelite']=httpget(randomstring..'shr/white1.json'),
+	['purplelite']=httpget(randomstring..'shr/purple1.json'),
+	['rain']=httpget(randomstring..'shr/rain.json'),
+	['snow']=httpget(randomstring..'shr/snow.json'),
+	['fog']=httpget(randomstring..'shr/fog.json'),
+	['sunny']=httpget(randomstring..'shr/sunny.json'),
+	['cloudy']=httpget(randomstring..'shr/cloudy.json'),
+	['storm']=httpget(randomstring..'shr/storm.json'),
+	['autumn']=httpget(randomstring..'shr/autumn.json'),
+	['spring']=httpget(randomstring..'shr/spring.json'),
+	['summer']=httpget(randomstring..'shr/summer.json'),
+	['winter']=httpget(randomstring..'shr/winter.json')
+}
 
 con(rs,function()
 	if motionblur then
@@ -570,6 +608,7 @@ con(rs,function()
 					v['Enabled']=false
 				end
 			end
+			
 			flare=wl['sflare']
 			motionblur=wl['mblur']
 			sre['Enabled']=wl['sflare']
@@ -691,13 +730,12 @@ else
 	read,write,file=function() return end,function() return end,function() return end
 end
 sc['Name']=random(4)
+sc['Enabled']=false
 title["Text"]=fh(xddcc)
 
 local language=read('pshade/lan') or 'en'
 local toggle=true
 
-image['Size']=UDim2['new'](0,0,0,0)
-tween(image,{Size=UDim2['new'](0.539,0,0.555,0)})
 
 local switch=function()
 	clicking:Play()
@@ -919,6 +957,8 @@ con(togd,function()
 end)
 
 changelog['Text']=update
+drag(main,image)
+drag(icon['button'],icon)
 
 con(page['sc']['home']['TextButton'],function()
 	if spage['home']['LayoutOrder']==0 then return end
@@ -1071,6 +1111,9 @@ con(feedsend,function()
 	end
 end)
 
+sc['Enabled']=true
+image['Size']=UDim2['new'](0,0,0,0)
+tween(image,{Size=UDim2['new'](0.539,0,0.555,0)})
 
 local sh=page(lan[language]['shader'])
 local shlite=page(lan[language]['shaderlite'])
@@ -1103,330 +1146,172 @@ season:shader(lan[language]['default'],function()
 	light=default
 end)
 
-local morning=function()
-	return httpget(randomstring..'shr/morning.json')
-end
-
-local midday=function()
-	return httpget(randomstring..'shr/midday.json')
-end
-
-local afternoon=function()
-	return httpget(randomstring..'shr/afternoon.json')
-end
-
-local evening=function()
-	return httpget(randomstring..'shr/evening%2Cjson')
-end
-
-local night=function()
-	return httpget(randomstring..'shr/night.json')
-end
-
-local midnight=function()
-	return httpget(randomstring..'shr/midnight.json')
-end
-
-local morninglite=function()
-	return httpget(randomstring..'shr/morning1.json')
-end
-
-local middaylite=function()
-	return httpget(randomstring..'shr/midday1.json')
-end
-
-local afternoonlite=function()
-	return httpget(randomstring..'shr/afternoon1.json')
-end
-
-local eveninglite=function()
-	return httpget(randomstring..'shr/evening1.json')
-end
-
-local nightlite=function()
-	return httpget(randomstring..'shr/night1.json')
-end
-
-local midnightlite=function()
-	return httpget(randomstring..'shr/midnight1.json')
-end
-
-
-
---
-
-local black=function()
-	return httpget(randomstring..'shr/black.json')
-end
-
-local green=function()
-	return httpget(randomstring..'shr/green.json')
-end
-
-local red=function()
-	return httpget(randomstring..'shr/red.json')
-end
-
-local yellow=function()
-	return httpget(randomstring..'shr/yellow.json')
-end
-
-local pink=function()
-	return httpget(randomstring..'shr/pink.json')
-end
-
-local gray=function()
-	return httpget(randomstring..'shr/gray.json')
-end
-
-local white=function()
-	return httpget(randomstring..'shr/white.json')
-end
-
-local purple=function()
-	return httpget(randomstring..'shr/purple.json')
-end
-
-local blacklite=function()
-	return httpget(randomstring..'shr/black1.json')
-end
-
-local greenlite=function()
-	return httpget(randomstring..'shr/green1.json')
-end
-
-local redlite=function()
-	return httpget(randomstring..'shr/red1.json')
-end
-
-local yellowlite=function()
-	return httpget(randomstring..'shr/yellow1.json')
-end
-
-local pinklite=function()
-	return httpget(randomstring..'shr/pink1.json')
-end
-
-local graylite=function()
-	return httpget(randomstring..'shr/gray1.json')
-end
-
-local whitelite=function()
-	return httpget(randomstring..'shr/white1.json')
-end
-
-local purplelite=function()
-	return httpget(randomstring..'shr/purple1.json')
-end
-
-local rain=function()
-	return httpget(randomstring..'shr/rain.json')
-end
-
-local snow=function()
-	return httpget(randomstring..'shr/snow.json')
-end
-
-local fog=function()
-	return httpget(randomstring..'shr/fog.json')
-end
-
-local sunny=function()
-	return httpget(randomstring..'shr/sunny.json')
-end
-
-local cloudy=function()
-	return httpget(randomstring..'shr/cloudy.json')
-end
-
-local storm=function()
-	return httpget(randomstring..'shr/storm.json')
-end
-
-local autumn=function()
-	return httpget(randomstring..'shr/autumn.json')
-end
-
-local spring=function()
-	return httpget(randomstring..'shr/spring.json')
-end
-
-local summer=function()
-	return httpget(randomstring..'shr/summer.json')
-end
-
-local winter=function()
-	return httpget(randomstring..'shr/winter.json')
-end
-
 
 sh:shader(lan[language]['morning'],function()
-	light=morning()
+	light=shader['morning']
 end,'rbxassetid://113299445142241')
 
 sh:shader(lan[language]['midday'],function()
-	light=midday()
+	light=shader['midday']
 end,'rbxassetid://92217393876433')
 
 sh:shader(lan[language]['afternoon'],function()
-	light=afternoon()
+	light=shader['afternoon']
 end,'rbxassetid://95808526176628')
 
 sh:shader(lan[language]['evening'],function()
-	light=evening()
+	light=shader['evening']
 end,'rbxassetid://132108667983758')
 
 sh:shader(lan[language]['night'],function()
-	light=night()
+	light=shader['night']
 end,'rbxassetid://100757920131658')
 
 sh:shader(lan[language]['midnight'],function()
-	light=midnight()
+	light=shader['midnight']
 end,'rbxassetid://97773466118344')
 
 shlite:shader(lan[language]['morningl'],function()
-	light=morninglite()
+	light=shader['morninglite']
 end, 'rbxassetid://92514237282380')
 
 shlite:shader(lan[language]['middayl'],function()
-	light=middaylite()
+	light=shader['middaylite']
 end,'rbxassetid://90305235042714')
 
 shlite:shader(lan[language]['afternoonl'],function()
-	light=afternoonlite()
+	light=shader['afternoonlite']
 end,'rbxassetid://92695333618512')
 
 shlite:shader(lan[language]['eveningl'],function()
-	light=eveninglite()
+	light=shader['eveninglite']
 end,'rbxassetid://132108667983758')
 
 shlite:shader(lan[language]['nightl'],function()
-	light=nightlite()
+	light=shader['nightlite']
 end,'rbxassetid://103792896194001')
 
 shlite:shader(lan[language]['midnightl'],function()
-	light=midnightlite()
+	light=shader['midnightlite']
 end,'rbxassetid://90454550243625')
 
 --
 shcolor:shader(lan[language]['blackc'],function()
-	light=black()
+	light=shader['black']
 end,'rbxassetid://104993140300372')
 
 shcolor:shader(lan[language]['greenc'],function()
-	light=green()
+	light=shader['green']
 end,'rbxassetid://87566194970749')
 
 shcolor:shader(lan[language]['redc'],function()
-	light=red()
+	light=shader['red']
 end,'rbxassetid://86019467400697')
 
 shcolor:shader(lan[language]['yellowc'],function()
-	light=yellow()
+	light=shader['yellow']
 end,'rbxassetid://89622996021764')
 
 shcolor:shader(lan[language]['pinkc'],function()
-	light=pink()
+	light=shader['pink']
 end,'rbxassetid://115387662887412')
 
 shcolor:shader(lan[language]['grayc'],function()
-	light=gray()
+	light=shader['gray']
 end,'rbxassetid://129482833602389')
 
 shcolor:shader(lan[language]['whitec'],function()
-	light=white()
+	light=shader['white']
 end,'rbxassetid://83122100057126')
 
 shcolor:shader(lan[language]['purple'],function()
-	light=purple()
+	light=shader['purple']
 end,'rbxassetid://115365056970455')
 
 --
 shcolorlite:shader(lan[language]['blackc'],function()
-	light=blacklite()
+	light=shader['blacklite']
 end,'rbxassetid://140706916861132')
 
 shcolorlite:shader(lan[language]['greenc'],function()
-	light=greenlite()
+	light=shader['greenlite']
 end,'rbxassetid://89405340565983')
 
 shcolorlite:shader(lan[language]['redc'],function()
-	light=redlite()
+	light=shader['redlite']
 end,'rbxassetid://110115983611192')
 
 shcolorlite:shader(lan[language]['yellowc'],function()
-	light=yellowlite()
+	light=shader['yellowlite']
 end,'rbxassetid://101326949437503') 
 
 shcolorlite:shader(lan[language]['pinkc'],function()
-	light=pinklite()
+	light=shader['pinklite']
 end,'rbxassetid://111633113748366') 
 
 shcolorlite:shader(lan[language]['grayc'],function()
-	light=graylite()
+	light=shader['graylite']
 end,'rbxassetid://138870069540821')
 
 shcolorlite:shader(lan[language]['whitec'],function()
-	light=whitelite()
+	light=shader['whitelite']
 end,'rbxassetid://83122100057126')
 
 shcolorlite:shader(lan[language]['purple'],function()
-	light=purplelite()
+	light=shader['purplelite']
 end,'rbxassetid://72297228732689')
 
 
 
 wt:shader(lan[language]['rain'],function()
-	light=rain()
+	light=shader['rain']
 end,'rbxassetid://121654329755016')
 
 wt:shader(lan[language]['snow'],function()
-	light=snow()
+	light=shader['snow']
 end,'rbxassetid://110010584259758')
 
 wt:shader(lan[language]['fog'],function()
-	light=fog()
+	light=shader['fog']
 end,'rbxassetid://112830594028052')
 
 wt:shader(lan[language]['sunny'],function()
-	light=sunny()
+	light=shader['sunny']
 end,'rbxassetid://79338735074080')
 
 wt:shader(lan[language]['cloudy'],function()
-	light=cloudy()
+	light=shader['cloudy']
 end,'rbxassetid://132274518547408')
 
 wt:shader(lan[language]['storm'],function()
-	light=storm()
+	light=shader['storm']
 end,'rbxassetid://94816009531038')
 
 season:shader(lan[language]['autumn'],function()
-	light=autumn()
+	light=shader['autumn']
 end,'rbxassetid://80499728835866')
 
 season:shader(lan[language]['spring'],function()
-	light=spring()
+	light=shader['spring']
 end,'rbxassetid://80194430595868')
 
 season:shader(lan[language]['summer'],function()
-	light=summer()
+	light=shader['summer']
 end,'rbxassetid://135858146426147')
 
 season:shader(lan[language]['winter'],function()
-	light=winter()
+	light=shader['winter']
 end,'rbxassetid://109637660711657')
 
 
 
 local sett=element(spage['settings']['Frame']['sc'])
 
-sett:dropdown('gui parent', "coregui", {"playergui",'coregui','gethui'}, function(a)
+sett:dropdown('gui parent', "coregui", {"playergui",'coregui'}, function(a)
 	if a=='playergui' then
 		sc['Parent']=pg
 	elseif a=='coregui' then
-		sc['Parent']=cg
-	elseif a=='gethui' then
-		sc['Parent']=gethui() or cg
+		sc['Parent']=findclass(game,'CoreGui')
 	end
 end)
 
@@ -1447,6 +1332,10 @@ sett:dropdown('background', "random", {"shadow",'forrest','mountains'}, function
 	end
 	write('pshade/img',image['Image'])
 end)
+
+sett:slider("Image background transparency", 0, 1, function(a)
+	image['ImageTransparency']=a
+end,image['ImageTransparency'])
 
 
 local adj=addpage(lan[language]["adjustment"])
@@ -1629,11 +1518,19 @@ eff:toggle("sunflare enabled", function(a)
 	wl['sflare']=a
 end, wl['sflare'])
 
-
 eff:title(lan[language]['blur motion adjustment'])
 
 eff:toggle("blur motion enabled", function(a)
 	wl['mblur']=a
 end, wl['mblur'])
+
+
+
+local iscg,_=pcall(function()
+	sc['Parent']=findclass(game,"CoreGui")
+end)
+if not iscg then
+	sc['Parent']=pg
+end
 
 return sc, require;
