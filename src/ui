@@ -10,13 +10,14 @@
 local TEST = {};
 
 
-TEST["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
+TEST["1"] = Instance.new("ScreenGui");
 TEST["1"]["SafeAreaCompatibility"] = Enum.SafeAreaCompatibility.None;
 TEST["1"]["IgnoreGuiInset"] = true;
 TEST["1"]["ScreenInsets"] = Enum.ScreenInsets.DeviceSafeInsets;
 TEST["1"]["Name"] = [[pshade]];
 TEST["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
 TEST["1"]["ResetOnSpawn"] = false;
+TEST["1"]["Enabled"] = false;
 
 
 -- StarterGui.pshade.mainmage
