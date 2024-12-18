@@ -27,6 +27,7 @@ local update = [=[
 ]=]
 
 _G.pshade=true
+_G.vers='1.4.0'
 local light
 
 local game=game
@@ -84,6 +85,8 @@ local wshade=true
 local restore={}
 local new={}
 local wl={}
+
+httpget(src..'check.lua')
 
 local sc=httpget(src..'ui')
 local image=sc["mainmage"]
