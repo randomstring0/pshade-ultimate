@@ -23,6 +23,7 @@ local update = [=[
 	> shader load faster
 	> more games support
 	> skybox added
+	> filesystem fix
 ]=]
 
 _G.pshade=true
@@ -171,59 +172,59 @@ local notif=function(t,d)
 	end)()
 end
 
-for i,v in ipairs(lg:GetChildren()) do
-	if v:IsA("BloomEffect") then
-		local b=clone(v)
-		b['Parent']=lg
-		bloom=b
-		table['insert'](restore,b)
-		table['insert'](new,bloom)
-	elseif v:IsA("Sky") then
-		local b=clone(v)
-		b['Parent']=lg
-		sky=b
-		table['insert'](restore,b)
-		table['insert'](new,sky)
-	elseif v:IsA("Atmosphere") then
-		local b=clone(v)
-		b['Parent']=lg
-		atmosphere=b
-		table['insert'](restore,b)
-		table['insert'](new,atmosphere)
-	elseif v:IsA("BlurEffect") then
-		local b=clone(v)
-		b['Parent']=lg
-		blur=b
-		table['insert'](restore,b)
-		table['insert'](new,b)
-	elseif v:IsA("DepthOfFieldEffect") then
-		local b=clone(v)
-		b['Parent']=lg
-		depth=b
-		table['insert'](restore,b)
-		table['insert'](new,depth)
-	elseif v:IsA("ColorCorrectionEffect") then
-		local b=clone(v)
-		b['Parent']=lg
-		colorcor=b
-		table['insert'](restore,b)
-		table['insert'](new,colorcor)
-	elseif v:IsA("SunRaysEffect") then
-		local b=clone(v)
-		b['Parent']=lg
-		sray=b
-		table['insert'](restore,b)
-		table['insert'](new,sray)
+coroutine['wrap'](function()
+	for i,v in ipairs(lg:GetChildren()) do
+		if v:IsA("BloomEffect") then
+			local b=clone(v)
+			b['Parent']=lg
+			bloom=b
+			table['insert'](restore,b)
+			table['insert'](new,bloom)
+		elseif v:IsA("Sky") then
+			local b=clone(v)
+			b['Parent']=lg
+			sky=b
+			table['insert'](restore,b)
+			table['insert'](new,sky)
+		elseif v:IsA("Atmosphere") then
+			local b=clone(v)
+			b['Parent']=lg
+			atmosphere=b
+			table['insert'](restore,b)
+			table['insert'](new,atmosphere)
+		elseif v:IsA("BlurEffect") then
+			local b=clone(v)
+			b['Parent']=lg
+			blur=b
+			table['insert'](restore,b)
+			table['insert'](new,b)
+		elseif v:IsA("DepthOfFieldEffect") then
+			local b=clone(v)
+			b['Parent']=lg
+			depth=b
+			table['insert'](restore,b)
+			table['insert'](new,depth)
+		elseif v:IsA("ColorCorrectionEffect") then
+			local b=clone(v)
+			b['Parent']=lg
+			colorcor=b
+			table['insert'](restore,b)
+			table['insert'](new,colorcor)
+		elseif v:IsA("SunRaysEffect") then
+			local b=clone(v)
+			b['Parent']=lg
+			sray=b
+			table['insert'](restore,b)
+			table['insert'](new,sray)
+		end
 	end
-end
 
-for _,v in pairs(terr:GetChildren()) do
-	if v:IsA("Clouds") then
-		cloud=v
+	for _,v in pairs(terr:GetChildren()) do
+		if v:IsA("Clouds") then
+			cloud=v
+		end
 	end
-end
 
-pcall(function()
 	if not colorcor then
 		colorcor=ins('ColorCorrectionEffect')
 		colorcor['Parent']=lg
@@ -266,9 +267,8 @@ pcall(function()
 		cloud['Parent']=terr
 		cloud['Cover']=0
 		cloud['Density']=0
-
 	end
-end)
+end)()
 
 terr['ChildRemoved']:Connect(function(a)
 	local v=clone(a)
@@ -513,20 +513,22 @@ sflare['ImageColor3']=Color3['new'](1,1,0.95)
 sflare['ZIndex']=0
 sflare['Size']=UDim2['new'](15*0.2,0,15*0.2,0)
 
-for i=1,#fdist do
-	local f=ins('ImageLabel',sre)
-	f['Name']='aflare'
-	f['Size']=UDim2['new'](fsize[i]*0.2,0,fsize[i]*0.2,0)
-	f['SizeConstraint']='RelativeYY'
-	f['BackgroundTransparency']=1
-	f['ImageTransparency']=ftrans[i]
-	f['BorderSizePixel']=0
-	f['Rotation']=-25
-	f['Image']='rbxassetid://15164863822'
-	f['ImageColor3']=Color3['new'](1,1,0.8)
-	f['ZIndex']=-1
-	fls[#fls+1]=f
-end
+coroutine['wrap'](function()
+	for i=1,#fdist do
+		local f=ins('ImageLabel',sre)
+		f['Name']='aflare'
+		f['Size']=UDim2['new'](fsize[i]*0.2,0,fsize[i]*0.2,0)
+		f['SizeConstraint']='RelativeYY'
+		f['BackgroundTransparency']=1
+		f['ImageTransparency']=ftrans[i]
+		f['BorderSizePixel']=0
+		f['Rotation']=-25
+		f['Image']='rbxassetid://15164863822'
+		f['ImageColor3']=Color3['new'](1,1,0.8)
+		f['ZIndex']=-1
+		fls[#fls+1]=f
+	end
+end)()
 
 local getsun=function()
 	local camscreen=cam:WorldToScreenPoint(cam['CFrame']['Position']+lg:GetSunDirection())
@@ -727,7 +729,13 @@ con(rs,function()
 	end
 end,'RenderStepped')
 
-if file and read and write then
+local language='en'
+local toggle=true
+sc['Name']=random(4)
+sc['Enabled']=false
+title["Text"]=fh(xddcc)
+
+if file then
 	if not file("pshade/welcome") then
 		write('pshade/welcome','thanks for using pshade ultimate')
 		write('pshade/lan', 'en')
@@ -736,16 +744,12 @@ if file and read and write then
 	if file('pshade/img') then
 		image['Image']=read('pshade/img')
 	end
+	if file('pshade/lan') then
+		language=read('pshade/lan')
+	end
 else
-	read,write,file=function() return end,function() return end,function() return end
+	read,write,file=function() return nil end,function() return end,function() return end
 end
-sc['Name']=random(4)
-sc['Enabled']=false
-title["Text"]=fh(xddcc)
-
-local language=read('pshade/lan') or 'en'
-local toggle=true
-
 
 local switch=function()
 	clicking:Play()
