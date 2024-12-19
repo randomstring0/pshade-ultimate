@@ -27,7 +27,6 @@ local update = [=[
 ]=]
 
 _G.pshade=true
-_G.vers='1.4.0'
 local light
 
 local game=game
@@ -85,8 +84,6 @@ local wshade=true
 local restore={}
 local new={}
 local wl={}
-
-httpget(src..'check.lua')
 
 local sc=httpget(src..'ui')
 local image=sc["mainmage"]
@@ -1358,7 +1355,7 @@ end,image['ImageTransparency'])
 local adj=addpage(lan[language]["adjustment"])
 adj:title(lan[language]["graphics settings"])
 
-adj:dropdown("shaders technology", "Future", {"Future", "ShadowMap", "compatibility", "Legacy", "Voxel"}, function(a)
+adj:dropdown("shaders technology", "Future", {"Future", "ShadowMap", "Compatibility", "Legacy", "Voxel"}, function(a)
 	shp(lg, "Technology", a)
 end)
 
