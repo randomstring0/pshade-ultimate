@@ -2010,7 +2010,7 @@ TEST["d9"]["Value"] = Color3.fromRGB(0, 252, 255);
 -- StarterGui.pshade.click
 TEST["da"] = Instance.new("Sound", TEST["1"]);
 TEST["da"]["Name"] = [[click]];
-TEST["da"]["SoundId"] = [[rbxassetid://17582213219]];
+TEST["da"]["SoundId"] = [[rbxassetid://876939830]];
 
 
 -- StarterGui.pshade.clicking
