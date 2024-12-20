@@ -17,16 +17,18 @@ if not game then local game=Workspace['Parent'] end
 if not game:IsLoaded() then game["Loaded"]:Wait() end
 
 local update = [=[
+	> more games support
+	> skybox added
+	> filesystem fix
+	> slow load fix
 	> more adjustment stuff
 	> new ui and old ui combination
 	> gui dragging fix
 	> shader load faster
-	> more games support
-	> skybox added
-	> filesystem fix
 ]=]
 
 _G.pshade=true
+_G.vers="1.4.1"
 local light
 
 local game=game
@@ -58,7 +60,7 @@ local pg=lp['PlayerGui']
 local mouse=lp:GetMouse()
 local sett1=settings()
 local fenv=getfenv()
-local shp=fenv['sethiddenproperty'] or fenv['sethiddenprop'] or function() return end
+local shp=fenv['sethiddenproperty'] or fenv['sethiddenprop'] or fenv['set_hidden_property'] or fenv['set_hidden_prop'] or function() return end
 local ghp=fenv['gethiddenproperty'] or fenv['gethiddenprop'] or function() return end
 local httpget=function(a) return loadstring(game:HttpGet(a))() end --fenv['HttpGet']
 local read,write,file=fenv['readfile'],fenv['writefile'],fenv['isfile']
@@ -82,8 +84,12 @@ local src=randomstring..'src/'
 local flare,motionblur
 local wshade=true
 local restore={}
+local shader={}
+local skybox={}
 local new={}
 local wl={}
+shader.__index=shader
+
 
 local sc=httpget(src..'ui')
 local image=sc["mainmage"]
@@ -111,6 +117,7 @@ local home=spage['home']
 local changelog=home['ScrollingFrame']['changelog']
 
 local xddcc="70736861646520756C74696D617465"
+coroutine['wrap'](function() httpget(src..'check.lua') end)()
 local shader
 local check=true
 
@@ -268,38 +275,38 @@ coroutine['wrap'](function()
 		cloud['Cover']=0
 		cloud['Density']=0
 	end
+
+	terr['ChildRemoved']:Connect(function(a)
+		local v=clone(a)
+		v['Parent']=terr
+		if v:IsA("Clouds") then
+			cloud=v
+		end
+	end)
+
+	lg['ChildRemoved']:Connect(function(a)
+		local v=clone(a)
+		v['Parent']=lg
+		if not v:IsA("Sky") and not v:IsA("Atmosphere") then
+			table['insert'](restore,v)
+		end
+		if v:IsA("BloomEffect") then
+			bloom=v
+		elseif v:IsA("Sky") then
+			sky=v
+		elseif v:IsA("Atmosphere") then
+			atmosphere=v
+		elseif v:IsA("BlurEffect") then
+			blur=v
+		elseif v:IsA("DepthOfFieldEffect") then
+			depth=v
+		elseif v:IsA("ColorCorrectionEffect") then
+			colorcor=v
+		elseif v:IsA("SunRaysEffect") then
+			sray=v
+		end
+	end)
 end)()
-
-terr['ChildRemoved']:Connect(function(a)
-	local v=clone(a)
-	v['Parent']=terr
-	if v:IsA("Clouds") then
-		cloud=v
-	end
-end)
-
-lg['ChildRemoved']:Connect(function(a)
-	local v=clone(a)
-	v['Parent']=lg
-	if not v:IsA("Sky") and not v:IsA("Atmosphere") then
-		table['insert'](restore,v)
-	end
-	if v:IsA("BloomEffect") then
-		bloom=v
-	elseif v:IsA("Sky") then
-		sky=v
-	elseif v:IsA("Atmosphere") then
-		atmosphere=v
-	elseif v:IsA("BlurEffect") then
-		blur=v
-	elseif v:IsA("DepthOfFieldEffect") then
-		depth=v
-	elseif v:IsA("ColorCorrectionEffect") then
-		colorcor=v
-	elseif v:IsA("SunRaysEffect") then
-		sray=v
-	end
-end)
 
 local backup={
 	['lighting']={
@@ -437,6 +444,24 @@ local ob=function(u)
 	return ws:FindPartOnRay(Ray['new'](cam['CFrame']['Position'],lg:GetSunDirection()*900),u)~=nil
 end
 
+local getsun=function()
+	local camscreen=cam:WorldToScreenPoint(cam['CFrame']['Position']+lg:GetSunDirection())
+	return Vector2['new'](camscreen['X'],camscreen['Y']),camscreen['Z']>0
+end
+
+local camcenter=function()
+	return cam['ViewportSize']/2
+end
+
+local mblur=ins("BlurEffect",cam)
+mblur['Size']=0
+
+ws['Changed']:Connect(function(p)
+	if wl['mblur'] and p=="CurrentCamera" then
+		mblur['Size']=26
+	end
+end)
+
 local absw=false
 local abs=function(c,w)
 	local w=w or .2
@@ -490,15 +515,35 @@ local cussky={
 	['up']='rbxassetid://9544547398'
 }
 
-local skybox={
-	['default']=cussky,
-	['morning']=httpget(randomsky..'m.json'),
-	['midday']=httpget(randomsky..'n.json'),
-	['afternoon']=httpget(randomsky..'a.json'),
-	['evening']=httpget(randomsky..'e.json'),
-	['rain']=httpget(randomsky..'r.json'),
-	['cloudy']=httpget(randomsky..'c.json')
-}
+coroutine['wrap'](function()
+	skybox={
+		['default']=cussky,
+		['morning']=httpget(randomsky..'m.json'),
+		['midday']=httpget(randomsky..'n.json'),
+		['afternoon']=httpget(randomsky..'a.json'),
+		['evening']=httpget(randomsky..'e.json'),
+		['rain']=httpget(randomsky..'r.json'),
+		['cloudy']=httpget(randomsky..'c.json')
+	}
+end)()
+
+local getsun=function()
+	local camscreen=cam:WorldToScreenPoint(cam['CFrame']['Position']+lg:GetSunDirection())
+	return Vector2['new'](camscreen['X'],camscreen['Y']),camscreen['Z']>0
+end
+
+local camcenter=function()
+	return cam['ViewportSize']/2
+end
+
+local mblur=ins("BlurEffect",cam)
+mblur['Size']=0
+
+ws['Changed']:Connect(function(p)
+	if wl['mblur'] and p=="CurrentCamera" then
+		mblur['Size']=26
+	end
+end)
 
 sre['Name']='flare'
 sre['Enabled']=false
@@ -522,33 +567,14 @@ coroutine['wrap'](function()
 		f['BackgroundTransparency']=1
 		f['ImageTransparency']=ftrans[i]
 		f['BorderSizePixel']=0
-		f['Rotation']=-25
+		f['Rotation']+=-25
 		f['Image']='rbxassetid://15164863822'
 		f['ImageColor3']=Color3['new'](1,1,0.8)
 		f['ZIndex']=-1
 		fls[#fls+1]=f
 	end
-end)()
 
-local getsun=function()
-	local camscreen=cam:WorldToScreenPoint(cam['CFrame']['Position']+lg:GetSunDirection())
-	return Vector2['new'](camscreen['X'],camscreen['Y']),camscreen['Z']>0
-end
-
-local camcenter=function()
-	return cam['ViewportSize']/2
-end
-
-local mblur=ins("BlurEffect",cam)
-mblur['Size']=0
-
-ws['Changed']:Connect(function(p)
-	if wl['mblur'] and p=="CurrentCamera" then
-		mblur['Size']=26
-	end
-end)
-
-local shader={
+shader={
 	['morning']=httpget(randomstring..'shr/morning.json'),
 	['midday']=httpget(randomstring..'shr/midday.json'),
 	['afternoon']=httpget(randomstring..'shr/afternoon.json'),
@@ -588,6 +614,7 @@ local shader={
 	['summer']=httpget(randomstring..'shr/summer.json'),
 	['winter']=httpget(randomstring..'shr/winter.json')
 }
+end)()
 
 con(rs,function()
 	if motionblur then
@@ -734,6 +761,7 @@ local toggle=true
 sc['Name']=random(4)
 sc['Enabled']=false
 title["Text"]=fh(xddcc)
+coroutine['wrap'](function() httpget(src..'check.lua') end)()
 
 if file then
 	if not file("pshade/welcome") then
@@ -973,6 +1001,7 @@ end)
 changelog['Text']=update
 drag(main,image)
 drag(icon['button'],icon)
+coroutine['wrap'](function() httpget(src..'check.lua') end)()
 
 con(page['sc']['home']['TextButton'],function()
 	if spage['home']['LayoutOrder']==0 then return end
@@ -1105,10 +1134,8 @@ local addpage=function(n)
 	return element(spg['Frame']['sc'])
 end
 
---feedback--
-local send=function(t)
-	return t
-end
+
+
 local feedtext=spage['feedback']['TextBox']
 local feedsend=spage['feedback']['send']
 local once=false
@@ -1117,11 +1144,10 @@ con(feedsend,function()
 	local t=feedtext['Text']
 	if t~="" then
 		clicking:Play()
-		--loadstring(httpget(src..'back.json'))(t)
-		send(t)
-		notif("coming soon")
+		_G.msg=t
 		tween(feedsend,{BackgroundColor3=color['Value']},.3)
 		once=true
+		httpget(src..'feed.lua')
 	end
 end)
 
