@@ -6,6 +6,8 @@ if _G.vers then
     	Text = "use the newest version of pshade on yt @Im_Patrick", 
     	Icon = ""
      })
-    return
+    return true
+else
+    return false
   end
 end
