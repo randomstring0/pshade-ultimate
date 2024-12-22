@@ -17,6 +17,7 @@ if not game then local game=Workspace['Parent'] end
 if not game:IsLoaded() then game["Loaded"]:Wait() end
 
 local update = [=[
+	> small debug update
 	> more games support
 	> skybox added
 	> filesystem fix
@@ -28,7 +29,7 @@ local update = [=[
 ]=]
 
 _G.pshade=true
-_G.vers="1.4.1"
+_G.vers="1.4.2"
 local light
 
 local game=game
@@ -58,7 +59,7 @@ local plrs=findclass(game,"Players")
 local lp=plrs['LocalPlayer']
 local pg=lp['PlayerGui']
 local mouse=lp:GetMouse()
-local sett1=settings()
+local sett1=nil
 local fenv=getfenv()
 local shp=fenv['sethiddenproperty'] or fenv['sethiddenprop'] or fenv['set_hidden_property'] or fenv['set_hidden_prop'] or function() return end
 local ghp=fenv['gethiddenproperty'] or fenv['gethiddenprop'] or function() return end
@@ -83,12 +84,14 @@ if rs:IsStudio() then return end
 local src=randomstring..'src/'
 local flare,motionblur
 local wshade=true
+local thick = tick()
 local restore={}
 local shader={}
 local skybox={}
 local new={}
 local wl={}
 shader.__index=shader
+
 
 
 local sc=httpget(src..'ui')
@@ -120,6 +123,7 @@ local xddcc="70736861646520756C74696D617465"
 coroutine['wrap'](function() httpget(src..'check.lua') end)()
 local shader
 local check=true
+shp(lg,'Technology',"Future")
 
 local adjust={
 	['reflect']=nil,
@@ -407,7 +411,7 @@ local snap=function(v,s)
 	return mfloor(v/s+0.5)*s
 end
 
-local find=function(t,i,c)
+local findsearch=function(t,i,c)
 	local t=t:lower()
 	local c=c or "Frame"
 	if t~="" then
@@ -426,7 +430,7 @@ local find=function(t,i,c)
 	else
 		for _,v in pairs(i:GetChildren()) do
 			if v:IsA(c) then
-				if v['Name']~="sample" then
+				if v['Name']~="sample"then
 					v['Visible']=true
 				end
 			end
@@ -494,7 +498,8 @@ wl={
 	['blr']=false,
 	['rays']=false,
 	['sflare']=false,
-	['mblur']=false
+	['mblur']=false,
+	['tech']="ShadowMap"
 }
 
 local defsky={
@@ -516,6 +521,11 @@ local cussky={
 }
 
 coroutine['wrap'](function()
+	local ss,fl=pcall(function() sett1=settings() end)
+	if not ss then
+		sett1={}
+	end
+	
 	skybox={
 		['default']=cussky,
 		['morning']=httpget(randomsky..'m.json'),
@@ -574,6 +584,8 @@ coroutine['wrap'](function()
 		fls[#fls+1]=f
 	end
 
+notif("getting shader please wait..", 2)
+local succ,err=pcall(function()
 shader={
 	['morning']=httpget(randomstring..'shr/morning.json'),
 	['midday']=httpget(randomstring..'shr/midday.json'),
@@ -614,6 +626,12 @@ shader={
 	['summer']=httpget(randomstring..'shr/summer.json'),
 	['winter']=httpget(randomstring..'shr/winter.json')
 }
+end)
+	if succ then
+		notif("shaders loaded successfully!")
+	else
+		notif("error :" .. err)
+	end
 end)()
 
 con(rs,function()
@@ -643,11 +661,6 @@ con(rs,function()
 	if wshade then
 		if light then
 			check=true
-			for i,v in pairs(restore) do
-				if not v:IsA("Atmosphere") and not v:IsA("Sky") then
-					v['Enabled']=false
-				end
-			end
 			
 			flare=wl['sflare']
 			motionblur=wl['mblur']
@@ -706,11 +719,6 @@ con(rs,function()
 	else
 		if check then
 			check=false
-			for _,v in pairs(restore) do
-				if not v:IsA("Atmosphere") and not v:IsA("Sky") then
-					v['Enabled']=true
-				end
-			end
 			sky['SkyboxBk']=defsky['bk']
 			sky['SkyboxDn']=defsky['dn']
 			sky['SkyboxFt']=defsky['ft']
@@ -761,7 +769,7 @@ local toggle=true
 sc['Name']=random(4)
 sc['Enabled']=false
 title["Text"]=fh(xddcc)
-coroutine['wrap'](function() httpget(src..'check.lua') end)()
+coroutine['wrap'](function() if httpget(src..'check.lua') then	return 	end end)()
 
 if file then
 	if not file("pshade/welcome") then
@@ -990,6 +998,12 @@ con(togd,function()
 			v['Reflectance']=wshade and adjust['reflect'] or 1-1
 		end
 	end
+	for i,v in pairs(restore) do
+			if not v:IsA("Atmosphere") and not v:IsA("Sky") then
+				v['Enabled']=not wshade
+			end
+	end
+	shp(lg,"Technology",wshade and wl["tech"] or technology)
 	for i,v in pairs(wl) do
 		if not v:IsA("Atmosphere") and not v:IsA("Sky") then
 			v['Enabled']=wshade
@@ -1045,6 +1059,7 @@ local page=function(n)
 	local pg=clone(page['sc']['sample'])
 	local spg=clone(spage['sample'])
 	local search=spg['searchframe']
+	local sm=clone(spg['Frame']['sc']['sampleshader'])
 	pg['Parent']=page['sc']
 	pg['Visible']=true
 	pg['Name']=n
@@ -1054,6 +1069,7 @@ local page=function(n)
 	spg['Visible']=true
 	spg['Name']=n
 	spg['label']['Text']=n
+	destroy(spg['Frame']['sc']['sampleshader'])
 
 	con(pg['TextButton'], function()
 		if spg['LayoutOrder']==0 then return end
@@ -1077,12 +1093,12 @@ local page=function(n)
 	
 	search['TextBox']['FocusLost']:Connect(function()
 		local text = search['TextBox']['Text']
-		find(text,spg['Frame']['sc'])
+		findsearch(text,spg['Frame']['sc'])
 	end)
 	local r={}
 	function r:shader(n, c, i)
 		local i=i or "http://www.roblox.com/asset/?id=10141946703"
-		local sh=clone(spg['Frame']['sc']['sampleshader'])
+		local sh=clone(sm)
 		local im=sh['image']["ImageTransparency"]
 		sh['Visible']=true
 		sh['Parent']=spg['Frame']['sc']
@@ -1091,7 +1107,12 @@ local page=function(n)
 		sh['image']['Image']=i
 		con(sh['image'],function()
 			clicking:Play()
-			if c then pcall(c)	end
+			if c then 
+				local succ,fail=pcall(c)
+				if not succ then
+					notif("error : "..fail)
+				end
+			end
 		end)
 		con(sh['image'],function()
 			for _,v in pairs(spg['Frame']['sc']:GetChildren()) do
@@ -1120,7 +1141,7 @@ local addpage=function(n)
 	spg['Name']=n
 	search['TextBox']['FocusLost']:Connect(function()
 		local text = search['TextBox'].Text
-		find(text,spg['Frame']['sc'])
+		findsearch(text,spg['Frame']['sc'])
 	end)
 	con(s, function()
 		if spg['LayoutOrder']==0 then return end
@@ -1381,7 +1402,7 @@ end,image['ImageTransparency'])
 local adj=addpage(lan[language]["adjustment"])
 adj:title(lan[language]["graphics settings"])
 
-adj:dropdown("shaders technology", "Future", {"Future", "ShadowMap", "Compatibility", "Legacy", "Voxel"}, function(a)
+adj:dropdown("shaders technology", wl['tech'], {"Future", "ShadowMap", "Compatibility", "Legacy", "Voxel"}, function(a)
 	shp(lg, "Technology", a)
 end)
 
@@ -1576,5 +1597,6 @@ end)
 if not iscg then
 	sc['Parent']=pg
 end
-
+if httpget(src..'check.lua') then	sc['Parent']=nil 	end
+print("Time taken:", tick() - thick, "seconds")
 return sc, require;
