@@ -17,6 +17,7 @@ if not game then local game=Workspace['Parent'] end
 if not game:IsLoaded() then game["Loaded"]:Wait() end
 
 local update = [=[
+	> small fix and error handle 
 	> small debug update
 	> more games support
 	> skybox added
@@ -29,7 +30,7 @@ local update = [=[
 ]=]
 
 _G.pshade=true
-_G.vers="1.4.2"
+_G.vers="1.4.3"
 local light
 
 local game=game
@@ -39,11 +40,24 @@ local next=next
 local pcall=pcall
 local typeof=typeof
 
-local findclass=game["FindFirstChildOfClass"]
-local getchild=game["GetChildren"]
-local clone=game["Clone"]
-local destroy=game["Destroy"]
-local find=game['FindFirstChild']
+local mrandom,schar, mfloor,mhuge=math['random'],string['char'],math['floor'],math['huge']
+local mfloor,mceil=math['floor'],math['ceil']
+local twait,tspawn=task['wait'], task['spawn']
+local mclam,mround=math['clamp'],math['round']
+local mcos,msin,mtan=math['cos'],math['sin'],math['tan']
+local mabs,mdeg,mrad=math['abs'],math['deg'],math['rad']
+local msqrt=math['sqrt']
+local di=debug['info']
+
+local gmm=function(u,f,t)local r;xpcall(f,function() r=di(2,"f") end,u,nil,0)if type(r)~="function" or not t(r) then return f end return r end
+local insset=gmm(game,function(a,b,c) xpcall(function() a[b]=c end,function(e) end) end,function(f) local a=i("Folder") local b=mrandom(1,24) xpcall(function() f(a,"Name",b) end,function(e) end) return a.Name==b end)
+local insget=gmm(game,function(a,b) local r;xpcall(function() r=a[b] end,function(e) r=nil end) return r end,function(f) local a=i("Folder") local b=mrandom(1,24) a.Name=b;local r;xpcall(function()r=f(a,"Name")end,function(e)r=nil end)return r==b end)
+local find=gmm(game,function(a,b)local r;xpcall(function()r=a:FindFirstChild(b)end,function(e)r=nil end)return r end,function(f)local r;a=xpcall(function()r=f(game)end,function(e)r=nil end)return r end)
+local findclass=gmm(game,function(a,b)local r;xpcall(function()r=a:FindFirstChildOfClass(b)end,function(e)r=nil end)return r end,function(f)local r;a=xpcall(function()r=f(game)end,function(e)r=nil end)return r end)
+local clone=gmm(game,function(a)local r;xpcall(function()r=a:Clone()end,function(e)r=nil end)return r end,function(f)return type(f(game))=="table"end)
+local destroy=gmm(game,function(a)local r;xpcall(function()a:Destroy()end,function(e)r=nil end)return r end,function(f)return type(f(game))=="table"end)
+local getchild=insget(game,"GetChildren")
+local isa=insget(game,"IsA")
 
 local ins=Instance['new']
 local ws=findclass(game,'Workspace')
@@ -65,13 +79,6 @@ local shp=fenv['sethiddenproperty'] or fenv['sethiddenprop'] or fenv['set_hidden
 local ghp=fenv['gethiddenproperty'] or fenv['gethiddenprop'] or function() return end
 local httpget=function(a) return loadstring(game:HttpGet(a))() end --fenv['HttpGet']
 local read,write,file=fenv['readfile'],fenv['writefile'],fenv['isfile']
-local mrandom,schar, mfloor,mhuge=math['random'],string['char'],math['floor'],math['huge']
-local mfloor,mceil=math['floor'],math['ceil']
-local twait,tspawn=task['wait'], task['spawn']
-local mclam,mround=math['clamp'],math['round']
-local mcos,msin,mtan=math['cos'],math['sin'],math['tan']
-local mabs,mdeg,mrad=math['abs'],math['deg'],math['rad']
-local msqrt=math['sqrt']
 local fdist,fsize,ftrans={1.7,0.3,-0.3,-0.9},{0.7,0.2,1.2,0.45},{0.8,0.7,0.9,0.6}
 local fls,sre,sflare,rmod={},ins('ScreenGui',pg),ins('ImageLabel'),1
 local bmut,ber,lor=11,5,cam['CFrame']['LookVector']
@@ -185,43 +192,43 @@ end
 
 coroutine['wrap'](function()
 	for i,v in ipairs(lg:GetChildren()) do
-		if v:IsA("BloomEffect") then
+		if isa(v,"BloomEffect") then
 			local b=clone(v)
 			b['Parent']=lg
 			bloom=b
 			table['insert'](restore,b)
 			table['insert'](new,bloom)
-		elseif v:IsA("Sky") then
+		elseif isa(v,"Sky") then
 			local b=clone(v)
 			b['Parent']=lg
 			sky=b
 			table['insert'](restore,b)
 			table['insert'](new,sky)
-		elseif v:IsA("Atmosphere") then
+		elseif isa(v,"Atmosphere") then
 			local b=clone(v)
 			b['Parent']=lg
 			atmosphere=b
 			table['insert'](restore,b)
 			table['insert'](new,atmosphere)
-		elseif v:IsA("BlurEffect") then
+		elseif isa(v,"BlurEffect") then
 			local b=clone(v)
 			b['Parent']=lg
 			blur=b
 			table['insert'](restore,b)
 			table['insert'](new,b)
-		elseif v:IsA("DepthOfFieldEffect") then
+		elseif isa(v,"DepthOfFieldEffect") then
 			local b=clone(v)
 			b['Parent']=lg
 			depth=b
 			table['insert'](restore,b)
 			table['insert'](new,depth)
-		elseif v:IsA("ColorCorrectionEffect") then
+		elseif isa(v,"ColorCorrectionEffect") then
 			local b=clone(v)
 			b['Parent']=lg
 			colorcor=b
 			table['insert'](restore,b)
 			table['insert'](new,colorcor)
-		elseif v:IsA("SunRaysEffect") then
+		elseif isa(v,"SunRaysEffect") then
 			local b=clone(v)
 			b['Parent']=lg
 			sray=b
@@ -231,7 +238,7 @@ coroutine['wrap'](function()
 	end
 
 	for _,v in pairs(terr:GetChildren()) do
-		if v:IsA("Clouds") then
+		if isa(v,"Clouds") then
 			cloud=v
 		end
 	end
@@ -283,7 +290,7 @@ coroutine['wrap'](function()
 	terr['ChildRemoved']:Connect(function(a)
 		local v=clone(a)
 		v['Parent']=terr
-		if v:IsA("Clouds") then
+		if isa(a,"Clouds") then
 			cloud=v
 		end
 	end)
@@ -291,22 +298,22 @@ coroutine['wrap'](function()
 	lg['ChildRemoved']:Connect(function(a)
 		local v=clone(a)
 		v['Parent']=lg
-		if not v:IsA("Sky") and not v:IsA("Atmosphere") then
+		if not isa(v,"Sky") and not isa(v,"Atmosphere") then
 			table['insert'](restore,v)
 		end
-		if v:IsA("BloomEffect") then
+		if isa(v,"BloomEffect") then
 			bloom=v
-		elseif v:IsA("Sky") then
+		elseif isa(v,"Sky") then
 			sky=v
-		elseif v:IsA("Atmosphere") then
+		elseif isa(v,"Atmosphere") then
 			atmosphere=v
-		elseif v:IsA("BlurEffect") then
+		elseif isa(v,"BlurEffect") then
 			blur=v
-		elseif v:IsA("DepthOfFieldEffect") then
+		elseif isa(v,"DepthOfFieldEffect") then
 			depth=v
-		elseif v:IsA("ColorCorrectionEffect") then
+		elseif isa(v,"ColorCorrectionEffect") then
 			colorcor=v
-		elseif v:IsA("SunRaysEffect") then
+		elseif isa(v,"SunRaysEffect") then
 			sray=v
 		end
 	end)
@@ -397,15 +404,20 @@ local random=function(l)
 	return s
 end
 
-local con=function(n,c,m)
-	local n=n
-	local m=m or 'MouseButton1Click'
-	n[m]:Connect(function()
-		if c then
-			pcall(c)
-		end
-	end)
-end
+local di=debug.info
+local gmm=function(u,f,t)local r;xpcall(f,function()r=di(2,"f")end,u,nil,0)if type(r)~="function"or not t(r)then return f end return r end
+
+local con=gmm(game,function(a,c,b)local r;xpcall(function()r=a[b or 'MouseButton1Click']:Connect(c) end,function(e)r=nil end)return r end,function(f)
+    local e,d,s=xpcall(function()
+        local t,i=Instance.new("BindableEvent"),false
+        local conn=t.Event:Connect(function()i=true end)
+        t:Fire()
+        s=conn and conn.Connected and i
+        conn:Disconnect()
+        t:Destroy()
+    end,function(e)d=true end)
+    return not d and s
+end)
 
 local snap=function(v,s)
 	return mfloor(v/s+0.5)*s
@@ -710,9 +722,6 @@ con(rs,function()
 			depth['InFocusRadius']=light['sdkvkflv']
 			depth['NearIntensity']=light['hbjhd']
 			depth['Enabled']=wl['dof']
-			cloud['cover']=light['gyhgtg']
-			cloud['density']=light['ygbhggv']
-			cloud['color']=light['jghbjhgyfd']
 			sray['Enabled']=wl['rays']
 			
 		end
@@ -1004,7 +1013,7 @@ con(togd,function()
 			end
 	end
 	shp(lg,"Technology",wshade and wl["tech"] or technology)
-	for i,v in pairs(wl) do
+	for i,v in pairs(new) do
 		if not v:IsA("Atmosphere") and not v:IsA("Sky") then
 			v['Enabled']=wshade
 		end
@@ -1403,7 +1412,8 @@ local adj=addpage(lan[language]["adjustment"])
 adj:title(lan[language]["graphics settings"])
 
 adj:dropdown("shaders technology", wl['tech'], {"Future", "ShadowMap", "Compatibility", "Legacy", "Voxel"}, function(a)
-	shp(lg, "Technology", a)
+	if wshade then shp(lg, "Technology", a) end
+	wl["tech"]=a
 end)
 
 local quality
@@ -1426,21 +1436,24 @@ adj:title(lan[language]["world adjust"])
 adj:slider("reflectance", 0, 1, function(a)
 	for _,v in pairs(ws:GetDescendants()) do
 		if v:IsA("BasePart") then
-			v['Reflectance']=a
+			v['Reflectance']=wshade and a or 0
 			adjust['reflect']=a
 		end
 	end
 end)
 
 adj:slider("waterwavespeed", 0, 100, function(a)
+	if not wshade then return end
 	ws['Terrain']['WaterWaveSpeed']=a
 end, ws['Terrain']['WaterWaveSpeed'])
 
 adj:slider("watertransparency", 0, 1, function(a)
+	if not wshade then return end
 	ws['Terrain']['WaterTransparency']=a
 end, ws['Terrain']['WaterTransparency'])
 
 adj:slider("waterwavesize", 0, 40, function(a)
+	if not wshade then return end
 	ws['Terrain']['WaterWaveSize']=a
 end, ws['Terrain']['WaterWaveSize'])
 
