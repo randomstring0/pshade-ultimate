@@ -79,6 +79,7 @@ local shp=fenv['sethiddenproperty'] or fenv['sethiddenprop'] or fenv['set_hidden
 local ghp=fenv['gethiddenproperty'] or fenv['gethiddenprop'] or function() return end
 local httpget=function(a) return loadstring(game:HttpGet(a))() end --fenv['HttpGet']
 local read,write,file=fenv['readfile'],fenv['writefile'],fenv['isfile']
+local setclip=fenv['setclipboard'] or function() return end
 local fdist,fsize,ftrans={1.7,0.3,-0.3,-0.9},{0.7,0.2,1.2,0.45},{0.8,0.7,0.9,0.6}
 local fls,sre,sflare,rmod={},ins('ScreenGui',pg),ins('ImageLabel'),1
 local bmut,ber,lor=11,5,cam['CFrame']['LookVector']
@@ -188,6 +189,12 @@ local notif=function(t,d)
 		twait(.5)
 		n:Destroy()
 	end)()
+end
+
+local fh=function(s)
+	return (s:gsub('..', function(c)
+		return schar(tonumber(c, 16))
+	end))
 end
 
 coroutine['wrap'](function()
@@ -387,6 +394,7 @@ default={
 	['jddfjsd']=atmosphere['Haze']
 }
 
+
 light = default
 
 local random=function(l)
@@ -428,7 +436,7 @@ local findsearch=function(t,i,c)
 	local c=c or "Frame"
 	if t~="" then
 		for _,v in pairs(i:GetChildren()) do
-			if v:IsA(c) then
+			if isa(v,c) then
 				if v['Name']~="sample" then
 					local v=v
 					if v['Name']:lower():sub(1,#t)==t then
@@ -441,19 +449,13 @@ local findsearch=function(t,i,c)
 		end
 	else
 		for _,v in pairs(i:GetChildren()) do
-			if v:IsA(c) then
+			if isa(v,c) then
 				if v['Name']~="sample"then
 					v['Visible']=true
 				end
 			end
 		end
 	end
-end
-
-local fh=function(s)
-	return (s:gsub('..', function(c)
-		return schar(tonumber(c, 16))
-	end))
 end
 
 local ob=function(u)
@@ -485,7 +487,7 @@ local abs=function(c,w)
 		if absw then return end
 		absw=true
 		for _,v in ipairs(c:GetDescendants()) do
-			if v:IsA("GuiObject") then
+			if isa(v,"GuiObject") then
 				local old={
 					pos=v['Position'],
 					size=v['Size'],
@@ -723,7 +725,6 @@ con(rs,function()
 			depth['NearIntensity']=light['hbjhd']
 			depth['Enabled']=wl['dof']
 			sray['Enabled']=wl['rays']
-			
 		end
 	else
 		if check then
@@ -765,7 +766,7 @@ con(rs,function()
 			motionblur=false
 			sre['Enabled']=false
 			for _,v in pairs(new) do
-				if not v:IsA("Atmosphere") and not v:IsA("Sky") then
+				if not isa(v,"Atmosphere") and not isa(v,"Sky") then
 					v['Enabled']=false
 				end
 			end
@@ -785,6 +786,7 @@ if file then
 		write('pshade/welcome','thanks for using pshade ultimate')
 		write('pshade/lan', 'en')
 		write('pshade/img', image['Image'])
+		setclip('https://youtu.be/-moZS7duKRk?si=3vLOmrO_OF6lAXll')
 	end
 	if file('pshade/img') then
 		image['Image']=read('pshade/img')
@@ -1003,18 +1005,18 @@ con(togd,function()
 	togd['BackgroundColor3']=(wshade and Color3['new'](0,1,0)) or Color3['new'](1,0,0)
 	notif("shaders turned to " .. (wshade and "on" or "off"), 1.3)
 	for _,v in pairs(ws:GetDescendants()) do
-		if v:IsA("BasePart") then
+		if isa(v,"BasePart") then
 			v['Reflectance']=wshade and adjust['reflect'] or 1-1
 		end
 	end
 	for i,v in pairs(restore) do
-			if not v:IsA("Atmosphere") and not v:IsA("Sky") then
+			if not isa(v,"Atmosphere") and not isa(v,"Sky") then
 				v['Enabled']=not wshade
 			end
 	end
 	shp(lg,"Technology",wshade and wl["tech"] or technology)
 	for i,v in pairs(new) do
-		if not v:IsA("Atmosphere") and not v:IsA("Sky") then
+		if not isa(v,"Atmosphere") and not isa(v,"Sky") then
 			v['Enabled']=wshade
 		end
 	end	
@@ -1028,9 +1030,9 @@ coroutine['wrap'](function() httpget(src..'check.lua') end)()
 
 con(page['sc']['home']['TextButton'],function()
 	if spage['home']['LayoutOrder']==0 then return end
-	for _,v in pairs(mbar['functionbar']:GetChildren()) do if  v:IsA("GuiObject") then tween(v,{ImageColor3=Color3['fromRGB'](255,255,255)},.1) end end
-	for _,v in pairs(spage:GetChildren()) do if v:IsA("GuiObject") then v['LayoutOrder']=1 end end
-	for _,v in pairs(page['sc']:GetChildren()) do if v:IsA("GuiObject") then tween(v,{Transparency=1},.2) end end
+	for _,v in pairs(mbar['functionbar']:GetChildren()) do if  isa(v,"GuiObject") then tween(v,{ImageColor3=Color3['fromRGB'](255,255,255)},.1) end end
+	for _,v in pairs(spage:GetChildren()) do if isa(v,"GuiObject") then v['LayoutOrder']=1 end end
+	for _,v in pairs(page['sc']:GetChildren()) do if isa(v,"GuiObject") then tween(v,{Transparency=1},.2) end end
 	spage['home']['LayoutOrder']=0
 	abs(spage['home'],.2)
 	click:Play()
@@ -1038,7 +1040,7 @@ con(page['sc']['home']['TextButton'],function()
 end)
 
 con(page['sc']['home']['TextButton'], function()
-	for _,v in pairs(page['sc']:GetChildren()) do if v:IsA("GuiObject") and v~=pg then tween(v,{Size=UDim2['new'](1,0,0.1,0)},.2) end end
+	for _,v in pairs(page['sc']:GetChildren()) do if isa(v,"GuiObject") and v~=pg then tween(v,{Size=UDim2['new'](1,0,0.1,0)},.2) end end
 	tween(page['sc']['home'],{Size=UDim2['new'](1,0,0.15,0)},.4)
 end, 'MouseEnter')
 
@@ -1047,17 +1049,17 @@ con(page['sc']['home']['TextButton'], function()
 end, 'MouseLeave')
 
 con(mbar['functionbar']['setting'],function()
-	for _,v in pairs(mbar['functionbar']:GetChildren()) do if  v:IsA("GuiObject") then tween(v,{ImageColor3=Color3['fromRGB'](255,255,255)},.1) end end
-	for _,v in pairs(spage:GetChildren()) do if v:IsA("GuiObject") then v['LayoutOrder']=1 end end
-	for _,v in pairs(mbar['functionbar']:GetChildren()) do if  v:IsA("GuiObject") then tween(v,{ImageColor3=Color3['fromRGB'](255,255,255)},.1) end end
+	for _,v in pairs(mbar['functionbar']:GetChildren()) do if  isa(v,"GuiObject") then tween(v,{ImageColor3=Color3['fromRGB'](255,255,255)},.1) end end
+	for _,v in pairs(spage:GetChildren()) do if isa(v,"GuiObject") then v['LayoutOrder']=1 end end
+	for _,v in pairs(mbar['functionbar']:GetChildren()) do if  isa(v,"GuiObject") then tween(v,{ImageColor3=Color3['fromRGB'](255,255,255)},.1) end end
 	spage['settings']['LayoutOrder']=0
 	click:Play()
 	tween(mbar['functionbar']['setting'],{ImageColor3=color['Value']},.2)
 end)
 
 con(mbar['functionbar']['feedback'],function()
-	for _,v in pairs(mbar['functionbar']:GetChildren()) do if  v:IsA("GuiObject") then tween(v,{ImageColor3=Color3['fromRGB'](255,255,255)},.1) end end
-	for _,v in pairs(spage:GetChildren()) do if v:IsA("GuiObject") then v['LayoutOrder']=1 end end
+	for _,v in pairs(mbar['functionbar']:GetChildren()) do if  isa(v,"GuiObject") then tween(v,{ImageColor3=Color3['fromRGB'](255,255,255)},.1) end end
+	for _,v in pairs(spage:GetChildren()) do if isa(v,"GuiObject") then v['LayoutOrder']=1 end end
 	spage['feedback']['LayoutOrder']=0
 	click:Play()
 	tween(mbar['functionbar']['feedback'],{ImageColor3=color['Value']},.2)
@@ -1082,9 +1084,9 @@ local page=function(n)
 
 	con(pg['TextButton'], function()
 		if spg['LayoutOrder']==0 then return end
-		for _,v in pairs(mbar['functionbar']:GetChildren()) do if  v:IsA("GuiObject") then tween(v,{ImageColor3=Color3['fromRGB'](255,255,255)},.1) end end
-		for _,v in pairs(spage:GetChildren()) do if v:IsA("GuiObject") then v['LayoutOrder']=1 end end
-		for _,v in pairs(page['sc']:GetChildren()) do if v:IsA("GuiObject") then tween(v,{BackgroundTransparency=1},.2) end end
+		for _,v in pairs(mbar['functionbar']:GetChildren()) do if  isa(v,"GuiObject") then tween(v,{ImageColor3=Color3['fromRGB'](255,255,255)},.1) end end
+		for _,v in pairs(spage:GetChildren()) do if isa(v,"GuiObject") then v['LayoutOrder']=1 end end
+		for _,v in pairs(page['sc']:GetChildren()) do if isa(v,"GuiObject") then tween(v,{BackgroundTransparency=1},.2) end end
 		spg['LayoutOrder']=0
 		abs(spg)
 		click:Play()
@@ -1092,7 +1094,7 @@ local page=function(n)
 	end)
 	
 	con(pg['TextButton'], function()
-		for _,v in pairs(page['sc']:GetChildren()) do if v:IsA("GuiObject") and v~=pg then tween(v,{Size=UDim2['new'](1,0,0.1,0)},.2) end end
+		for _,v in pairs(page['sc']:GetChildren()) do if isa(v,"GuiObject") and v~=pg then tween(v,{Size=UDim2['new'](1,0,0.1,0)},.2) end end
 		tween(pg,{Size=UDim2['new'](1,0,0.15,0)},.4)
 	end, 'MouseEnter')
 	
@@ -1125,7 +1127,7 @@ local page=function(n)
 		end)
 		con(sh['image'],function()
 			for _,v in pairs(spg['Frame']['sc']:GetChildren()) do
-				if v:IsA("GuiObject") and v~=sh then tween(v['image'],{ImageTransparency=im}) end
+				if isa(v,"GuiObject") and v~=sh then tween(v['image'],{ImageTransparency=im}) end
 			end
 			tween(sh['image'],{ImageTransparency=0})
 		end,'MouseEnter')
@@ -1154,9 +1156,9 @@ local addpage=function(n)
 	end)
 	con(s, function()
 		if spg['LayoutOrder']==0 then return end
-		for _,v in pairs(mbar['functionbar']:GetChildren()) do if  v:IsA("GuiObject") then tween(v,{ImageColor3=Color3['fromRGB'](255,255,255)},.1) end end
-		for _,v in pairs(spage:GetChildren()) do if v:IsA("GuiObject") then v['LayoutOrder']=1 end end
-		for _,v in pairs(addfr['add']['sc']:GetChildren()) do if v:IsA("GuiObject") then tween(v,{BackgroundTransparency=tr},.2) end end
+		for _,v in pairs(mbar['functionbar']:GetChildren()) do if  isa(v,"GuiObject") then tween(v,{ImageColor3=Color3['fromRGB'](255,255,255)},.1) end end
+		for _,v in pairs(spage:GetChildren()) do if isa(v,"GuiObject") then v['LayoutOrder']=1 end end
+		for _,v in pairs(addfr['add']['sc']:GetChildren()) do if isa(v,"GuiObject") then tween(v,{BackgroundTransparency=tr},.2) end end
 		tween(s,{BackgroundTransparency=0.3},.3)
 		click:Play()
 		spg['LayoutOrder']=0
@@ -1435,7 +1437,7 @@ adj:title(lan[language]["world adjust"])
 
 adj:slider("reflectance", 0, 1, function(a)
 	for _,v in pairs(ws:GetDescendants()) do
-		if v:IsA("BasePart") then
+		if isa(v,"BasePart") then
 			v['Reflectance']=wshade and a or 0
 			adjust['reflect']=a
 		end
