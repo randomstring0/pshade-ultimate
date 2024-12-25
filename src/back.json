@@ -571,6 +571,7 @@ end)
 
 sre['Name']='flare'
 sre['Enabled']=false
+sre['ResetOnSpawn']=false
 sflare['Parent']=sre
 sflare['Name']='sunfl'
 sflare['SizeConstraint']='RelativeYY'
@@ -1121,7 +1122,7 @@ local page=function(n)
 			if c then 
 				local succ,fail=pcall(c)
 				if not succ then
-					notif("error : still waiting shaders response please wait!,"..fail)
+					notif("error : still waiting shaders response please wait!, make sure you have good network")
 				end
 			end
 		end)
