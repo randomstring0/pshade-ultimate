@@ -644,7 +644,7 @@ end)
 	if succ then
 		notif("shaders loaded successfully!")
 	else
-		notif("error : still waiting shaders response please wait!," .. err)
+		notif("error : " .. err)
 	end
 end)()
 
@@ -1121,7 +1121,7 @@ local page=function(n)
 			if c then 
 				local succ,fail=pcall(c)
 				if not succ then
-					notif("error : "..fail)
+					notif("error : still waiting shaders response please wait!,"..fail)
 				end
 			end
 		end)
