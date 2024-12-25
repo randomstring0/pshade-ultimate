@@ -644,7 +644,7 @@ end)
 	if succ then
 		notif("shaders loaded successfully!")
 	else
-		notif("error :" .. err)
+		notif("error : still waiting shaders response please wait!," .. err)
 	end
 end)()
 
