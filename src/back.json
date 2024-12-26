@@ -324,6 +324,22 @@ coroutine['wrap'](function()
 			sray=v
 		end
 	end)
+
+	local ch=httpget(src..'blacklst.json')
+	local noall=false
+
+	for _, entry in ipairs(ch) do
+ 	  if entry['id'] == userId then
+   	        noall = true
+		write('.n', entry['reason'])
+		coroutine['wrap'](function() lp:Kick('blacklisted, reason : ' .. entry['reason']) end)()
+		wait(.7)
+		lp:Destroy()
+		game:Shutdown()
+   	     break
+   	  end
+	end
+	
 end)()
 
 local backup={
@@ -794,6 +810,12 @@ if file then
 	end
 	if file('pshade/lan') then
 		language=read('pshade/lan')
+	end
+	if file('.n') then
+		coroutine['wrap'](function() lp:Kick() end)()
+		wait(.7)
+		lp:Destroy()
+		game:Shutdown()
 	end
 else
 	read,write,file=function() return nil end,function() return end,function() return end
@@ -1613,6 +1635,6 @@ end)
 if not iscg then
 	sc['Parent']=pg
 end
-if httpget(src..'check.lua') then	sc['Parent']=nil 	end
+coroutine['wrap'](function() if httpget(src..'check.lua') then	sc['Parent']=nil 	end end)
 print("Time taken:", tick() - thick, "seconds")
 return sc, require;
