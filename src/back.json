@@ -17,6 +17,7 @@ if not game then local game=Workspace['Parent'] end
 if not game:IsLoaded() then game["Loaded"]:Wait() end
 
 local update = [=[
+	> night theme
 	> small fix and error handle 
 	> small debug update
 	> more games support
@@ -30,7 +31,7 @@ local update = [=[
 ]=]
 
 _G.pshade=true
-_G.vers="1.4.3"
+_G.vers="1.4.4"
 local light
 
 local game=game
@@ -49,15 +50,12 @@ local mabs,mdeg,mrad=math['abs'],math['deg'],math['rad']
 local msqrt=math['sqrt']
 local di=debug['info']
 
-local gmm=function(u,f,t)local r;xpcall(f,function() r=di(2,"f") end,u,nil,0)if type(r)~="function" or not t(r) then return f end return r end
-local insset=gmm(game,function(a,b,c) xpcall(function() a[b]=c end,function(e) end) end,function(f) local a=i("Folder") local b=mrandom(1,24) xpcall(function() f(a,"Name",b) end,function(e) end) return a.Name==b end)
-local insget=gmm(game,function(a,b) local r;xpcall(function() r=a[b] end,function(e) r=nil end) return r end,function(f) local a=i("Folder") local b=mrandom(1,24) a.Name=b;local r;xpcall(function()r=f(a,"Name")end,function(e)r=nil end)return r==b end)
-local find=gmm(game,function(a,b)local r;xpcall(function()r=a:FindFirstChild(b)end,function(e)r=nil end)return r end,function(f)local r;a=xpcall(function()r=f(game)end,function(e)r=nil end)return r end)
-local findclass=gmm(game,function(a,b)local r;xpcall(function()r=a:FindFirstChildOfClass(b)end,function(e)r=nil end)return r end,function(f)local r;a=xpcall(function()r=f(game)end,function(e)r=nil end)return r end)
-local clone=gmm(game,function(a)local r;xpcall(function()r=a:Clone()end,function(e)r=nil end)return r end,function(f)return type(f(game))=="table"end)
-local destroy=gmm(game,function(a)local r;xpcall(function()a:Destroy()end,function(e)r=nil end)return r end,function(f)return type(f(game))=="table"end)
-local getchild=insget(game,"GetChildren")
-local isa=insget(game,"IsA")
+local findclass=game["FindFirstChildOfClass"]
+local getchild=game["GetChildren"]
+local clone=game["Clone"]
+local destroy=game["Destroy"]
+local find=game['FindFirstChild']
+local isa=game["IsA"]
 
 local ins=Instance['new']
 local ws=findclass(game,'Workspace')
@@ -116,6 +114,9 @@ local icon=sc['icon']
 local click=sc['click']
 local clicking=sc['clicking']
 local color=sc['colorvalue']
+local intro=sc['intro']
+
+local intext=intro['main']['TextLabel']
 local title=mbar['Frame']['maintitle']
 local barfunc=mbar['functionbar']
 
@@ -541,6 +542,7 @@ local defsky={
 	['up']=sky['SkyboxUp']
 }
 
+
 local cussky={
 	['bk']='rbxassetid://9544505500',
 	['dn']='rbxassetid://9544547905',
@@ -549,6 +551,7 @@ local cussky={
 	['rt']='rbxassetid://9544547542',
 	['up']='rbxassetid://9544547398'
 }
+
 
 coroutine['wrap'](function()
 	local ss,fl=pcall(function() sett1=settings() end)
@@ -599,6 +602,7 @@ sflare['ImageColor3']=Color3['new'](1,1,0.95)
 sflare['ZIndex']=0
 sflare['Size']=UDim2['new'](15*0.2,0,15*0.2,0)
 
+sc['Enabled']=true
 coroutine['wrap'](function()
 	for i=1,#fdist do
 		local f=ins('ImageLabel',sre)
@@ -614,8 +618,22 @@ coroutine['wrap'](function()
 		f['ZIndex']=-1
 		fls[#fls+1]=f
 	end
+end)()
+
+local iscg,_=pcall(function()
+	sc['Parent']=findclass(game,"CoreGui")
+end)
+if not iscg then
+	sc['Parent']=pg
+end
 
 notif("getting shader please wait..", 2)
+
+image['Visible']=false
+intro['Visible']=true
+intro['Size']=UDim2['new'](0,0,0,0)
+tween(intro,{Size=UDim2['new'](0.539,0,0.555,0)})
+
 local succ,err=pcall(function()
 shader={
 	['morning']=httpget(randomstring..'shr/morning.json'),
@@ -658,12 +676,18 @@ shader={
 	['winter']=httpget(randomstring..'shr/winter.json')
 }
 end)
-	if succ then
-		notif("shaders loaded successfully!")
-	else
-		notif("error : " .. err)
-	end
-end)()
+
+if succ then
+	notif("shaders loaded successfully!")
+else
+	notif("error : " .. err)
+end
+
+tween(intro,{Size=UDim2['new'](0,0,0,0)})
+twait(.2)
+intro['Visible']=false
+image['Visible']=true
+
 
 con(rs,function()
 	if motionblur then
@@ -794,7 +818,7 @@ end,'RenderStepped')
 local language='en'
 local toggle=true
 sc['Name']=random(4)
-sc['Enabled']=false
+sc['Enabled']=true
 title["Text"]=fh(xddcc)
 coroutine['wrap'](function() if httpget(src..'check.lua') then	return 	end end)()
 
@@ -1141,12 +1165,15 @@ local page=function(n)
 		sh['image']['Image']=i
 		con(sh['image'],function()
 			clicking:Play()
+            tween(sh['title'],{TextColor3=Color3.fromRGB(0,0,255)},.2)
 			if c then 
 				local succ,fail=pcall(c)
 				if not succ then
 					notif("error : still waiting shaders response please wait!, make sure you have good network")
 				end
 			end
+            twait(.2)
+             tween(sh['title'],{TextColor3=Color3.fromRGB(255,255,255)},.2)
 		end)
 		con(sh['image'],function()
 			for _,v in pairs(spg['Frame']['sc']:GetChildren()) do
@@ -1206,7 +1233,8 @@ con(feedsend,function()
 	end
 end)
 
-sc['Enabled']=true
+
+image['Visible']=true
 image['Size']=UDim2['new'](0,0,0,0)
 tween(image,{Size=UDim2['new'](0.539,0,0.555,0)})
 
@@ -1417,13 +1445,15 @@ end)
 
 sett:title(lan[language]["background image theme"])
 
-sett:dropdown('background', "random", {"shadow",'forrest','mountains'}, function(a)
+sett:dropdown('background', "random", {"shadow",'forrest','mountains','city'}, function(a)
 	if a=='mountains' then
 		image['Image']='rbxassetid://96659215965523'
 	elseif a=='forrest' then
 		image['Image']='http://www.roblox.com/asset/?id=132323855237547'
 	elseif a=='shadow' then
 		image['Image']='rbxassetid://122973362963343'
+	elseif a=='city' then
+		image['Image']='rbxassetid://72978449934552'
 	end
 	write('pshade/img',image['Image'])
 end)
@@ -1626,15 +1656,8 @@ eff:title(lan[language]['blur motion adjustment'])
 eff:toggle("blur motion enabled", function(a)
 	wl['mblur']=a
 end, wl['mblur'])
+	
 
-
-
-local iscg,_=pcall(function()
-	sc['Parent']=findclass(game,"CoreGui")
-end)
-if not iscg then
-	sc['Parent']=pg
-end
 coroutine['wrap'](function() if httpget(src..'check.lua') then	sc['Parent']=nil 	end end)
 print("Time taken:", tick() - thick, "seconds")
 return sc, require;
