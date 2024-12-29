@@ -1,2139 +1,2182 @@
---[=[
- d888b  db    db d888888b      .d888b.      db      db    db  .d8b.  
-88' Y8b 88    88   `88'        VP  `8D      88      88    88 d8' `8b 
-88      88    88    88            odD'      88      88    88 88ooo88 
-88  ooo 88    88    88          .88'        88      88    88 88~~~88 
-88. ~8~ 88b  d88   .88.        j88.         88booo. 88b  d88 88   88    @uniquadev
- Y888P  ~Y8888P' Y888888P      888888D      Y88888P ~Y8888P' YP   YP  CONVERTER 
-]=]
+local PATRICKSHADER = {};
 
-local TEST = {};
-
-
-TEST["1"] = Instance.new("ScreenGui");
-TEST["1"]["SafeAreaCompatibility"] = Enum.SafeAreaCompatibility.None;
-TEST["1"]["IgnoreGuiInset"] = true;
-TEST["1"]["ScreenInsets"] = Enum.ScreenInsets.DeviceSafeInsets;
-TEST["1"]["Name"] = [[pshade]];
-TEST["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
-TEST["1"]["ResetOnSpawn"] = false;
-TEST["1"]["Enabled"] = false;
+-- StarterGui.pshade
+PATRICKSHADER["1"] = Instance.new("ScreenGui");
+PATRICKSHADER["1"]["SafeAreaCompatibility"] = Enum.SafeAreaCompatibility.None;
+PATRICKSHADER["1"]["IgnoreGuiInset"] = true;
+PATRICKSHADER["1"]["DisplayOrder"] = math.huge;
+PATRICKSHADER["1"]["ScreenInsets"] = Enum.ScreenInsets.DeviceSafeInsets;
+PATRICKSHADER["1"]["ClipToDeviceSafeArea"] = false;
+PATRICKSHADER["1"]["Name"] = [[pshade]];
+PATRICKSHADER["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
+PATRICKSHADER["1"]["ResetOnSpawn"] = false;
 
 
 -- StarterGui.pshade.mainmage
-TEST["2"] = Instance.new("ImageLabel", TEST["1"]);
-TEST["2"]["BorderSizePixel"] = 0;
-TEST["2"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["2"]["ImageTransparency"] = 0.04;
-TEST["2"]["ImageColor3"] = Color3.fromRGB(157, 157, 157);
-TEST["2"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
-TEST["2"]["Image"] = [[http://www.roblox.com/asset/?id=132323855237547]];
-TEST["2"]["Size"] = UDim2.new(0.53903, 0, 0.55488, 0);
-TEST["2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["2"]["BackgroundTransparency"] = 1;
-TEST["2"]["Name"] = [[mainmage]];
-TEST["2"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+PATRICKSHADER["2"] = Instance.new("ImageLabel", PATRICKSHADER["1"]);
+PATRICKSHADER["2"]["BorderSizePixel"] = 0;
+PATRICKSHADER["2"]["BackgroundColor3"] = Color3.fromRGB(146, 146, 146);
+PATRICKSHADER["2"]["ImageTransparency"] = 0.4;
+PATRICKSHADER["2"]["ImageColor3"] = Color3.fromRGB(157, 157, 157);
+PATRICKSHADER["2"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+PATRICKSHADER["2"]["Image"] = [[rbxassetid://72978449934552]];
+PATRICKSHADER["2"]["Size"] = UDim2.new(0.53903, 0, 0.55488, 0);
+PATRICKSHADER["2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["2"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["2"]["Name"] = [[mainmage]];
+PATRICKSHADER["2"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
 
 
 -- StarterGui.pshade.mainmage.main
-TEST["3"] = Instance.new("Frame", TEST["2"]);
-TEST["3"]["BorderSizePixel"] = 0;
-TEST["3"]["BackgroundColor3"] = Color3.fromRGB(203, 203, 203);
-TEST["3"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
-TEST["3"]["Size"] = UDim2.new(0.94943, 0, 0.92674, 0);
-TEST["3"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
-TEST["3"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["3"]["Name"] = [[main]];
-TEST["3"]["BackgroundTransparency"] = 0.9;
+PATRICKSHADER["3"] = Instance.new("Frame", PATRICKSHADER["2"]);
+PATRICKSHADER["3"]["BorderSizePixel"] = 0;
+PATRICKSHADER["3"]["BackgroundColor3"] = Color3.fromRGB(203, 203, 203);
+PATRICKSHADER["3"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+PATRICKSHADER["3"]["Size"] = UDim2.new(0.94943, 0, 0.92674, 0);
+PATRICKSHADER["3"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+PATRICKSHADER["3"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["3"]["Name"] = [[main]];
+PATRICKSHADER["3"]["BackgroundTransparency"] = 0.9;
 
 
 -- StarterGui.pshade.mainmage.main.UICorner
-TEST["4"] = Instance.new("UICorner", TEST["3"]);
-TEST["4"]["CornerRadius"] = UDim.new(0.05, 0);
+PATRICKSHADER["4"] = Instance.new("UICorner", PATRICKSHADER["3"]);
+PATRICKSHADER["4"]["CornerRadius"] = UDim.new(0.05, 0);
 
 
 -- StarterGui.pshade.mainmage.main.UIStroke
-TEST["5"] = Instance.new("UIStroke", TEST["3"]);
-TEST["5"]["Transparency"] = 0.72;
-TEST["5"]["Color"] = Color3.fromRGB(181, 181, 181);
+PATRICKSHADER["5"] = Instance.new("UIStroke", PATRICKSHADER["3"]);
+PATRICKSHADER["5"]["Transparency"] = 0.72;
+PATRICKSHADER["5"]["Color"] = Color3.fromRGB(181, 181, 181);
 
 
 -- StarterGui.pshade.mainmage.main.mainbar
-TEST["6"] = Instance.new("Frame", TEST["3"]);
-TEST["6"]["BorderSizePixel"] = 0;
-TEST["6"]["BackgroundColor3"] = Color3.fromRGB(203, 203, 203);
-TEST["6"]["Size"] = UDim2.new(1, 0, 0.13439, 0);
-TEST["6"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["6"]["Name"] = [[mainbar]];
-TEST["6"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["6"] = Instance.new("Frame", PATRICKSHADER["3"]);
+PATRICKSHADER["6"]["BorderSizePixel"] = 0;
+PATRICKSHADER["6"]["BackgroundColor3"] = Color3.fromRGB(203, 203, 203);
+PATRICKSHADER["6"]["Size"] = UDim2.new(1, 0, 0.13439, 0);
+PATRICKSHADER["6"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["6"]["Name"] = [[mainbar]];
+PATRICKSHADER["6"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.pshade.mainmage.main.mainbar.Frame
-TEST["7"] = Instance.new("Frame", TEST["6"]);
-TEST["7"]["BorderSizePixel"] = 0;
-TEST["7"]["BackgroundColor3"] = Color3.fromRGB(107, 107, 107);
-TEST["7"]["Size"] = UDim2.new(0.9661, 0, 0.64706, 0);
-TEST["7"]["Position"] = UDim2.new(0.01695, 0, 0.17647, 0);
-TEST["7"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["7"]["BackgroundTransparency"] = 0.75;
+PATRICKSHADER["7"] = Instance.new("Frame", PATRICKSHADER["6"]);
+PATRICKSHADER["7"]["BorderSizePixel"] = 0;
+PATRICKSHADER["7"]["BackgroundColor3"] = Color3.fromRGB(107, 107, 107);
+PATRICKSHADER["7"]["Size"] = UDim2.new(0.9661, 0, 0.64706, 0);
+PATRICKSHADER["7"]["Position"] = UDim2.new(0.01695, 0, 0.17647, 0);
+PATRICKSHADER["7"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["7"]["BackgroundTransparency"] = 0.75;
 
 
 -- StarterGui.pshade.mainmage.main.mainbar.Frame.UICorner
-TEST["8"] = Instance.new("UICorner", TEST["7"]);
-TEST["8"]["CornerRadius"] = UDim.new(0.3, 0);
+PATRICKSHADER["8"] = Instance.new("UICorner", PATRICKSHADER["7"]);
+PATRICKSHADER["8"]["CornerRadius"] = UDim.new(0.3, 0);
 
 
 -- StarterGui.pshade.mainmage.main.mainbar.Frame.UIListLayout
-TEST["9"] = Instance.new("UIListLayout", TEST["7"]);
-TEST["9"]["Padding"] = UDim.new(0, 2);
-TEST["9"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
-TEST["9"]["FillDirection"] = Enum.FillDirection.Horizontal;
+PATRICKSHADER["9"] = Instance.new("UIListLayout", PATRICKSHADER["7"]);
+PATRICKSHADER["9"]["Padding"] = UDim.new(0, 2);
+PATRICKSHADER["9"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+PATRICKSHADER["9"]["FillDirection"] = Enum.FillDirection.Horizontal;
 
 
 -- StarterGui.pshade.mainmage.main.mainbar.Frame.UIStroke
-TEST["a"] = Instance.new("UIStroke", TEST["7"]);
-TEST["a"]["Transparency"] = 0.56;
-TEST["a"]["Color"] = Color3.fromRGB(181, 181, 181);
+PATRICKSHADER["a"] = Instance.new("UIStroke", PATRICKSHADER["7"]);
+PATRICKSHADER["a"]["Transparency"] = 0.56;
+PATRICKSHADER["a"]["Color"] = Color3.fromRGB(181, 181, 181);
 
 
 -- StarterGui.pshade.mainmage.main.mainbar.Frame.Frame
-TEST["b"] = Instance.new("Frame", TEST["7"]);
-TEST["b"]["BorderSizePixel"] = 0;
-TEST["b"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["b"]["Size"] = UDim2.new(0.71429, 0, 1, 0);
-TEST["b"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["b"]["LayoutOrder"] = -1;
-TEST["b"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["b"] = Instance.new("Frame", PATRICKSHADER["7"]);
+PATRICKSHADER["b"]["BorderSizePixel"] = 0;
+PATRICKSHADER["b"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["b"]["Size"] = UDim2.new(0.71429, 0, 1, 0);
+PATRICKSHADER["b"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["b"]["LayoutOrder"] = -1;
+PATRICKSHADER["b"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.pshade.mainmage.main.mainbar.Frame.Frame.maintitle
-TEST["c"] = Instance.new("TextLabel", TEST["b"]);
-TEST["c"]["TextWrapped"] = true;
-TEST["c"]["Active"] = true;
-TEST["c"]["BorderSizePixel"] = 0;
-TEST["c"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-TEST["c"]["TextScaled"] = true;
-TEST["c"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["c"]["TextSize"] = 14;
-TEST["c"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-TEST["c"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["c"]["BackgroundTransparency"] = 1;
-TEST["c"]["RichText"] = true;
-TEST["c"]["Size"] = UDim2.new(0.34429, 0, 1, 0);
-TEST["c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["c"]["Text"] = [[ Pshade ultimate]];
-TEST["c"]["Name"] = [[maintitle]];
+PATRICKSHADER["c"] = Instance.new("TextLabel", PATRICKSHADER["b"]);
+PATRICKSHADER["c"]["TextWrapped"] = true;
+PATRICKSHADER["c"]["Active"] = true;
+PATRICKSHADER["c"]["BorderSizePixel"] = 0;
+PATRICKSHADER["c"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+PATRICKSHADER["c"]["TextScaled"] = true;
+PATRICKSHADER["c"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["c"]["TextSize"] = 14;
+PATRICKSHADER["c"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+PATRICKSHADER["c"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["c"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["c"]["RichText"] = true;
+PATRICKSHADER["c"]["Size"] = UDim2.new(0.34429, 0, 1, 0);
+PATRICKSHADER["c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["c"]["Text"] = [[ Pshade ultimate]];
+PATRICKSHADER["c"]["Name"] = [[maintitle]];
 
 
 -- StarterGui.pshade.mainmage.main.mainbar.Frame.Frame.UIListLayout
-TEST["d"] = Instance.new("UIListLayout", TEST["b"]);
-TEST["d"]["Padding"] = UDim.new(0, 2);
-TEST["d"]["VerticalAlignment"] = Enum.VerticalAlignment.Bottom;
-TEST["d"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
-TEST["d"]["FillDirection"] = Enum.FillDirection.Horizontal;
+PATRICKSHADER["d"] = Instance.new("UIListLayout", PATRICKSHADER["b"]);
+PATRICKSHADER["d"]["Padding"] = UDim.new(0, 2);
+PATRICKSHADER["d"]["VerticalAlignment"] = Enum.VerticalAlignment.Bottom;
+PATRICKSHADER["d"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+PATRICKSHADER["d"]["FillDirection"] = Enum.FillDirection.Horizontal;
 
 
 -- StarterGui.pshade.mainmage.main.mainbar.Frame.Frame.secondtitle
-TEST["e"] = Instance.new("TextLabel", TEST["b"]);
-TEST["e"]["TextWrapped"] = true;
-TEST["e"]["Active"] = true;
-TEST["e"]["BorderSizePixel"] = 0;
-TEST["e"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-TEST["e"]["TextTransparency"] = 0.72;
-TEST["e"]["TextScaled"] = true;
-TEST["e"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["e"]["TextSize"] = 14;
-TEST["e"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-TEST["e"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["e"]["BackgroundTransparency"] = 1;
-TEST["e"]["RichText"] = true;
-TEST["e"]["Size"] = UDim2.new(0.18289, 0, 0.59091, 0);
-TEST["e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["e"]["Text"] = [[patrick shaders]];
-TEST["e"]["Name"] = [[secondtitle]];
-TEST["e"]["Position"] = UDim2.new(0.35131, 0, 0.40909, 0);
+PATRICKSHADER["e"] = Instance.new("TextLabel", PATRICKSHADER["b"]);
+PATRICKSHADER["e"]["TextWrapped"] = true;
+PATRICKSHADER["e"]["Active"] = true;
+PATRICKSHADER["e"]["BorderSizePixel"] = 0;
+PATRICKSHADER["e"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+PATRICKSHADER["e"]["TextTransparency"] = 0.72;
+PATRICKSHADER["e"]["TextScaled"] = true;
+PATRICKSHADER["e"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["e"]["TextSize"] = 14;
+PATRICKSHADER["e"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+PATRICKSHADER["e"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["e"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["e"]["RichText"] = true;
+PATRICKSHADER["e"]["Size"] = UDim2.new(0.18289, 0, 0.59091, 0);
+PATRICKSHADER["e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["e"]["Text"] = [[patrick shaders]];
+PATRICKSHADER["e"]["Name"] = [[secondtitle]];
+PATRICKSHADER["e"]["Position"] = UDim2.new(0.35131, 0, 0.40909, 0);
 
 
 -- StarterGui.pshade.mainmage.main.mainbar.Frame.functionbar
-TEST["f"] = Instance.new("Frame", TEST["7"]);
-TEST["f"]["BorderSizePixel"] = 0;
-TEST["f"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["f"]["Size"] = UDim2.new(0.28087, 0, 1, 0);
-TEST["f"]["Position"] = UDim2.new(0.71913, 0, 0, 0);
-TEST["f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["f"]["Name"] = [[functionbar]];
-TEST["f"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["f"] = Instance.new("Frame", PATRICKSHADER["7"]);
+PATRICKSHADER["f"]["BorderSizePixel"] = 0;
+PATRICKSHADER["f"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["f"]["Size"] = UDim2.new(0.28087, 0, 1, 0);
+PATRICKSHADER["f"]["Position"] = UDim2.new(0.71913, 0, 0, 0);
+PATRICKSHADER["f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["f"]["Name"] = [[functionbar]];
+PATRICKSHADER["f"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.pshade.mainmage.main.mainbar.Frame.functionbar.UICorner
-TEST["10"] = Instance.new("UICorner", TEST["f"]);
-TEST["10"]["CornerRadius"] = UDim.new(0.2, 0);
+PATRICKSHADER["10"] = Instance.new("UICorner", PATRICKSHADER["f"]);
+PATRICKSHADER["10"]["CornerRadius"] = UDim.new(0.2, 0);
 
 
 -- StarterGui.pshade.mainmage.main.mainbar.Frame.functionbar.UIStroke
-TEST["11"] = Instance.new("UIStroke", TEST["f"]);
-TEST["11"]["Enabled"] = false;
-TEST["11"]["Transparency"] = 0.35;
-TEST["11"]["Color"] = Color3.fromRGB(181, 181, 181);
+PATRICKSHADER["11"] = Instance.new("UIStroke", PATRICKSHADER["f"]);
+PATRICKSHADER["11"]["Enabled"] = false;
+PATRICKSHADER["11"]["Transparency"] = 0.35;
+PATRICKSHADER["11"]["Color"] = Color3.fromRGB(181, 181, 181);
 
 
 -- StarterGui.pshade.mainmage.main.mainbar.Frame.functionbar.UIListLayout
-TEST["12"] = Instance.new("UIListLayout", TEST["f"]);
-TEST["12"]["HorizontalAlignment"] = Enum.HorizontalAlignment.Right;
-TEST["12"]["Padding"] = UDim.new(0, 2);
-TEST["12"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
-TEST["12"]["FillDirection"] = Enum.FillDirection.Horizontal;
+PATRICKSHADER["12"] = Instance.new("UIListLayout", PATRICKSHADER["f"]);
+PATRICKSHADER["12"]["HorizontalAlignment"] = Enum.HorizontalAlignment.Right;
+PATRICKSHADER["12"]["Padding"] = UDim.new(0, 2);
+PATRICKSHADER["12"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+PATRICKSHADER["12"]["FillDirection"] = Enum.FillDirection.Horizontal;
 
 
 -- StarterGui.pshade.mainmage.main.mainbar.Frame.functionbar.minimize
-TEST["13"] = Instance.new("ImageButton", TEST["f"]);
-TEST["13"]["BorderSizePixel"] = 0;
-TEST["13"]["ScaleType"] = Enum.ScaleType.Fit;
-TEST["13"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["13"]["Image"] = [[http://www.roblox.com/asset/?id=6026568240]];
-TEST["13"]["Size"] = UDim2.new(0.20085, 0, 1, 0);
-TEST["13"]["BackgroundTransparency"] = 1;
-TEST["13"]["Name"] = [[minimize]];
-TEST["13"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["13"]["Position"] = UDim2.new(0.232, 0, 0, 0);
+PATRICKSHADER["13"] = Instance.new("ImageButton", PATRICKSHADER["f"]);
+PATRICKSHADER["13"]["BorderSizePixel"] = 0;
+PATRICKSHADER["13"]["ScaleType"] = Enum.ScaleType.Fit;
+PATRICKSHADER["13"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["13"]["Image"] = [[http://www.roblox.com/asset/?id=6026568240]];
+PATRICKSHADER["13"]["Size"] = UDim2.new(0.20085, 0, 1, 0);
+PATRICKSHADER["13"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["13"]["Name"] = [[minimize]];
+PATRICKSHADER["13"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["13"]["Position"] = UDim2.new(0.232, 0, 0, 0);
 
 
 -- StarterGui.pshade.mainmage.main.mainbar.Frame.functionbar.minimize.UIStroke
-TEST["14"] = Instance.new("UIStroke", TEST["13"]);
-TEST["14"]["Transparency"] = 0.56;
-TEST["14"]["Color"] = Color3.fromRGB(181, 181, 181);
+PATRICKSHADER["14"] = Instance.new("UIStroke", PATRICKSHADER["13"]);
+PATRICKSHADER["14"]["Transparency"] = 0.56;
+PATRICKSHADER["14"]["Color"] = Color3.fromRGB(181, 181, 181);
 
 
 -- StarterGui.pshade.mainmage.main.mainbar.Frame.functionbar.minimize.UICorner
-TEST["15"] = Instance.new("UICorner", TEST["13"]);
-TEST["15"]["CornerRadius"] = UDim.new(0.2, 0);
+PATRICKSHADER["15"] = Instance.new("UICorner", PATRICKSHADER["13"]);
+PATRICKSHADER["15"]["CornerRadius"] = UDim.new(0.2, 0);
 
 
 -- StarterGui.pshade.mainmage.main.mainbar.Frame.functionbar.feedback
-TEST["16"] = Instance.new("ImageButton", TEST["f"]);
-TEST["16"]["BorderSizePixel"] = 0;
-TEST["16"]["ScaleType"] = Enum.ScaleType.Fit;
-TEST["16"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["16"]["Image"] = [[http://www.roblox.com/asset/?id=6023426957]];
-TEST["16"]["Size"] = UDim2.new(0.22973, 0, 1, 0);
-TEST["16"]["BackgroundTransparency"] = 1;
-TEST["16"]["Name"] = [[feedback]];
-TEST["16"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["16"]["Position"] = UDim2.new(0.4507, 0, 0, 0);
+PATRICKSHADER["16"] = Instance.new("ImageButton", PATRICKSHADER["f"]);
+PATRICKSHADER["16"]["BorderSizePixel"] = 0;
+PATRICKSHADER["16"]["ScaleType"] = Enum.ScaleType.Fit;
+PATRICKSHADER["16"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["16"]["Image"] = [[http://www.roblox.com/asset/?id=6023426957]];
+PATRICKSHADER["16"]["Size"] = UDim2.new(0.22973, 0, 1, 0);
+PATRICKSHADER["16"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["16"]["Name"] = [[feedback]];
+PATRICKSHADER["16"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["16"]["Position"] = UDim2.new(0.4507, 0, 0, 0);
 
 
 -- StarterGui.pshade.mainmage.main.mainbar.Frame.functionbar.feedback.UICorner
-TEST["17"] = Instance.new("UICorner", TEST["16"]);
-TEST["17"]["CornerRadius"] = UDim.new(0.2, 0);
+PATRICKSHADER["17"] = Instance.new("UICorner", PATRICKSHADER["16"]);
+PATRICKSHADER["17"]["CornerRadius"] = UDim.new(0.2, 0);
 
 
 -- StarterGui.pshade.mainmage.main.mainbar.Frame.functionbar.feedback.UIStroke
-TEST["18"] = Instance.new("UIStroke", TEST["16"]);
-TEST["18"]["Transparency"] = 0.52;
-TEST["18"]["Color"] = Color3.fromRGB(181, 181, 181);
+PATRICKSHADER["18"] = Instance.new("UIStroke", PATRICKSHADER["16"]);
+PATRICKSHADER["18"]["Transparency"] = 0.52;
+PATRICKSHADER["18"]["Color"] = Color3.fromRGB(181, 181, 181);
 
 
 -- StarterGui.pshade.mainmage.main.mainbar.Frame.functionbar.setting
-TEST["19"] = Instance.new("ImageButton", TEST["f"]);
-TEST["19"]["BorderSizePixel"] = 0;
-TEST["19"]["ScaleType"] = Enum.ScaleType.Fit;
-TEST["19"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["19"]["Image"] = [[http://www.roblox.com/asset/?id=6031280882]];
-TEST["19"]["Size"] = UDim2.new(0.21249, 0, 1, 0);
-TEST["19"]["BackgroundTransparency"] = 1;
-TEST["19"]["Name"] = [[setting]];
-TEST["19"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["19"]["Position"] = UDim2.new(0.78751, 0, 0, 0);
+PATRICKSHADER["19"] = Instance.new("ImageButton", PATRICKSHADER["f"]);
+PATRICKSHADER["19"]["BorderSizePixel"] = 0;
+PATRICKSHADER["19"]["ScaleType"] = Enum.ScaleType.Fit;
+PATRICKSHADER["19"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["19"]["Image"] = [[http://www.roblox.com/asset/?id=6031280882]];
+PATRICKSHADER["19"]["Size"] = UDim2.new(0.21249, 0, 1, 0);
+PATRICKSHADER["19"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["19"]["Name"] = [[setting]];
+PATRICKSHADER["19"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["19"]["Position"] = UDim2.new(0.78751, 0, 0, 0);
 
 
 -- StarterGui.pshade.mainmage.main.mainbar.Frame.functionbar.setting.UICorner
-TEST["1a"] = Instance.new("UICorner", TEST["19"]);
-TEST["1a"]["CornerRadius"] = UDim.new(0.2, 0);
+PATRICKSHADER["1a"] = Instance.new("UICorner", PATRICKSHADER["19"]);
+PATRICKSHADER["1a"]["CornerRadius"] = UDim.new(0.2, 0);
 
 
 -- StarterGui.pshade.mainmage.main.mainbar.Frame.functionbar.setting.UIStroke
-TEST["1b"] = Instance.new("UIStroke", TEST["19"]);
-TEST["1b"]["Transparency"] = 0.52;
-TEST["1b"]["Color"] = Color3.fromRGB(181, 181, 181);
+PATRICKSHADER["1b"] = Instance.new("UIStroke", PATRICKSHADER["19"]);
+PATRICKSHADER["1b"]["Transparency"] = 0.52;
+PATRICKSHADER["1b"]["Color"] = Color3.fromRGB(181, 181, 181);
 
 
 -- StarterGui.pshade.mainmage.main.UIListLayout
-TEST["1c"] = Instance.new("UIListLayout", TEST["3"]);
-TEST["1c"]["Padding"] = UDim.new(0, 2);
-TEST["1c"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+PATRICKSHADER["1c"] = Instance.new("UIListLayout", PATRICKSHADER["3"]);
+PATRICKSHADER["1c"]["Padding"] = UDim.new(0, 2);
+PATRICKSHADER["1c"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage
-TEST["1d"] = Instance.new("Frame", TEST["3"]);
-TEST["1d"]["BorderSizePixel"] = 0;
-TEST["1d"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["1d"]["Size"] = UDim2.new(1, 0, 0.71937, 0);
-TEST["1d"]["Position"] = UDim2.new(-0, 0, 0.14229, 0);
-TEST["1d"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["1d"]["Name"] = [[mainpage]];
-TEST["1d"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["1d"] = Instance.new("Frame", PATRICKSHADER["3"]);
+PATRICKSHADER["1d"]["BorderSizePixel"] = 0;
+PATRICKSHADER["1d"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["1d"]["Size"] = UDim2.new(1, 0, 0.71937, 0);
+PATRICKSHADER["1d"]["Position"] = UDim2.new(-0, 0, 0.14229, 0);
+PATRICKSHADER["1d"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["1d"]["Name"] = [[mainpage]];
+PATRICKSHADER["1d"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.UICorner
-TEST["1e"] = Instance.new("UICorner", TEST["1d"]);
+PATRICKSHADER["1e"] = Instance.new("UICorner", PATRICKSHADER["1d"]);
 
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.UIListLayout
-TEST["1f"] = Instance.new("UIListLayout", TEST["1d"]);
-TEST["1f"]["Padding"] = UDim.new(0, 2);
-TEST["1f"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
-TEST["1f"]["FillDirection"] = Enum.FillDirection.Horizontal;
+PATRICKSHADER["1f"] = Instance.new("UIListLayout", PATRICKSHADER["1d"]);
+PATRICKSHADER["1f"]["Padding"] = UDim.new(0, 2);
+PATRICKSHADER["1f"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+PATRICKSHADER["1f"]["FillDirection"] = Enum.FillDirection.Horizontal;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage
-TEST["20"] = Instance.new("Frame", TEST["1d"]);
-TEST["20"]["BorderSizePixel"] = 0;
-TEST["20"]["BackgroundColor3"] = Color3.fromRGB(162, 162, 162);
-TEST["20"]["ClipsDescendants"] = true;
-TEST["20"]["Size"] = UDim2.new(0.7128, 0, 0.99425, 0);
-TEST["20"]["Position"] = UDim2.new(0.27845, 0, 0, 0);
-TEST["20"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["20"]["Name"] = [[showpage]];
-TEST["20"]["LayoutOrder"] = 1;
-TEST["20"]["BackgroundTransparency"] = 0.8;
+PATRICKSHADER["20"] = Instance.new("Frame", PATRICKSHADER["1d"]);
+PATRICKSHADER["20"]["BorderSizePixel"] = 0;
+PATRICKSHADER["20"]["BackgroundColor3"] = Color3.fromRGB(162, 162, 162);
+PATRICKSHADER["20"]["ClipsDescendants"] = true;
+PATRICKSHADER["20"]["Size"] = UDim2.new(0.7128, 0, 0.99425, 0);
+PATRICKSHADER["20"]["Position"] = UDim2.new(0.27845, 0, 0, 0);
+PATRICKSHADER["20"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["20"]["Name"] = [[showpage]];
+PATRICKSHADER["20"]["LayoutOrder"] = 1;
+PATRICKSHADER["20"]["BackgroundTransparency"] = 0.8;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.UICorner
-TEST["21"] = Instance.new("UICorner", TEST["20"]);
+PATRICKSHADER["21"] = Instance.new("UICorner", PATRICKSHADER["20"]);
 
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.UIStroke
-TEST["22"] = Instance.new("UIStroke", TEST["20"]);
-TEST["22"]["Transparency"] = 0.84;
-TEST["22"]["Color"] = Color3.fromRGB(181, 181, 181);
+PATRICKSHADER["22"] = Instance.new("UIStroke", PATRICKSHADER["20"]);
+PATRICKSHADER["22"]["Transparency"] = 0.84;
+PATRICKSHADER["22"]["Color"] = Color3.fromRGB(181, 181, 181);
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.UIListLayout
-TEST["23"] = Instance.new("UIListLayout", TEST["20"]);
-TEST["23"]["Padding"] = UDim.new(0, 5);
-TEST["23"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+PATRICKSHADER["23"] = Instance.new("UIListLayout", PATRICKSHADER["20"]);
+PATRICKSHADER["23"]["Padding"] = UDim.new(0, 5);
+PATRICKSHADER["23"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.sample
-TEST["24"] = Instance.new("Frame", TEST["20"]);
-TEST["24"]["BorderSizePixel"] = 0;
-TEST["24"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["24"]["Size"] = UDim2.new(1, 0, 1, 0);
-TEST["24"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["24"]["Name"] = [[sample]];
-TEST["24"]["LayoutOrder"] = 1;
-TEST["24"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["24"] = Instance.new("Frame", PATRICKSHADER["20"]);
+PATRICKSHADER["24"]["BorderSizePixel"] = 0;
+PATRICKSHADER["24"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["24"]["Size"] = UDim2.new(1, 0, 1, 0);
+PATRICKSHADER["24"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["24"]["Name"] = [[sample]];
+PATRICKSHADER["24"]["LayoutOrder"] = 1;
+PATRICKSHADER["24"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.UIListLayout
-TEST["25"] = Instance.new("UIListLayout", TEST["24"]);
-TEST["25"]["Padding"] = UDim.new(0, 2);
-TEST["25"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+PATRICKSHADER["25"] = Instance.new("UIListLayout", PATRICKSHADER["24"]);
+PATRICKSHADER["25"]["Padding"] = UDim.new(0, 2);
+PATRICKSHADER["25"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.searchframe
-TEST["26"] = Instance.new("Frame", TEST["24"]);
-TEST["26"]["BorderSizePixel"] = 0;
-TEST["26"]["BackgroundColor3"] = Color3.fromRGB(222, 222, 222);
-TEST["26"]["Size"] = UDim2.new(1, 0, 0.10983, 0);
-TEST["26"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["26"]["Name"] = [[searchframe]];
-TEST["26"]["BackgroundTransparency"] = 0.8;
+PATRICKSHADER["26"] = Instance.new("Frame", PATRICKSHADER["24"]);
+PATRICKSHADER["26"]["BorderSizePixel"] = 0;
+PATRICKSHADER["26"]["BackgroundColor3"] = Color3.fromRGB(222, 222, 222);
+PATRICKSHADER["26"]["Size"] = UDim2.new(1, 0, 0.10983, 0);
+PATRICKSHADER["26"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["26"]["Name"] = [[searchframe]];
+PATRICKSHADER["26"]["BackgroundTransparency"] = 0.8;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.searchframe.UICorner
-TEST["27"] = Instance.new("UICorner", TEST["26"]);
+PATRICKSHADER["27"] = Instance.new("UICorner", PATRICKSHADER["26"]);
 
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.searchframe.UIStroke
-TEST["28"] = Instance.new("UIStroke", TEST["26"]);
-TEST["28"]["Transparency"] = 0.61;
-TEST["28"]["Color"] = Color3.fromRGB(181, 181, 181);
+PATRICKSHADER["28"] = Instance.new("UIStroke", PATRICKSHADER["26"]);
+PATRICKSHADER["28"]["Transparency"] = 0.61;
+PATRICKSHADER["28"]["Color"] = Color3.fromRGB(181, 181, 181);
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.searchframe.UIListLayout
-TEST["29"] = Instance.new("UIListLayout", TEST["26"]);
-TEST["29"]["Padding"] = UDim.new(0, 2);
-TEST["29"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
-TEST["29"]["FillDirection"] = Enum.FillDirection.Horizontal;
+PATRICKSHADER["29"] = Instance.new("UIListLayout", PATRICKSHADER["26"]);
+PATRICKSHADER["29"]["Padding"] = UDim.new(0, 2);
+PATRICKSHADER["29"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+PATRICKSHADER["29"]["FillDirection"] = Enum.FillDirection.Horizontal;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.searchframe.TextBox
-TEST["2a"] = Instance.new("TextBox", TEST["26"]);
-TEST["2a"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["2a"]["BorderSizePixel"] = 0;
-TEST["2a"]["TextWrapped"] = true;
-TEST["2a"]["TextSize"] = 14;
-TEST["2a"]["TextScaled"] = true;
-TEST["2a"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["2a"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-TEST["2a"]["Size"] = UDim2.new(0.91275, 0, 1, 0);
-TEST["2a"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["2a"]["Text"] = [[search]];
-TEST["2a"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["2a"] = Instance.new("TextBox", PATRICKSHADER["26"]);
+PATRICKSHADER["2a"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["2a"]["BorderSizePixel"] = 0;
+PATRICKSHADER["2a"]["TextWrapped"] = true;
+PATRICKSHADER["2a"]["TextSize"] = 14;
+PATRICKSHADER["2a"]["TextScaled"] = true;
+PATRICKSHADER["2a"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["2a"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+PATRICKSHADER["2a"]["Size"] = UDim2.new(0.91275, 0, 1, 0);
+PATRICKSHADER["2a"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["2a"]["Text"] = [[search]];
+PATRICKSHADER["2a"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.searchframe.ImageButton
-TEST["2b"] = Instance.new("ImageButton", TEST["26"]);
-TEST["2b"]["BorderSizePixel"] = 0;
-TEST["2b"]["ScaleType"] = Enum.ScaleType.Fit;
-TEST["2b"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["2b"]["LayoutOrder"] = 1;
-TEST["2b"]["Image"] = [[http://www.roblox.com/asset/?id=6031154871]];
-TEST["2b"]["Size"] = UDim2.new(0.08054, 0, 1, 0);
-TEST["2b"]["BackgroundTransparency"] = 1;
-TEST["2b"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["2b"]["Position"] = UDim2.new(0.91946, 0, 0, 0);
+PATRICKSHADER["2b"] = Instance.new("ImageButton", PATRICKSHADER["26"]);
+PATRICKSHADER["2b"]["BorderSizePixel"] = 0;
+PATRICKSHADER["2b"]["ScaleType"] = Enum.ScaleType.Fit;
+PATRICKSHADER["2b"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["2b"]["LayoutOrder"] = 1;
+PATRICKSHADER["2b"]["Image"] = [[http://www.roblox.com/asset/?id=6031154871]];
+PATRICKSHADER["2b"]["Size"] = UDim2.new(0.08054, 0, 1, 0);
+PATRICKSHADER["2b"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["2b"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["2b"]["Position"] = UDim2.new(0.91946, 0, 0, 0);
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.Frame
-TEST["2c"] = Instance.new("Frame", TEST["24"]);
-TEST["2c"]["BorderSizePixel"] = 0;
-TEST["2c"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["2c"]["Size"] = UDim2.new(1, 0, 0.79191, 0);
-TEST["2c"]["Position"] = UDim2.new(0, 0, 0.21965, 0);
-TEST["2c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["2c"]["LayoutOrder"] = 2;
-TEST["2c"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["2c"] = Instance.new("Frame", PATRICKSHADER["24"]);
+PATRICKSHADER["2c"]["BorderSizePixel"] = 0;
+PATRICKSHADER["2c"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["2c"]["Size"] = UDim2.new(1, 0, 0.79191, 0);
+PATRICKSHADER["2c"]["Position"] = UDim2.new(0, 0, 0.21965, 0);
+PATRICKSHADER["2c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["2c"]["LayoutOrder"] = 2;
+PATRICKSHADER["2c"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.Frame.sc
-TEST["2d"] = Instance.new("ScrollingFrame", TEST["2c"]);
-TEST["2d"]["Active"] = true;
-TEST["2d"]["ScrollingDirection"] = Enum.ScrollingDirection.Y;
-TEST["2d"]["BorderSizePixel"] = 0;
-TEST["2d"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["2d"]["Name"] = [[sc]];
-TEST["2d"]["ScrollBarImageTransparency"] = 0.2;
-TEST["2d"]["AutomaticCanvasSize"] = Enum.AutomaticSize.Y;
-TEST["2d"]["Size"] = UDim2.new(1, 0, 0.9854, 0);
-TEST["2d"]["ScrollBarImageColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["2d"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["2d"]["ScrollBarThickness"] = 3;
-TEST["2d"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["2d"] = Instance.new("ScrollingFrame", PATRICKSHADER["2c"]);
+PATRICKSHADER["2d"]["Active"] = true;
+PATRICKSHADER["2d"]["ScrollingDirection"] = Enum.ScrollingDirection.Y;
+PATRICKSHADER["2d"]["BorderSizePixel"] = 0;
+PATRICKSHADER["2d"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["2d"]["Name"] = [[sc]];
+PATRICKSHADER["2d"]["ScrollBarImageTransparency"] = 0.2;
+PATRICKSHADER["2d"]["AutomaticCanvasSize"] = Enum.AutomaticSize.Y;
+PATRICKSHADER["2d"]["Size"] = UDim2.new(1, 0, 0.9854, 0);
+PATRICKSHADER["2d"]["ScrollBarImageColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["2d"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["2d"]["ScrollBarThickness"] = 3;
+PATRICKSHADER["2d"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.Frame.sc.UIGridLayout
-TEST["2e"] = Instance.new("UIGridLayout", TEST["2d"]);
-TEST["2e"]["CellSize"] = UDim2.new(0.314, 0, 0.65, 0);
-TEST["2e"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
-TEST["2e"]["CellPadding"] = UDim2.new(0.02, 0, 0.05, 0);
+PATRICKSHADER["2e"] = Instance.new("UIGridLayout", PATRICKSHADER["2d"]);
+PATRICKSHADER["2e"]["CellSize"] = UDim2.new(0.314, 0, 0.65, 0);
+PATRICKSHADER["2e"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+PATRICKSHADER["2e"]["CellPadding"] = UDim2.new(0.02, 0, 0.05, 0);
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.Frame.sc.sampleshader
-TEST["2f"] = Instance.new("Frame", TEST["2d"]);
-TEST["2f"]["Visible"] = false;
-TEST["2f"]["BorderSizePixel"] = 0;
-TEST["2f"]["BackgroundColor3"] = Color3.fromRGB(231, 231, 231);
-TEST["2f"]["Size"] = UDim2.new(0, 100, 0, 100);
-TEST["2f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["2f"]["Name"] = [[sampleshader]];
-TEST["2f"]["BackgroundTransparency"] = 0.7;
+PATRICKSHADER["2f"] = Instance.new("Frame", PATRICKSHADER["2d"]);
+PATRICKSHADER["2f"]["Visible"] = false;
+PATRICKSHADER["2f"]["BorderSizePixel"] = 0;
+PATRICKSHADER["2f"]["BackgroundColor3"] = Color3.fromRGB(231, 231, 231);
+PATRICKSHADER["2f"]["Size"] = UDim2.new(0, 100, 0, 100);
+PATRICKSHADER["2f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["2f"]["Name"] = [[sampleshader]];
+PATRICKSHADER["2f"]["BackgroundTransparency"] = 0.7;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.Frame.sc.sampleshader.UICorner
-TEST["30"] = Instance.new("UICorner", TEST["2f"]);
+PATRICKSHADER["30"] = Instance.new("UICorner", PATRICKSHADER["2f"]);
 
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.Frame.sc.sampleshader.UIStroke
-TEST["31"] = Instance.new("UIStroke", TEST["2f"]);
-TEST["31"]["Transparency"] = 0.55;
-TEST["31"]["Color"] = Color3.fromRGB(181, 181, 181);
+PATRICKSHADER["31"] = Instance.new("UIStroke", PATRICKSHADER["2f"]);
+PATRICKSHADER["31"]["Transparency"] = 0.55;
+PATRICKSHADER["31"]["Color"] = Color3.fromRGB(181, 181, 181);
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.Frame.sc.sampleshader.UIListLayout
-TEST["32"] = Instance.new("UIListLayout", TEST["2f"]);
-TEST["32"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+PATRICKSHADER["32"] = Instance.new("UIListLayout", PATRICKSHADER["2f"]);
+PATRICKSHADER["32"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.Frame.sc.sampleshader.title
-TEST["33"] = Instance.new("TextLabel", TEST["2f"]);
-TEST["33"]["TextWrapped"] = true;
-TEST["33"]["Active"] = true;
-TEST["33"]["BorderSizePixel"] = 0;
-TEST["33"]["TextScaled"] = true;
-TEST["33"]["BackgroundColor3"] = Color3.fromRGB(103, 103, 103);
-TEST["33"]["TextSize"] = 14;
-TEST["33"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-TEST["33"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["33"]["RichText"] = true;
-TEST["33"]["Size"] = UDim2.new(1, 0, 0.12536, 0);
-TEST["33"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["33"]["Text"] = [[shader sample]];
-TEST["33"]["Name"] = [[title]];
+PATRICKSHADER["33"] = Instance.new("TextLabel", PATRICKSHADER["2f"]);
+PATRICKSHADER["33"]["TextWrapped"] = true;
+PATRICKSHADER["33"]["Active"] = true;
+PATRICKSHADER["33"]["BorderSizePixel"] = 0;
+PATRICKSHADER["33"]["TextScaled"] = true;
+PATRICKSHADER["33"]["BackgroundColor3"] = Color3.fromRGB(103, 103, 103);
+PATRICKSHADER["33"]["TextSize"] = 14;
+PATRICKSHADER["33"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+PATRICKSHADER["33"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["33"]["RichText"] = true;
+PATRICKSHADER["33"]["Size"] = UDim2.new(1, 0, 0.12536, 0);
+PATRICKSHADER["33"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["33"]["Text"] = [[shader sample]];
+PATRICKSHADER["33"]["Name"] = [[title]];
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.Frame.sc.sampleshader.title.UICorner
-TEST["34"] = Instance.new("UICorner", TEST["33"]);
-TEST["34"]["CornerRadius"] = UDim.new(0, 2);
+PATRICKSHADER["34"] = Instance.new("UICorner", PATRICKSHADER["33"]);
+PATRICKSHADER["34"]["CornerRadius"] = UDim.new(0, 2);
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.Frame.sc.sampleshader.image
-TEST["35"] = Instance.new("ImageButton", TEST["2f"]);
-TEST["35"]["BorderSizePixel"] = 0;
-TEST["35"]["ImageTransparency"] = 0.52;
-TEST["35"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["35"]["Image"] = [[http://www.roblox.com/asset/?id=10141946703]];
-TEST["35"]["Size"] = UDim2.new(0.99389, 0, 0.8661, 0);
-TEST["35"]["BackgroundTransparency"] = 1;
-TEST["35"]["Name"] = [[image]];
-TEST["35"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["35"]["Position"] = UDim2.new(0, 0, 0.12536, 0);
+PATRICKSHADER["35"] = Instance.new("ImageButton", PATRICKSHADER["2f"]);
+PATRICKSHADER["35"]["BorderSizePixel"] = 0;
+PATRICKSHADER["35"]["ImageTransparency"] = 0.52;
+PATRICKSHADER["35"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["35"]["Image"] = [[http://www.roblox.com/asset/?id=10141946703]];
+PATRICKSHADER["35"]["Size"] = UDim2.new(0.99389, 0, 0.8661, 0);
+PATRICKSHADER["35"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["35"]["Name"] = [[image]];
+PATRICKSHADER["35"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["35"]["Position"] = UDim2.new(0, 0, 0.12536, 0);
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.Frame.sc.sampleshader.image.UICorner
-TEST["36"] = Instance.new("UICorner", TEST["35"]);
-TEST["36"]["CornerRadius"] = UDim.new(0, 5);
+PATRICKSHADER["36"] = Instance.new("UICorner", PATRICKSHADER["35"]);
+PATRICKSHADER["36"]["CornerRadius"] = UDim.new(0, 5);
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.label
-TEST["37"] = Instance.new("TextLabel", TEST["24"]);
-TEST["37"]["TextWrapped"] = true;
-TEST["37"]["BorderSizePixel"] = 0;
-TEST["37"]["TextScaled"] = true;
-TEST["37"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["37"]["TextSize"] = 14;
-TEST["37"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-TEST["37"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["37"]["BackgroundTransparency"] = 0.75;
-TEST["37"]["RichText"] = true;
-TEST["37"]["Size"] = UDim2.new(1, 0, 0.08671, 0);
-TEST["37"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["37"]["Text"] = [[sample label]];
-TEST["37"]["LayoutOrder"] = 1;
-TEST["37"]["Name"] = [[label]];
-TEST["37"]["Position"] = UDim2.new(0, 0, 0.12139, 0);
+PATRICKSHADER["37"] = Instance.new("TextLabel", PATRICKSHADER["24"]);
+PATRICKSHADER["37"]["TextWrapped"] = true;
+PATRICKSHADER["37"]["BorderSizePixel"] = 0;
+PATRICKSHADER["37"]["TextScaled"] = true;
+PATRICKSHADER["37"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["37"]["TextSize"] = 14;
+PATRICKSHADER["37"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+PATRICKSHADER["37"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["37"]["BackgroundTransparency"] = 0.75;
+PATRICKSHADER["37"]["RichText"] = true;
+PATRICKSHADER["37"]["Size"] = UDim2.new(1, 0, 0.08671, 0);
+PATRICKSHADER["37"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["37"]["Text"] = [[sample label]];
+PATRICKSHADER["37"]["LayoutOrder"] = 1;
+PATRICKSHADER["37"]["Name"] = [[label]];
+PATRICKSHADER["37"]["Position"] = UDim2.new(0, 0, 0.12139, 0);
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.label.UICorner
-TEST["38"] = Instance.new("UICorner", TEST["37"]);
-TEST["38"]["CornerRadius"] = UDim.new(0.3, 0);
+PATRICKSHADER["38"] = Instance.new("UICorner", PATRICKSHADER["37"]);
+PATRICKSHADER["38"]["CornerRadius"] = UDim.new(0.3, 0);
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.label.UIStroke
-TEST["39"] = Instance.new("UIStroke", TEST["37"]);
-TEST["39"]["Transparency"] = 0.24;
-TEST["39"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-TEST["39"]["Color"] = Color3.fromRGB(181, 181, 181);
+PATRICKSHADER["39"] = Instance.new("UIStroke", PATRICKSHADER["37"]);
+PATRICKSHADER["39"]["Transparency"] = 0.24;
+PATRICKSHADER["39"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+PATRICKSHADER["39"]["Color"] = Color3.fromRGB(181, 181, 181);
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.home
-TEST["3a"] = Instance.new("Frame", TEST["20"]);
-TEST["3a"]["BorderSizePixel"] = 0;
-TEST["3a"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["3a"]["Size"] = UDim2.new(1, 0, 1.00578, 0);
-TEST["3a"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["3a"]["Name"] = [[home]];
-TEST["3a"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["3a"] = Instance.new("Frame", PATRICKSHADER["20"]);
+PATRICKSHADER["3a"]["BorderSizePixel"] = 0;
+PATRICKSHADER["3a"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["3a"]["Size"] = UDim2.new(1, 0, 1.00578, 0);
+PATRICKSHADER["3a"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["3a"]["Name"] = [[home]];
+PATRICKSHADER["3a"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.home.UIListLayout
-TEST["3b"] = Instance.new("UIListLayout", TEST["3a"]);
-TEST["3b"]["Padding"] = UDim.new(0, 2);
-TEST["3b"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+PATRICKSHADER["3b"] = Instance.new("UIListLayout", PATRICKSHADER["3a"]);
+PATRICKSHADER["3b"]["Padding"] = UDim.new(0, 2);
+PATRICKSHADER["3b"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.home.playerintro
-TEST["3c"] = Instance.new("Frame", TEST["3a"]);
-TEST["3c"]["BorderSizePixel"] = 0;
-TEST["3c"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["3c"]["Size"] = UDim2.new(1, 0, 0.31609, 0);
-TEST["3c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["3c"]["Name"] = [[playerintro]];
-TEST["3c"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["3c"] = Instance.new("Frame", PATRICKSHADER["3a"]);
+PATRICKSHADER["3c"]["BorderSizePixel"] = 0;
+PATRICKSHADER["3c"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["3c"]["Size"] = UDim2.new(1, 0, 0.31609, 0);
+PATRICKSHADER["3c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["3c"]["Name"] = [[playerintro]];
+PATRICKSHADER["3c"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.home.playerintro.UICorner
-TEST["3d"] = Instance.new("UICorner", TEST["3c"]);
+PATRICKSHADER["3d"] = Instance.new("UICorner", PATRICKSHADER["3c"]);
 
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.home.playerintro.UIStroke
-TEST["3e"] = Instance.new("UIStroke", TEST["3c"]);
-TEST["3e"]["Enabled"] = false;
-TEST["3e"]["Transparency"] = 0.61;
-TEST["3e"]["Color"] = Color3.fromRGB(181, 181, 181);
+PATRICKSHADER["3e"] = Instance.new("UIStroke", PATRICKSHADER["3c"]);
+PATRICKSHADER["3e"]["Enabled"] = false;
+PATRICKSHADER["3e"]["Transparency"] = 0.61;
+PATRICKSHADER["3e"]["Color"] = Color3.fromRGB(181, 181, 181);
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.home.playerintro.playerimage
-TEST["3f"] = Instance.new("ImageLabel", TEST["3c"]);
-TEST["3f"]["BorderSizePixel"] = 0;
-TEST["3f"]["BackgroundColor3"] = Color3.fromRGB(60, 60, 60);
-TEST["3f"]["Image"] = [[rbxasset://textures/ui/GuiImagePlaceholder.png]];
-TEST["3f"]["Size"] = UDim2.new(0.19463, 0, 1, 0);
-TEST["3f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["3f"]["BackgroundTransparency"] = 0.8;
-TEST["3f"]["Name"] = [[playerimage]];
+PATRICKSHADER["3f"] = Instance.new("ImageLabel", PATRICKSHADER["3c"]);
+PATRICKSHADER["3f"]["BorderSizePixel"] = 0;
+PATRICKSHADER["3f"]["BackgroundColor3"] = Color3.fromRGB(60, 60, 60);
+PATRICKSHADER["3f"]["Image"] = [[rbxasset://textures/ui/GuiImagePlaceholder.png]];
+PATRICKSHADER["3f"]["Size"] = UDim2.new(0.19463, 0, 1, 0);
+PATRICKSHADER["3f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["3f"]["BackgroundTransparency"] = 0.8;
+PATRICKSHADER["3f"]["Name"] = [[playerimage]];
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.home.playerintro.playerimage.UICorner
-TEST["40"] = Instance.new("UICorner", TEST["3f"]);
+PATRICKSHADER["40"] = Instance.new("UICorner", PATRICKSHADER["3f"]);
 
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.home.playerintro.UIListLayout
-TEST["41"] = Instance.new("UIListLayout", TEST["3c"]);
-TEST["41"]["Padding"] = UDim.new(0, 2);
-TEST["41"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
-TEST["41"]["FillDirection"] = Enum.FillDirection.Horizontal;
+PATRICKSHADER["41"] = Instance.new("UIListLayout", PATRICKSHADER["3c"]);
+PATRICKSHADER["41"]["Padding"] = UDim.new(0, 2);
+PATRICKSHADER["41"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+PATRICKSHADER["41"]["FillDirection"] = Enum.FillDirection.Horizontal;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.home.playerintro.Frame
-TEST["42"] = Instance.new("Frame", TEST["3c"]);
-TEST["42"]["BorderSizePixel"] = 0;
-TEST["42"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["42"]["Size"] = UDim2.new(0.79827, 0, 1.02557, 0);
-TEST["42"]["Position"] = UDim2.new(0.20142, 0, 0, 0);
-TEST["42"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["42"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["42"] = Instance.new("Frame", PATRICKSHADER["3c"]);
+PATRICKSHADER["42"]["BorderSizePixel"] = 0;
+PATRICKSHADER["42"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["42"]["Size"] = UDim2.new(0.79827, 0, 1.02557, 0);
+PATRICKSHADER["42"]["Position"] = UDim2.new(0.20142, 0, 0, 0);
+PATRICKSHADER["42"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["42"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.home.playerintro.Frame.title
-TEST["43"] = Instance.new("TextLabel", TEST["42"]);
-TEST["43"]["TextWrapped"] = true;
-TEST["43"]["BorderSizePixel"] = 0;
-TEST["43"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-TEST["43"]["TextScaled"] = true;
-TEST["43"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["43"]["TextSize"] = 14;
-TEST["43"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-TEST["43"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["43"]["BackgroundTransparency"] = 1;
-TEST["43"]["RichText"] = true;
-TEST["43"]["Size"] = UDim2.new(0.98164, 0, 0.63497, 0);
-TEST["43"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["43"]["Text"] = [[welcome to pshade reborn]];
-TEST["43"]["LayoutOrder"] = 1;
-TEST["43"]["Name"] = [[title]];
-TEST["43"]["Position"] = UDim2.new(0.01845, 0, 0, 0);
+PATRICKSHADER["43"] = Instance.new("TextLabel", PATRICKSHADER["42"]);
+PATRICKSHADER["43"]["TextWrapped"] = true;
+PATRICKSHADER["43"]["BorderSizePixel"] = 0;
+PATRICKSHADER["43"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+PATRICKSHADER["43"]["TextScaled"] = true;
+PATRICKSHADER["43"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["43"]["TextSize"] = 14;
+PATRICKSHADER["43"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+PATRICKSHADER["43"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["43"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["43"]["RichText"] = true;
+PATRICKSHADER["43"]["Size"] = UDim2.new(0.98164, 0, 0.63497, 0);
+PATRICKSHADER["43"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["43"]["Text"] = [[welcome to pshade reborn]];
+PATRICKSHADER["43"]["LayoutOrder"] = 1;
+PATRICKSHADER["43"]["Name"] = [[title]];
+PATRICKSHADER["43"]["Position"] = UDim2.new(0.01845, 0, 0, 0);
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.home.playerintro.Frame.UIListLayout
-TEST["44"] = Instance.new("UIListLayout", TEST["42"]);
-TEST["44"]["Padding"] = UDim.new(0, 2);
-TEST["44"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+PATRICKSHADER["44"] = Instance.new("UIListLayout", PATRICKSHADER["42"]);
+PATRICKSHADER["44"]["Padding"] = UDim.new(0, 2);
+PATRICKSHADER["44"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.home.playerintro.Frame.name
-TEST["45"] = Instance.new("TextLabel", TEST["42"]);
-TEST["45"]["TextWrapped"] = true;
-TEST["45"]["BorderSizePixel"] = 0;
-TEST["45"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-TEST["45"]["TextTransparency"] = 0.2;
-TEST["45"]["TextScaled"] = true;
-TEST["45"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["45"]["TextSize"] = 14;
-TEST["45"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-TEST["45"]["TextColor3"] = Color3.fromRGB(205, 205, 205);
-TEST["45"]["BackgroundTransparency"] = 1;
-TEST["45"]["RichText"] = true;
-TEST["45"]["Size"] = UDim2.new(0.79243, 0, 0.156, 0);
-TEST["45"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["45"]["Text"] = [[@unkown]];
-TEST["45"]["LayoutOrder"] = 1;
-TEST["45"]["Name"] = [[name]];
-TEST["45"]["Position"] = UDim2.new(0, 0, 0.66886, 0);
+PATRICKSHADER["45"] = Instance.new("TextLabel", PATRICKSHADER["42"]);
+PATRICKSHADER["45"]["TextWrapped"] = true;
+PATRICKSHADER["45"]["BorderSizePixel"] = 0;
+PATRICKSHADER["45"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+PATRICKSHADER["45"]["TextTransparency"] = 0.2;
+PATRICKSHADER["45"]["TextScaled"] = true;
+PATRICKSHADER["45"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["45"]["TextSize"] = 14;
+PATRICKSHADER["45"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+PATRICKSHADER["45"]["TextColor3"] = Color3.fromRGB(205, 205, 205);
+PATRICKSHADER["45"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["45"]["RichText"] = true;
+PATRICKSHADER["45"]["Size"] = UDim2.new(0.79243, 0, 0.156, 0);
+PATRICKSHADER["45"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["45"]["Text"] = [[@unkown]];
+PATRICKSHADER["45"]["LayoutOrder"] = 1;
+PATRICKSHADER["45"]["Name"] = [[name]];
+PATRICKSHADER["45"]["Position"] = UDim2.new(0, 0, 0.66886, 0);
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.home.player
-TEST["46"] = Instance.new("Frame", TEST["3a"]);
-TEST["46"]["BorderSizePixel"] = 0;
-TEST["46"]["BackgroundColor3"] = Color3.fromRGB(39, 39, 39);
-TEST["46"]["Size"] = UDim2.new(1, 0, 0.13218, 0);
-TEST["46"]["Position"] = UDim2.new(0, 0, 0.32759, 0);
-TEST["46"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["46"]["Name"] = [[player]];
-TEST["46"]["BackgroundTransparency"] = 0.55;
+PATRICKSHADER["46"] = Instance.new("Frame", PATRICKSHADER["3a"]);
+PATRICKSHADER["46"]["BorderSizePixel"] = 0;
+PATRICKSHADER["46"]["BackgroundColor3"] = Color3.fromRGB(39, 39, 39);
+PATRICKSHADER["46"]["Size"] = UDim2.new(1, 0, 0.10953, 0);
+PATRICKSHADER["46"]["Position"] = UDim2.new(0, 0, 0.32742, 0);
+PATRICKSHADER["46"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["46"]["Name"] = [[player]];
+PATRICKSHADER["46"]["BackgroundTransparency"] = 0.55;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.home.player.UICorner
-TEST["47"] = Instance.new("UICorner", TEST["46"]);
+PATRICKSHADER["47"] = Instance.new("UICorner", PATRICKSHADER["46"]);
 
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.home.player.UIStroke
-TEST["48"] = Instance.new("UIStroke", TEST["46"]);
-TEST["48"]["Transparency"] = 0.61;
-TEST["48"]["Color"] = Color3.fromRGB(181, 181, 181);
+PATRICKSHADER["48"] = Instance.new("UIStroke", PATRICKSHADER["46"]);
+PATRICKSHADER["48"]["Transparency"] = 0.61;
+PATRICKSHADER["48"]["Color"] = Color3.fromRGB(181, 181, 181);
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.home.player.UIListLayout
-TEST["49"] = Instance.new("UIListLayout", TEST["46"]);
-TEST["49"]["Padding"] = UDim.new(0, 2);
-TEST["49"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
-TEST["49"]["FillDirection"] = Enum.FillDirection.Horizontal;
+PATRICKSHADER["49"] = Instance.new("UIListLayout", PATRICKSHADER["46"]);
+PATRICKSHADER["49"]["Padding"] = UDim.new(0, 2);
+PATRICKSHADER["49"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+PATRICKSHADER["49"]["FillDirection"] = Enum.FillDirection.Horizontal;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.home.player.patrickicon
-TEST["4a"] = Instance.new("ImageLabel", TEST["46"]);
-TEST["4a"]["BorderSizePixel"] = 0;
-TEST["4a"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["4a"]["ScaleType"] = Enum.ScaleType.Fit;
-TEST["4a"]["Image"] = [[rbxassetid://76177268606293]];
-TEST["4a"]["Size"] = UDim2.new(0.08054, 0, 1, 0);
-TEST["4a"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["4a"]["BackgroundTransparency"] = 1;
-TEST["4a"]["Name"] = [[patrickicon]];
+PATRICKSHADER["4a"] = Instance.new("ImageLabel", PATRICKSHADER["46"]);
+PATRICKSHADER["4a"]["BorderSizePixel"] = 0;
+PATRICKSHADER["4a"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["4a"]["ScaleType"] = Enum.ScaleType.Fit;
+PATRICKSHADER["4a"]["Image"] = [[rbxassetid://76177268606293]];
+PATRICKSHADER["4a"]["Size"] = UDim2.new(0.08054, 0, 1, 0);
+PATRICKSHADER["4a"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["4a"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["4a"]["Name"] = [[patrickicon]];
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.home.player.patrickicon.UICorner
-TEST["4b"] = Instance.new("UICorner", TEST["4a"]);
-TEST["4b"]["CornerRadius"] = UDim.new(0.2, 0);
+PATRICKSHADER["4b"] = Instance.new("UICorner", PATRICKSHADER["4a"]);
+PATRICKSHADER["4b"]["CornerRadius"] = UDim.new(0.2, 0);
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.home.player.TextLabel
-TEST["4c"] = Instance.new("TextLabel", TEST["46"]);
-TEST["4c"]["TextWrapped"] = true;
-TEST["4c"]["BorderSizePixel"] = 0;
-TEST["4c"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-TEST["4c"]["TextScaled"] = true;
-TEST["4c"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["4c"]["TextSize"] = 14;
-TEST["4c"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-TEST["4c"]["TextColor3"] = Color3.fromRGB(217, 217, 217);
-TEST["4c"]["BackgroundTransparency"] = 1;
-TEST["4c"]["Size"] = UDim2.new(0.60067, 0, 1, 0);
-TEST["4c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["4c"]["Text"] = [[@Im_Patrick]];
-TEST["4c"]["Position"] = UDim2.new(0.12081, 0, 0, 0);
+PATRICKSHADER["4c"] = Instance.new("TextLabel", PATRICKSHADER["46"]);
+PATRICKSHADER["4c"]["TextWrapped"] = true;
+PATRICKSHADER["4c"]["BorderSizePixel"] = 0;
+PATRICKSHADER["4c"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+PATRICKSHADER["4c"]["TextScaled"] = true;
+PATRICKSHADER["4c"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["4c"]["TextSize"] = 14;
+PATRICKSHADER["4c"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+PATRICKSHADER["4c"]["TextColor3"] = Color3.fromRGB(217, 217, 217);
+PATRICKSHADER["4c"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["4c"]["Size"] = UDim2.new(0.60067, 0, 1, 0);
+PATRICKSHADER["4c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["4c"]["Text"] = [[@Im_Patrick]];
+PATRICKSHADER["4c"]["Position"] = UDim2.new(0.12081, 0, 0, 0);
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.home.player.TextLabel.UITextSizeConstraint
-TEST["4d"] = Instance.new("UITextSizeConstraint", TEST["4c"]);
-TEST["4d"]["MaxTextSize"] = 14;
+PATRICKSHADER["4d"] = Instance.new("UITextSizeConstraint", PATRICKSHADER["4c"]);
+PATRICKSHADER["4d"]["MaxTextSize"] = 14;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.home.player.button
-TEST["4e"] = Instance.new("TextButton", TEST["46"]);
-TEST["4e"]["TextWrapped"] = true;
-TEST["4e"]["BorderSizePixel"] = 0;
-TEST["4e"]["TextSize"] = 14;
-TEST["4e"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["4e"]["TextScaled"] = true;
-TEST["4e"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["4e"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-TEST["4e"]["RichText"] = true;
-TEST["4e"]["Size"] = UDim2.new(0.30537, 0, 1, 0);
-TEST["4e"]["Name"] = [[button]];
-TEST["4e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["4e"]["Text"] = [[subscribe]];
-TEST["4e"]["Position"] = UDim2.new(0.69463, 0, 0, 0);
+PATRICKSHADER["4e"] = Instance.new("TextButton", PATRICKSHADER["46"]);
+PATRICKSHADER["4e"]["TextWrapped"] = true;
+PATRICKSHADER["4e"]["BorderSizePixel"] = 0;
+PATRICKSHADER["4e"]["TextSize"] = 14;
+PATRICKSHADER["4e"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["4e"]["TextScaled"] = true;
+PATRICKSHADER["4e"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["4e"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+PATRICKSHADER["4e"]["RichText"] = true;
+PATRICKSHADER["4e"]["Size"] = UDim2.new(0.30537, 0, 1, 0);
+PATRICKSHADER["4e"]["Name"] = [[button]];
+PATRICKSHADER["4e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["4e"]["Text"] = [[subscribe]];
+PATRICKSHADER["4e"]["Position"] = UDim2.new(0.69463, 0, 0, 0);
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.home.player.button.UICorner
-TEST["4f"] = Instance.new("UICorner", TEST["4e"]);
-TEST["4f"]["CornerRadius"] = UDim.new(0.3, 0);
+PATRICKSHADER["4f"] = Instance.new("UICorner", PATRICKSHADER["4e"]);
+PATRICKSHADER["4f"]["CornerRadius"] = UDim.new(0.3, 0);
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.home.player.button.UIGradient
-TEST["50"] = Instance.new("UIGradient", TEST["4e"]);
-TEST["50"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(32, 32, 32)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(81, 81, 81))};
+PATRICKSHADER["50"] = Instance.new("UIGradient", PATRICKSHADER["4e"]);
+PATRICKSHADER["50"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(32, 32, 32)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(81, 81, 81))};
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.home.player.button.TextLabel
-TEST["51"] = Instance.new("TextLabel", TEST["4e"]);
-TEST["51"]["TextWrapped"] = true;
-TEST["51"]["BorderSizePixel"] = 0;
-TEST["51"]["TextScaled"] = true;
-TEST["51"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["51"]["TextSize"] = 14;
-TEST["51"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-TEST["51"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["51"]["BackgroundTransparency"] = 1;
-TEST["51"]["RichText"] = true;
-TEST["51"]["Size"] = UDim2.new(0.84615, 0, 0.73913, 0);
-TEST["51"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["51"]["Text"] = [[subscribe]];
-TEST["51"]["Position"] = UDim2.new(0.07692, 0, 0.13043, 0);
+PATRICKSHADER["51"] = Instance.new("TextLabel", PATRICKSHADER["4e"]);
+PATRICKSHADER["51"]["TextWrapped"] = true;
+PATRICKSHADER["51"]["BorderSizePixel"] = 0;
+PATRICKSHADER["51"]["TextScaled"] = true;
+PATRICKSHADER["51"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["51"]["TextSize"] = 14;
+PATRICKSHADER["51"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+PATRICKSHADER["51"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["51"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["51"]["RichText"] = true;
+PATRICKSHADER["51"]["Size"] = UDim2.new(0.84615, 0, 0.73913, 0);
+PATRICKSHADER["51"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["51"]["Text"] = [[subscribe]];
+PATRICKSHADER["51"]["Position"] = UDim2.new(0.07692, 0, 0.13043, 0);
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.home.TextLabel
-TEST["52"] = Instance.new("TextLabel", TEST["3a"]);
-TEST["52"]["TextWrapped"] = true;
-TEST["52"]["BorderSizePixel"] = 0;
-TEST["52"]["TextScaled"] = true;
-TEST["52"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["52"]["TextSize"] = 14;
-TEST["52"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-TEST["52"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["52"]["BackgroundTransparency"] = 0.8;
-TEST["52"]["RichText"] = true;
-TEST["52"]["Size"] = UDim2.new(1, 0, 0.07471, 0);
-TEST["52"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["52"]["Text"] = [[changelogs]];
-TEST["52"]["Position"] = UDim2.new(0, 0, 0.47126, 0);
+PATRICKSHADER["52"] = Instance.new("TextLabel", PATRICKSHADER["3a"]);
+PATRICKSHADER["52"]["TextWrapped"] = true;
+PATRICKSHADER["52"]["BorderSizePixel"] = 0;
+PATRICKSHADER["52"]["TextScaled"] = true;
+PATRICKSHADER["52"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["52"]["TextSize"] = 14;
+PATRICKSHADER["52"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+PATRICKSHADER["52"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["52"]["BackgroundTransparency"] = 0.8;
+PATRICKSHADER["52"]["RichText"] = true;
+PATRICKSHADER["52"]["Size"] = UDim2.new(1, 0, 0.07471, 0);
+PATRICKSHADER["52"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["52"]["Text"] = [[changelogs]];
+PATRICKSHADER["52"]["Position"] = UDim2.new(0, 0, 0.47126, 0);
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.home.ScrollingFrame
-TEST["53"] = Instance.new("ScrollingFrame", TEST["3a"]);
-TEST["53"]["Active"] = true;
-TEST["53"]["ScrollingDirection"] = Enum.ScrollingDirection.Y;
-TEST["53"]["BorderSizePixel"] = 0;
-TEST["53"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["53"]["ScrollBarImageTransparency"] = 0.48;
-TEST["53"]["Size"] = UDim2.new(1, 0, 0.43678, 0);
-TEST["53"]["ScrollBarImageColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["53"]["Position"] = UDim2.new(0, 0, 0.55747, 0);
-TEST["53"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["53"]["ScrollBarThickness"] = 2;
-TEST["53"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["53"] = Instance.new("ScrollingFrame", PATRICKSHADER["3a"]);
+PATRICKSHADER["53"]["Active"] = true;
+PATRICKSHADER["53"]["ScrollingDirection"] = Enum.ScrollingDirection.Y;
+PATRICKSHADER["53"]["BorderSizePixel"] = 0;
+PATRICKSHADER["53"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["53"]["ScrollBarImageTransparency"] = 0.48;
+PATRICKSHADER["53"]["Size"] = UDim2.new(1, 0, 0.43678, 0);
+PATRICKSHADER["53"]["ScrollBarImageColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["53"]["Position"] = UDim2.new(0, 0, 0.55747, 0);
+PATRICKSHADER["53"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["53"]["ScrollBarThickness"] = 2;
+PATRICKSHADER["53"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.home.ScrollingFrame.changelog
-TEST["54"] = Instance.new("TextLabel", TEST["53"]);
-TEST["54"]["TextWrapped"] = true;
-TEST["54"]["BorderSizePixel"] = 0;
-TEST["54"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-TEST["54"]["TextYAlignment"] = Enum.TextYAlignment.Top;
-TEST["54"]["TextScaled"] = true;
-TEST["54"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["54"]["TextSize"] = 17;
-TEST["54"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-TEST["54"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["54"]["BackgroundTransparency"] = 1;
-TEST["54"]["Size"] = UDim2.new(1, 0, 1, 0);
-TEST["54"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["54"]["Text"] = [[> update ui]];
-TEST["54"]["AutomaticSize"] = Enum.AutomaticSize.Y;
-TEST["54"]["Name"] = [[changelog]];
+PATRICKSHADER["54"] = Instance.new("TextLabel", PATRICKSHADER["53"]);
+PATRICKSHADER["54"]["TextWrapped"] = true;
+PATRICKSHADER["54"]["BorderSizePixel"] = 0;
+PATRICKSHADER["54"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+PATRICKSHADER["54"]["TextYAlignment"] = Enum.TextYAlignment.Top;
+PATRICKSHADER["54"]["TextScaled"] = true;
+PATRICKSHADER["54"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["54"]["TextSize"] = 17;
+PATRICKSHADER["54"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+PATRICKSHADER["54"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["54"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["54"]["Size"] = UDim2.new(1, 0, 1, 0);
+PATRICKSHADER["54"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["54"]["Text"] = [[> update ui]];
+PATRICKSHADER["54"]["AutomaticSize"] = Enum.AutomaticSize.Y;
+PATRICKSHADER["54"]["Name"] = [[changelog]];
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.home.ScrollingFrame.changelog.UITextSizeConstraint
-TEST["55"] = Instance.new("UITextSizeConstraint", TEST["54"]);
-TEST["55"]["MaxTextSize"] = 17;
-TEST["55"]["MinTextSize"] = 17;
+PATRICKSHADER["55"] = Instance.new("UITextSizeConstraint", PATRICKSHADER["54"]);
+PATRICKSHADER["55"]["MaxTextSize"] = 17;
+PATRICKSHADER["55"]["MinTextSize"] = 17;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.additionsample
-TEST["56"] = Instance.new("Frame", TEST["20"]);
-TEST["56"]["BorderSizePixel"] = 0;
-TEST["56"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["56"]["Size"] = UDim2.new(1, 0, 0.9711, 0);
-TEST["56"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["56"]["Name"] = [[additionsample]];
-TEST["56"]["LayoutOrder"] = 1;
-TEST["56"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["56"] = Instance.new("Frame", PATRICKSHADER["20"]);
+PATRICKSHADER["56"]["BorderSizePixel"] = 0;
+PATRICKSHADER["56"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["56"]["Size"] = UDim2.new(1, 0, 0.9711, 0);
+PATRICKSHADER["56"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["56"]["Name"] = [[additionsample]];
+PATRICKSHADER["56"]["LayoutOrder"] = 1;
+PATRICKSHADER["56"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.additionsample.UIListLayout
-TEST["57"] = Instance.new("UIListLayout", TEST["56"]);
-TEST["57"]["Padding"] = UDim.new(0, 2);
-TEST["57"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+PATRICKSHADER["57"] = Instance.new("UIListLayout", PATRICKSHADER["56"]);
+PATRICKSHADER["57"]["Padding"] = UDim.new(0, 2);
+PATRICKSHADER["57"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.additionsample.searchframe
-TEST["58"] = Instance.new("Frame", TEST["56"]);
-TEST["58"]["BorderSizePixel"] = 0;
-TEST["58"]["BackgroundColor3"] = Color3.fromRGB(222, 222, 222);
-TEST["58"]["Size"] = UDim2.new(1, 0, 0.10983, 0);
-TEST["58"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["58"]["Name"] = [[searchframe]];
-TEST["58"]["BackgroundTransparency"] = 0.8;
+PATRICKSHADER["58"] = Instance.new("Frame", PATRICKSHADER["56"]);
+PATRICKSHADER["58"]["BorderSizePixel"] = 0;
+PATRICKSHADER["58"]["BackgroundColor3"] = Color3.fromRGB(222, 222, 222);
+PATRICKSHADER["58"]["Size"] = UDim2.new(1, 0, 0.10983, 0);
+PATRICKSHADER["58"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["58"]["Name"] = [[searchframe]];
+PATRICKSHADER["58"]["BackgroundTransparency"] = 0.8;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.additionsample.searchframe.UICorner
-TEST["59"] = Instance.new("UICorner", TEST["58"]);
+PATRICKSHADER["59"] = Instance.new("UICorner", PATRICKSHADER["58"]);
 
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.additionsample.searchframe.UIStroke
-TEST["5a"] = Instance.new("UIStroke", TEST["58"]);
-TEST["5a"]["Transparency"] = 0.61;
-TEST["5a"]["Color"] = Color3.fromRGB(181, 181, 181);
+PATRICKSHADER["5a"] = Instance.new("UIStroke", PATRICKSHADER["58"]);
+PATRICKSHADER["5a"]["Transparency"] = 0.61;
+PATRICKSHADER["5a"]["Color"] = Color3.fromRGB(181, 181, 181);
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.additionsample.searchframe.UIListLayout
-TEST["5b"] = Instance.new("UIListLayout", TEST["58"]);
-TEST["5b"]["Padding"] = UDim.new(0, 2);
-TEST["5b"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
-TEST["5b"]["FillDirection"] = Enum.FillDirection.Horizontal;
+PATRICKSHADER["5b"] = Instance.new("UIListLayout", PATRICKSHADER["58"]);
+PATRICKSHADER["5b"]["Padding"] = UDim.new(0, 2);
+PATRICKSHADER["5b"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+PATRICKSHADER["5b"]["FillDirection"] = Enum.FillDirection.Horizontal;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.additionsample.searchframe.TextBox
-TEST["5c"] = Instance.new("TextBox", TEST["58"]);
-TEST["5c"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["5c"]["BorderSizePixel"] = 0;
-TEST["5c"]["TextWrapped"] = true;
-TEST["5c"]["TextSize"] = 14;
-TEST["5c"]["TextScaled"] = true;
-TEST["5c"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["5c"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-TEST["5c"]["Size"] = UDim2.new(0.91275, 0, 1, 0);
-TEST["5c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["5c"]["Text"] = [[search]];
-TEST["5c"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["5c"] = Instance.new("TextBox", PATRICKSHADER["58"]);
+PATRICKSHADER["5c"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["5c"]["BorderSizePixel"] = 0;
+PATRICKSHADER["5c"]["TextWrapped"] = true;
+PATRICKSHADER["5c"]["TextSize"] = 14;
+PATRICKSHADER["5c"]["TextScaled"] = true;
+PATRICKSHADER["5c"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["5c"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+PATRICKSHADER["5c"]["Size"] = UDim2.new(0.91275, 0, 1, 0);
+PATRICKSHADER["5c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["5c"]["Text"] = [[search]];
+PATRICKSHADER["5c"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.additionsample.searchframe.ImageButton
-TEST["5d"] = Instance.new("ImageButton", TEST["58"]);
-TEST["5d"]["BorderSizePixel"] = 0;
-TEST["5d"]["ScaleType"] = Enum.ScaleType.Fit;
-TEST["5d"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["5d"]["LayoutOrder"] = 1;
-TEST["5d"]["Image"] = [[http://www.roblox.com/asset/?id=6031154871]];
-TEST["5d"]["Size"] = UDim2.new(0.08054, 0, 1, 0);
-TEST["5d"]["BackgroundTransparency"] = 1;
-TEST["5d"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["5d"]["Position"] = UDim2.new(0.91946, 0, 0, 0);
+PATRICKSHADER["5d"] = Instance.new("ImageButton", PATRICKSHADER["58"]);
+PATRICKSHADER["5d"]["BorderSizePixel"] = 0;
+PATRICKSHADER["5d"]["ScaleType"] = Enum.ScaleType.Fit;
+PATRICKSHADER["5d"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["5d"]["LayoutOrder"] = 1;
+PATRICKSHADER["5d"]["Image"] = [[http://www.roblox.com/asset/?id=6031154871]];
+PATRICKSHADER["5d"]["Size"] = UDim2.new(0.08054, 0, 1, 0);
+PATRICKSHADER["5d"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["5d"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["5d"]["Position"] = UDim2.new(0.91946, 0, 0, 0);
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.additionsample.Frame
-TEST["5e"] = Instance.new("Frame", TEST["56"]);
-TEST["5e"]["BorderSizePixel"] = 0;
-TEST["5e"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["5e"]["Size"] = UDim2.new(1, 0, 0.90803, 0);
-TEST["5e"]["Position"] = UDim2.new(0, 0, 0.12173, 0);
-TEST["5e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["5e"]["LayoutOrder"] = 2;
-TEST["5e"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["5e"] = Instance.new("Frame", PATRICKSHADER["56"]);
+PATRICKSHADER["5e"]["BorderSizePixel"] = 0;
+PATRICKSHADER["5e"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["5e"]["Size"] = UDim2.new(1, 0, 0.90803, 0);
+PATRICKSHADER["5e"]["Position"] = UDim2.new(0, 0, 0.12173, 0);
+PATRICKSHADER["5e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["5e"]["LayoutOrder"] = 2;
+PATRICKSHADER["5e"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.additionsample.Frame.sc
-TEST["5f"] = Instance.new("ScrollingFrame", TEST["5e"]);
-TEST["5f"]["Active"] = true;
-TEST["5f"]["ScrollingDirection"] = Enum.ScrollingDirection.Y;
-TEST["5f"]["BorderSizePixel"] = 0;
-TEST["5f"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["5f"]["Name"] = [[sc]];
-TEST["5f"]["ScrollBarImageTransparency"] = 0.2;
-TEST["5f"]["AutomaticCanvasSize"] = Enum.AutomaticSize.Y;
-TEST["5f"]["Size"] = UDim2.new(1, 0, 0.9854, 0);
-TEST["5f"]["ScrollBarImageColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["5f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["5f"]["ScrollBarThickness"] = 3;
-TEST["5f"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["5f"] = Instance.new("ScrollingFrame", PATRICKSHADER["5e"]);
+PATRICKSHADER["5f"]["Active"] = true;
+PATRICKSHADER["5f"]["ScrollingDirection"] = Enum.ScrollingDirection.Y;
+PATRICKSHADER["5f"]["BorderSizePixel"] = 0;
+PATRICKSHADER["5f"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["5f"]["Name"] = [[sc]];
+PATRICKSHADER["5f"]["ScrollBarImageTransparency"] = 0.2;
+PATRICKSHADER["5f"]["AutomaticCanvasSize"] = Enum.AutomaticSize.Y;
+PATRICKSHADER["5f"]["Size"] = UDim2.new(1, 0, 0.9854, 0);
+PATRICKSHADER["5f"]["ScrollBarImageColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["5f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["5f"]["ScrollBarThickness"] = 3;
+PATRICKSHADER["5f"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.additionsample.Frame.sc.UIListLayout
-TEST["60"] = Instance.new("UIListLayout", TEST["5f"]);
-TEST["60"]["Padding"] = UDim.new(0, 3);
-TEST["60"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+PATRICKSHADER["60"] = Instance.new("UIListLayout", PATRICKSHADER["5f"]);
+PATRICKSHADER["60"]["Padding"] = UDim.new(0, 3);
+PATRICKSHADER["60"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.settings
-TEST["61"] = Instance.new("Frame", TEST["20"]);
-TEST["61"]["BorderSizePixel"] = 0;
-TEST["61"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["61"]["Size"] = UDim2.new(1, 0, 0.9711, 0);
-TEST["61"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["61"]["Name"] = [[settings]];
-TEST["61"]["LayoutOrder"] = 1;
-TEST["61"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["61"] = Instance.new("Frame", PATRICKSHADER["20"]);
+PATRICKSHADER["61"]["BorderSizePixel"] = 0;
+PATRICKSHADER["61"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["61"]["Size"] = UDim2.new(1, 0, 0.9711, 0);
+PATRICKSHADER["61"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["61"]["Name"] = [[settings]];
+PATRICKSHADER["61"]["LayoutOrder"] = 1;
+PATRICKSHADER["61"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.settings.UIListLayout
-TEST["62"] = Instance.new("UIListLayout", TEST["61"]);
-TEST["62"]["Padding"] = UDim.new(0, 2);
-TEST["62"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+PATRICKSHADER["62"] = Instance.new("UIListLayout", PATRICKSHADER["61"]);
+PATRICKSHADER["62"]["Padding"] = UDim.new(0, 2);
+PATRICKSHADER["62"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.settings.searchframe
-TEST["63"] = Instance.new("Frame", TEST["61"]);
-TEST["63"]["BorderSizePixel"] = 0;
-TEST["63"]["BackgroundColor3"] = Color3.fromRGB(222, 222, 222);
-TEST["63"]["Size"] = UDim2.new(1, 0, 0.10983, 0);
-TEST["63"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["63"]["Name"] = [[searchframe]];
-TEST["63"]["BackgroundTransparency"] = 0.8;
+PATRICKSHADER["63"] = Instance.new("Frame", PATRICKSHADER["61"]);
+PATRICKSHADER["63"]["BorderSizePixel"] = 0;
+PATRICKSHADER["63"]["BackgroundColor3"] = Color3.fromRGB(222, 222, 222);
+PATRICKSHADER["63"]["Size"] = UDim2.new(1, 0, 0.10983, 0);
+PATRICKSHADER["63"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["63"]["Name"] = [[searchframe]];
+PATRICKSHADER["63"]["BackgroundTransparency"] = 0.8;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.settings.searchframe.UICorner
-TEST["64"] = Instance.new("UICorner", TEST["63"]);
+PATRICKSHADER["64"] = Instance.new("UICorner", PATRICKSHADER["63"]);
 
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.settings.searchframe.UIStroke
-TEST["65"] = Instance.new("UIStroke", TEST["63"]);
-TEST["65"]["Transparency"] = 0.61;
-TEST["65"]["Color"] = Color3.fromRGB(181, 181, 181);
+PATRICKSHADER["65"] = Instance.new("UIStroke", PATRICKSHADER["63"]);
+PATRICKSHADER["65"]["Transparency"] = 0.61;
+PATRICKSHADER["65"]["Color"] = Color3.fromRGB(181, 181, 181);
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.settings.searchframe.UIListLayout
-TEST["66"] = Instance.new("UIListLayout", TEST["63"]);
-TEST["66"]["Padding"] = UDim.new(0, 2);
-TEST["66"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
-TEST["66"]["FillDirection"] = Enum.FillDirection.Horizontal;
+PATRICKSHADER["66"] = Instance.new("UIListLayout", PATRICKSHADER["63"]);
+PATRICKSHADER["66"]["Padding"] = UDim.new(0, 2);
+PATRICKSHADER["66"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+PATRICKSHADER["66"]["FillDirection"] = Enum.FillDirection.Horizontal;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.settings.searchframe.TextBox
-TEST["67"] = Instance.new("TextBox", TEST["63"]);
-TEST["67"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["67"]["BorderSizePixel"] = 0;
-TEST["67"]["TextWrapped"] = true;
-TEST["67"]["TextSize"] = 14;
-TEST["67"]["TextScaled"] = true;
-TEST["67"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["67"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-TEST["67"]["Size"] = UDim2.new(0.91275, 0, 1, 0);
-TEST["67"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["67"]["Text"] = [[search]];
-TEST["67"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["67"] = Instance.new("TextBox", PATRICKSHADER["63"]);
+PATRICKSHADER["67"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["67"]["BorderSizePixel"] = 0;
+PATRICKSHADER["67"]["TextWrapped"] = true;
+PATRICKSHADER["67"]["TextSize"] = 14;
+PATRICKSHADER["67"]["TextScaled"] = true;
+PATRICKSHADER["67"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["67"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+PATRICKSHADER["67"]["Size"] = UDim2.new(0.91275, 0, 1, 0);
+PATRICKSHADER["67"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["67"]["Text"] = [[search]];
+PATRICKSHADER["67"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.settings.searchframe.ImageButton
-TEST["68"] = Instance.new("ImageButton", TEST["63"]);
-TEST["68"]["BorderSizePixel"] = 0;
-TEST["68"]["ScaleType"] = Enum.ScaleType.Fit;
-TEST["68"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["68"]["LayoutOrder"] = 1;
-TEST["68"]["Image"] = [[http://www.roblox.com/asset/?id=6031154871]];
-TEST["68"]["Size"] = UDim2.new(0.08054, 0, 1, 0);
-TEST["68"]["BackgroundTransparency"] = 1;
-TEST["68"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["68"]["Position"] = UDim2.new(0.91946, 0, 0, 0);
+PATRICKSHADER["68"] = Instance.new("ImageButton", PATRICKSHADER["63"]);
+PATRICKSHADER["68"]["BorderSizePixel"] = 0;
+PATRICKSHADER["68"]["ScaleType"] = Enum.ScaleType.Fit;
+PATRICKSHADER["68"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["68"]["LayoutOrder"] = 1;
+PATRICKSHADER["68"]["Image"] = [[http://www.roblox.com/asset/?id=6031154871]];
+PATRICKSHADER["68"]["Size"] = UDim2.new(0.08054, 0, 1, 0);
+PATRICKSHADER["68"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["68"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["68"]["Position"] = UDim2.new(0.91946, 0, 0, 0);
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.settings.Frame
-TEST["69"] = Instance.new("Frame", TEST["61"]);
-TEST["69"]["BorderSizePixel"] = 0;
-TEST["69"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["69"]["Size"] = UDim2.new(1, 0, 0.90803, 0);
-TEST["69"]["Position"] = UDim2.new(0, 0, 0.12173, 0);
-TEST["69"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["69"]["LayoutOrder"] = 2;
-TEST["69"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["69"] = Instance.new("Frame", PATRICKSHADER["61"]);
+PATRICKSHADER["69"]["BorderSizePixel"] = 0;
+PATRICKSHADER["69"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["69"]["Size"] = UDim2.new(1, 0, 0.90803, 0);
+PATRICKSHADER["69"]["Position"] = UDim2.new(0, 0, 0.12173, 0);
+PATRICKSHADER["69"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["69"]["LayoutOrder"] = 2;
+PATRICKSHADER["69"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.settings.Frame.sc
-TEST["6a"] = Instance.new("ScrollingFrame", TEST["69"]);
-TEST["6a"]["Active"] = true;
-TEST["6a"]["ScrollingDirection"] = Enum.ScrollingDirection.Y;
-TEST["6a"]["BorderSizePixel"] = 0;
-TEST["6a"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["6a"]["Name"] = [[sc]];
-TEST["6a"]["ScrollBarImageTransparency"] = 0.2;
-TEST["6a"]["AutomaticCanvasSize"] = Enum.AutomaticSize.Y;
-TEST["6a"]["Size"] = UDim2.new(1, 0, 0.9854, 0);
-TEST["6a"]["ScrollBarImageColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["6a"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["6a"]["ScrollBarThickness"] = 3;
-TEST["6a"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["6a"] = Instance.new("ScrollingFrame", PATRICKSHADER["69"]);
+PATRICKSHADER["6a"]["Active"] = true;
+PATRICKSHADER["6a"]["ScrollingDirection"] = Enum.ScrollingDirection.Y;
+PATRICKSHADER["6a"]["BorderSizePixel"] = 0;
+PATRICKSHADER["6a"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["6a"]["Name"] = [[sc]];
+PATRICKSHADER["6a"]["ScrollBarImageTransparency"] = 0.2;
+PATRICKSHADER["6a"]["AutomaticCanvasSize"] = Enum.AutomaticSize.Y;
+PATRICKSHADER["6a"]["Size"] = UDim2.new(1, 0, 0.9854, 0);
+PATRICKSHADER["6a"]["ScrollBarImageColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["6a"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["6a"]["ScrollBarThickness"] = 3;
+PATRICKSHADER["6a"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.settings.Frame.sc.UIListLayout
-TEST["6b"] = Instance.new("UIListLayout", TEST["6a"]);
-TEST["6b"]["Padding"] = UDim.new(0, 3);
-TEST["6b"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+PATRICKSHADER["6b"] = Instance.new("UIListLayout", PATRICKSHADER["6a"]);
+PATRICKSHADER["6b"]["Padding"] = UDim.new(0, 3);
+PATRICKSHADER["6b"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.feedback
-TEST["6c"] = Instance.new("Frame", TEST["20"]);
-TEST["6c"]["BorderSizePixel"] = 0;
-TEST["6c"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["6c"]["Size"] = UDim2.new(1, 0, 1.01734, 0);
-TEST["6c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["6c"]["Name"] = [[feedback]];
-TEST["6c"]["LayoutOrder"] = 2;
-TEST["6c"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["6c"] = Instance.new("Frame", PATRICKSHADER["20"]);
+PATRICKSHADER["6c"]["BorderSizePixel"] = 0;
+PATRICKSHADER["6c"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["6c"]["Size"] = UDim2.new(1, 0, 1.01734, 0);
+PATRICKSHADER["6c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["6c"]["Name"] = [[feedback]];
+PATRICKSHADER["6c"]["LayoutOrder"] = 2;
+PATRICKSHADER["6c"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.feedback.UIListLayout
-TEST["6d"] = Instance.new("UIListLayout", TEST["6c"]);
-TEST["6d"]["Padding"] = UDim.new(0, 1);
-TEST["6d"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+PATRICKSHADER["6d"] = Instance.new("UIListLayout", PATRICKSHADER["6c"]);
+PATRICKSHADER["6d"]["Padding"] = UDim.new(0, 1);
+PATRICKSHADER["6d"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.feedback.label
-TEST["6e"] = Instance.new("TextLabel", TEST["6c"]);
-TEST["6e"]["TextWrapped"] = true;
-TEST["6e"]["BorderSizePixel"] = 0;
-TEST["6e"]["TextScaled"] = true;
-TEST["6e"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["6e"]["TextSize"] = 14;
-TEST["6e"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-TEST["6e"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["6e"]["BackgroundTransparency"] = 0.6;
-TEST["6e"]["RichText"] = true;
-TEST["6e"]["Size"] = UDim2.new(1, 0, 0.07568, 0);
-TEST["6e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["6e"]["Text"] = [[Feedback]];
-TEST["6e"]["Name"] = [[label]];
-TEST["6e"]["Position"] = UDim2.new(0, 0, 0.71983, 0);
+PATRICKSHADER["6e"] = Instance.new("TextLabel", PATRICKSHADER["6c"]);
+PATRICKSHADER["6e"]["TextWrapped"] = true;
+PATRICKSHADER["6e"]["BorderSizePixel"] = 0;
+PATRICKSHADER["6e"]["TextScaled"] = true;
+PATRICKSHADER["6e"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["6e"]["TextSize"] = 14;
+PATRICKSHADER["6e"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+PATRICKSHADER["6e"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["6e"]["BackgroundTransparency"] = 0.6;
+PATRICKSHADER["6e"]["RichText"] = true;
+PATRICKSHADER["6e"]["Size"] = UDim2.new(1, 0, 0.07568, 0);
+PATRICKSHADER["6e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["6e"]["Text"] = [[Feedback]];
+PATRICKSHADER["6e"]["Name"] = [[label]];
+PATRICKSHADER["6e"]["Position"] = UDim2.new(0, 0, 0.71983, 0);
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.feedback.label.UIStroke
-TEST["6f"] = Instance.new("UIStroke", TEST["6e"]);
-TEST["6f"]["Transparency"] = 0.61;
-TEST["6f"]["Color"] = Color3.fromRGB(181, 181, 181);
+PATRICKSHADER["6f"] = Instance.new("UIStroke", PATRICKSHADER["6e"]);
+PATRICKSHADER["6f"]["Transparency"] = 0.61;
+PATRICKSHADER["6f"]["Color"] = Color3.fromRGB(181, 181, 181);
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.feedback.label.UICorner
-TEST["70"] = Instance.new("UICorner", TEST["6e"]);
-TEST["70"]["CornerRadius"] = UDim.new(0.3, 0);
+PATRICKSHADER["70"] = Instance.new("UICorner", PATRICKSHADER["6e"]);
+PATRICKSHADER["70"]["CornerRadius"] = UDim.new(0.3, 0);
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.feedback.TextBox
-TEST["71"] = Instance.new("TextBox", TEST["6c"]);
-TEST["71"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["71"]["BorderSizePixel"] = 0;
-TEST["71"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-TEST["71"]["TextWrapped"] = true;
-TEST["71"]["TextSize"] = 14;
-TEST["71"]["TextYAlignment"] = Enum.TextYAlignment.Top;
-TEST["71"]["TextScaled"] = true;
-TEST["71"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["71"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-TEST["71"]["RichText"] = true;
-TEST["71"]["Size"] = UDim2.new(1, 0, 0.72159, 0);
-TEST["71"]["Position"] = UDim2.new(0, 0, 0.08136, 0);
-TEST["71"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["71"]["Text"] = [[]];
-TEST["71"]["BackgroundTransparency"] = 0.5;
+PATRICKSHADER["71"] = Instance.new("TextBox", PATRICKSHADER["6c"]);
+PATRICKSHADER["71"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["71"]["BorderSizePixel"] = 0;
+PATRICKSHADER["71"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+PATRICKSHADER["71"]["TextWrapped"] = true;
+PATRICKSHADER["71"]["TextSize"] = 14;
+PATRICKSHADER["71"]["TextYAlignment"] = Enum.TextYAlignment.Top;
+PATRICKSHADER["71"]["TextScaled"] = true;
+PATRICKSHADER["71"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["71"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+PATRICKSHADER["71"]["RichText"] = true;
+PATRICKSHADER["71"]["Size"] = UDim2.new(1, 0, 0.72159, 0);
+PATRICKSHADER["71"]["Position"] = UDim2.new(0, 0, 0.08136, 0);
+PATRICKSHADER["71"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["71"]["Text"] = [[]];
+PATRICKSHADER["71"]["BackgroundTransparency"] = 0.5;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.feedback.TextBox.UICorner
-TEST["72"] = Instance.new("UICorner", TEST["71"]);
-TEST["72"]["CornerRadius"] = UDim.new(0.05, 0);
+PATRICKSHADER["72"] = Instance.new("UICorner", PATRICKSHADER["71"]);
+PATRICKSHADER["72"]["CornerRadius"] = UDim.new(0.05, 0);
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.feedback.TextBox.UITextSizeConstraint
-TEST["73"] = Instance.new("UITextSizeConstraint", TEST["71"]);
-TEST["73"]["MaxTextSize"] = 15;
+PATRICKSHADER["73"] = Instance.new("UITextSizeConstraint", PATRICKSHADER["71"]);
+PATRICKSHADER["73"]["MaxTextSize"] = 15;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.feedback.send
-TEST["74"] = Instance.new("ImageButton", TEST["6c"]);
-TEST["74"]["BorderSizePixel"] = 0;
-TEST["74"]["ScaleType"] = Enum.ScaleType.Fit;
-TEST["74"]["BackgroundColor3"] = Color3.fromRGB(47, 233, 0);
-TEST["74"]["Image"] = [[http://www.roblox.com/asset/?id=6035067832]];
-TEST["74"]["Size"] = UDim2.new(1, 0, 0.1875, 0);
-TEST["74"]["BackgroundTransparency"] = 0.2;
-TEST["74"]["Name"] = [[send]];
-TEST["74"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["74"]["Position"] = UDim2.new(0, 0, 0.80863, 0);
+PATRICKSHADER["74"] = Instance.new("ImageButton", PATRICKSHADER["6c"]);
+PATRICKSHADER["74"]["BorderSizePixel"] = 0;
+PATRICKSHADER["74"]["ScaleType"] = Enum.ScaleType.Fit;
+PATRICKSHADER["74"]["BackgroundColor3"] = Color3.fromRGB(47, 233, 0);
+PATRICKSHADER["74"]["Image"] = [[http://www.roblox.com/asset/?id=6035067832]];
+PATRICKSHADER["74"]["Size"] = UDim2.new(1, 0, 0.1875, 0);
+PATRICKSHADER["74"]["BackgroundTransparency"] = 0.2;
+PATRICKSHADER["74"]["Name"] = [[send]];
+PATRICKSHADER["74"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["74"]["Position"] = UDim2.new(0, 0, 0.80863, 0);
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.showpage.feedback.send.UICorner
-TEST["75"] = Instance.new("UICorner", TEST["74"]);
-TEST["75"]["CornerRadius"] = UDim.new(0.3, 0);
+PATRICKSHADER["75"] = Instance.new("UICorner", PATRICKSHADER["74"]);
+PATRICKSHADER["75"]["CornerRadius"] = UDim.new(0.3, 0);
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.page
-TEST["76"] = Instance.new("Frame", TEST["1d"]);
-TEST["76"]["BorderSizePixel"] = 0;
-TEST["76"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["76"]["Size"] = UDim2.new(0.27361, 0, 0.99425, 0);
-TEST["76"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["76"]["Name"] = [[page]];
-TEST["76"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["76"] = Instance.new("Frame", PATRICKSHADER["1d"]);
+PATRICKSHADER["76"]["BorderSizePixel"] = 0;
+PATRICKSHADER["76"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["76"]["Size"] = UDim2.new(0.27361, 0, 0.99425, 0);
+PATRICKSHADER["76"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["76"]["Name"] = [[page]];
+PATRICKSHADER["76"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.page.Frame
-TEST["77"] = Instance.new("Frame", TEST["76"]);
-TEST["77"]["BorderSizePixel"] = 0;
-TEST["77"]["BackgroundColor3"] = Color3.fromRGB(162, 162, 162);
-TEST["77"]["Size"] = UDim2.new(0.926, 0, 0.99473, 0);
-TEST["77"]["Position"] = UDim2.new(0.06195, 0, 0, 0);
-TEST["77"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["77"]["BackgroundTransparency"] = 0.85;
+PATRICKSHADER["77"] = Instance.new("Frame", PATRICKSHADER["76"]);
+PATRICKSHADER["77"]["BorderSizePixel"] = 0;
+PATRICKSHADER["77"]["BackgroundColor3"] = Color3.fromRGB(162, 162, 162);
+PATRICKSHADER["77"]["Size"] = UDim2.new(0.926, 0, 0.99473, 0);
+PATRICKSHADER["77"]["Position"] = UDim2.new(0.06195, 0, 0, 0);
+PATRICKSHADER["77"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["77"]["BackgroundTransparency"] = 0.85;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.page.Frame.UICorner
-TEST["78"] = Instance.new("UICorner", TEST["77"]);
+PATRICKSHADER["78"] = Instance.new("UICorner", PATRICKSHADER["77"]);
 
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.page.Frame.UIListLayout
-TEST["79"] = Instance.new("UIListLayout", TEST["77"]);
-TEST["79"]["Padding"] = UDim.new(0, 2);
-TEST["79"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+PATRICKSHADER["79"] = Instance.new("UIListLayout", PATRICKSHADER["77"]);
+PATRICKSHADER["79"]["Padding"] = UDim.new(0, 2);
+PATRICKSHADER["79"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.page.Frame.UIStroke
-TEST["7a"] = Instance.new("UIStroke", TEST["77"]);
-TEST["7a"]["Transparency"] = 0.72;
-TEST["7a"]["Color"] = Color3.fromRGB(181, 181, 181);
+PATRICKSHADER["7a"] = Instance.new("UIStroke", PATRICKSHADER["77"]);
+PATRICKSHADER["7a"]["Transparency"] = 0.72;
+PATRICKSHADER["7a"]["Color"] = Color3.fromRGB(181, 181, 181);
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.page.Frame.sc
-TEST["7b"] = Instance.new("ScrollingFrame", TEST["77"]);
-TEST["7b"]["Active"] = true;
-TEST["7b"]["ScrollingDirection"] = Enum.ScrollingDirection.Y;
-TEST["7b"]["BorderSizePixel"] = 0;
-TEST["7b"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["7b"]["Name"] = [[sc]];
-TEST["7b"]["AutomaticCanvasSize"] = Enum.AutomaticSize.Y;
-TEST["7b"]["Size"] = UDim2.new(0.99115, 0, 1.00578, 0);
-TEST["7b"]["ScrollBarImageColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["7b"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["7b"]["ScrollBarThickness"] = 2;
-TEST["7b"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["7b"] = Instance.new("ScrollingFrame", PATRICKSHADER["77"]);
+PATRICKSHADER["7b"]["Active"] = true;
+PATRICKSHADER["7b"]["ScrollingDirection"] = Enum.ScrollingDirection.Y;
+PATRICKSHADER["7b"]["BorderSizePixel"] = 0;
+PATRICKSHADER["7b"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["7b"]["Name"] = [[sc]];
+PATRICKSHADER["7b"]["AutomaticCanvasSize"] = Enum.AutomaticSize.Y;
+PATRICKSHADER["7b"]["Size"] = UDim2.new(0.99115, 0, 1.00578, 0);
+PATRICKSHADER["7b"]["ScrollBarImageColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["7b"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["7b"]["ScrollBarThickness"] = 2;
+PATRICKSHADER["7b"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.page.Frame.sc.UIListLayout
-TEST["7c"] = Instance.new("UIListLayout", TEST["7b"]);
-TEST["7c"]["Padding"] = UDim.new(0, 2);
-TEST["7c"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+PATRICKSHADER["7c"] = Instance.new("UIListLayout", PATRICKSHADER["7b"]);
+PATRICKSHADER["7c"]["Padding"] = UDim.new(0, 2);
+PATRICKSHADER["7c"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.page.Frame.sc.home
-TEST["7d"] = Instance.new("Frame", TEST["7b"]);
-TEST["7d"]["BorderSizePixel"] = 0;
-TEST["7d"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["7d"]["Size"] = UDim2.new(1, 0, 0.1, 0);
-TEST["7d"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["7d"]["Name"] = [[home]];
-
-
--- StarterGui.pshade.mainmage.main.mainpage.page.Frame.sc.home.UIGradient
-TEST["7e"] = Instance.new("UIGradient", TEST["7d"]);
-TEST["7e"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(2, 125, 255)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(149, 205, 189))};
+PATRICKSHADER["7d"] = Instance.new("Frame", PATRICKSHADER["7b"]);
+PATRICKSHADER["7d"]["BorderSizePixel"] = 0;
+PATRICKSHADER["7d"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["7d"]["Size"] = UDim2.new(1, 0, 0.1, 0);
+PATRICKSHADER["7d"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["7d"]["Name"] = [[home]];
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.page.Frame.sc.home.UICorner
-TEST["7f"] = Instance.new("UICorner", TEST["7d"]);
-TEST["7f"]["CornerRadius"] = UDim.new(1, 0);
+PATRICKSHADER["7e"] = Instance.new("UICorner", PATRICKSHADER["7d"]);
+PATRICKSHADER["7e"]["CornerRadius"] = UDim.new(0.25, 0);
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.page.Frame.sc.home.TextButton
-TEST["80"] = Instance.new("TextButton", TEST["7d"]);
-TEST["80"]["TextWrapped"] = true;
-TEST["80"]["BorderSizePixel"] = 0;
-TEST["80"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-TEST["80"]["TextSize"] = 14;
-TEST["80"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["80"]["TextScaled"] = true;
-TEST["80"]["BackgroundColor3"] = Color3.fromRGB(172, 172, 172);
-TEST["80"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-TEST["80"]["RichText"] = true;
-TEST["80"]["Size"] = UDim2.new(1, 0, 1, 0);
-TEST["80"]["BackgroundTransparency"] = 1;
-TEST["80"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["80"]["Text"] = [[home]];
-TEST["80"]["Position"] = UDim2.new(0.0625, 0, 0, 0);
+PATRICKSHADER["7f"] = Instance.new("TextButton", PATRICKSHADER["7d"]);
+PATRICKSHADER["7f"]["TextWrapped"] = true;
+PATRICKSHADER["7f"]["BorderSizePixel"] = 0;
+PATRICKSHADER["7f"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+PATRICKSHADER["7f"]["TextSize"] = 14;
+PATRICKSHADER["7f"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["7f"]["TextScaled"] = true;
+PATRICKSHADER["7f"]["BackgroundColor3"] = Color3.fromRGB(172, 172, 172);
+PATRICKSHADER["7f"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+PATRICKSHADER["7f"]["RichText"] = true;
+PATRICKSHADER["7f"]["Size"] = UDim2.new(1, 0, 1, 0);
+PATRICKSHADER["7f"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["7f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["7f"]["Text"] = [[home]];
+PATRICKSHADER["7f"]["Position"] = UDim2.new(0.0625, 0, 0, 0);
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.page.Frame.sc.home.UIStroke
-TEST["81"] = Instance.new("UIStroke", TEST["7d"]);
-TEST["81"]["Transparency"] = 0.61;
-TEST["81"]["Color"] = Color3.fromRGB(181, 181, 181);
+PATRICKSHADER["80"] = Instance.new("UIStroke", PATRICKSHADER["7d"]);
+PATRICKSHADER["80"]["Transparency"] = 0.61;
+PATRICKSHADER["80"]["Color"] = Color3.fromRGB(181, 181, 181);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.page.Frame.sc.home.UIGradient
+PATRICKSHADER["81"] = Instance.new("UIGradient", PATRICKSHADER["7d"]);
+PATRICKSHADER["81"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(0, 0, 0)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(123, 123, 123))};
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.page.Frame.sc.sample
-TEST["82"] = Instance.new("Frame", TEST["7b"]);
-TEST["82"]["Visible"] = false;
-TEST["82"]["BorderSizePixel"] = 0;
-TEST["82"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["82"]["Size"] = UDim2.new(1, 0, 0.1, 0);
-TEST["82"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["82"]["Name"] = [[sample]];
-TEST["82"]["BackgroundTransparency"] = 1;
-
-
--- StarterGui.pshade.mainmage.main.mainpage.page.Frame.sc.sample.UIGradient
-TEST["83"] = Instance.new("UIGradient", TEST["82"]);
-TEST["83"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(2, 125, 255)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(149, 205, 189))};
-
-
--- StarterGui.pshade.mainmage.main.mainpage.page.Frame.sc.sample.UICorner
-TEST["84"] = Instance.new("UICorner", TEST["82"]);
-TEST["84"]["CornerRadius"] = UDim.new(1, 0);
+PATRICKSHADER["82"] = Instance.new("Frame", PATRICKSHADER["7b"]);
+PATRICKSHADER["82"]["Visible"] = false;
+PATRICKSHADER["82"]["BorderSizePixel"] = 0;
+PATRICKSHADER["82"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["82"]["Size"] = UDim2.new(1, 0, 0.1, 0);
+PATRICKSHADER["82"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["82"]["Name"] = [[sample]];
+PATRICKSHADER["82"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.page.Frame.sc.sample.TextButton
-TEST["85"] = Instance.new("TextButton", TEST["82"]);
-TEST["85"]["TextWrapped"] = true;
-TEST["85"]["BorderSizePixel"] = 0;
-TEST["85"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-TEST["85"]["TextSize"] = 14;
-TEST["85"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["85"]["TextScaled"] = true;
-TEST["85"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["85"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-TEST["85"]["RichText"] = true;
-TEST["85"]["Size"] = UDim2.new(1, 0, 1, 0);
-TEST["85"]["BackgroundTransparency"] = 1;
-TEST["85"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["85"]["Text"] = [[sample]];
+PATRICKSHADER["83"] = Instance.new("TextButton", PATRICKSHADER["82"]);
+PATRICKSHADER["83"]["TextWrapped"] = true;
+PATRICKSHADER["83"]["BorderSizePixel"] = 0;
+PATRICKSHADER["83"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+PATRICKSHADER["83"]["TextSize"] = 14;
+PATRICKSHADER["83"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["83"]["TextScaled"] = true;
+PATRICKSHADER["83"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["83"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+PATRICKSHADER["83"]["RichText"] = true;
+PATRICKSHADER["83"]["Size"] = UDim2.new(1, 0, 1, 0);
+PATRICKSHADER["83"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["83"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["83"]["Text"] = [[sample]];
 
 
 -- StarterGui.pshade.mainmage.main.mainpage.page.Frame.sc.sample.UIStroke
-TEST["86"] = Instance.new("UIStroke", TEST["82"]);
-TEST["86"]["Transparency"] = 0.61;
-TEST["86"]["Color"] = Color3.fromRGB(181, 181, 181);
+PATRICKSHADER["84"] = Instance.new("UIStroke", PATRICKSHADER["82"]);
+PATRICKSHADER["84"]["Transparency"] = 0.61;
+PATRICKSHADER["84"]["Color"] = Color3.fromRGB(181, 181, 181);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.page.Frame.sc.sample.UICorner
+PATRICKSHADER["85"] = Instance.new("UICorner", PATRICKSHADER["82"]);
+PATRICKSHADER["85"]["CornerRadius"] = UDim.new(0.25, 0);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.page.Frame.sc.sample.UIGradient
+PATRICKSHADER["86"] = Instance.new("UIGradient", PATRICKSHADER["82"]);
+PATRICKSHADER["86"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(0, 0, 0)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(123, 123, 123))};
 
 
 -- StarterGui.pshade.mainmage.main.addtionframe
-TEST["87"] = Instance.new("Frame", TEST["3"]);
-TEST["87"]["BorderSizePixel"] = 0;
-TEST["87"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["87"]["Size"] = UDim2.new(1, 0, 0.13043, 0);
-TEST["87"]["Position"] = UDim2.new(-0, 0, 0.83794, 0);
-TEST["87"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["87"]["Name"] = [[addtionframe]];
-TEST["87"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["87"] = Instance.new("Frame", PATRICKSHADER["3"]);
+PATRICKSHADER["87"]["BorderSizePixel"] = 0;
+PATRICKSHADER["87"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["87"]["Size"] = UDim2.new(1, 0, 0.13043, 0);
+PATRICKSHADER["87"]["Position"] = UDim2.new(-0, 0, 0.83794, 0);
+PATRICKSHADER["87"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["87"]["Name"] = [[addtionframe]];
+PATRICKSHADER["87"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.pshade.mainmage.main.addtionframe.Frame
-TEST["88"] = Instance.new("Frame", TEST["87"]);
-TEST["88"]["BorderSizePixel"] = 0;
-TEST["88"]["BackgroundColor3"] = Color3.fromRGB(136, 136, 136);
-TEST["88"]["Size"] = UDim2.new(0.9661, 0, 0.63636, 0);
-TEST["88"]["Position"] = UDim2.new(0.01695, 0, 0.09091, 0);
-TEST["88"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["88"]["BackgroundTransparency"] = 0.75;
+PATRICKSHADER["88"] = Instance.new("Frame", PATRICKSHADER["87"]);
+PATRICKSHADER["88"]["BorderSizePixel"] = 0;
+PATRICKSHADER["88"]["BackgroundColor3"] = Color3.fromRGB(136, 136, 136);
+PATRICKSHADER["88"]["Size"] = UDim2.new(0.9661, 0, 0.63636, 0);
+PATRICKSHADER["88"]["Position"] = UDim2.new(0.01695, 0, 0.09091, 0);
+PATRICKSHADER["88"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["88"]["BackgroundTransparency"] = 0.75;
 
 
 -- StarterGui.pshade.mainmage.main.addtionframe.Frame.UICorner
-TEST["89"] = Instance.new("UICorner", TEST["88"]);
-TEST["89"]["CornerRadius"] = UDim.new(0.2, 0);
+PATRICKSHADER["89"] = Instance.new("UICorner", PATRICKSHADER["88"]);
+PATRICKSHADER["89"]["CornerRadius"] = UDim.new(0.2, 0);
 
 
 -- StarterGui.pshade.mainmage.main.addtionframe.Frame.UIListLayout
-TEST["8a"] = Instance.new("UIListLayout", TEST["88"]);
-TEST["8a"]["Padding"] = UDim.new(0, 2);
-TEST["8a"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
-TEST["8a"]["FillDirection"] = Enum.FillDirection.Horizontal;
+PATRICKSHADER["8a"] = Instance.new("UIListLayout", PATRICKSHADER["88"]);
+PATRICKSHADER["8a"]["Padding"] = UDim.new(0, 2);
+PATRICKSHADER["8a"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+PATRICKSHADER["8a"]["FillDirection"] = Enum.FillDirection.Horizontal;
 
 
 -- StarterGui.pshade.mainmage.main.addtionframe.Frame.UIStroke
-TEST["8b"] = Instance.new("UIStroke", TEST["88"]);
-TEST["8b"]["Transparency"] = 0.68;
-TEST["8b"]["Color"] = Color3.fromRGB(181, 181, 181);
+PATRICKSHADER["8b"] = Instance.new("UIStroke", PATRICKSHADER["88"]);
+PATRICKSHADER["8b"]["Transparency"] = 0.68;
+PATRICKSHADER["8b"]["Color"] = Color3.fromRGB(181, 181, 181);
 
 
 -- StarterGui.pshade.mainmage.main.addtionframe.Frame.add
-TEST["8c"] = Instance.new("Frame", TEST["88"]);
-TEST["8c"]["BorderSizePixel"] = 0;
-TEST["8c"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["8c"]["Size"] = UDim2.new(0.881, 0, 1.053, 0);
-TEST["8c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["8c"]["Name"] = [[add]];
-TEST["8c"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["8c"] = Instance.new("Frame", PATRICKSHADER["88"]);
+PATRICKSHADER["8c"]["BorderSizePixel"] = 0;
+PATRICKSHADER["8c"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["8c"]["Size"] = UDim2.new(0.881, 0, 1.053, 0);
+PATRICKSHADER["8c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["8c"]["Name"] = [[add]];
+PATRICKSHADER["8c"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.pshade.mainmage.main.addtionframe.Frame.add.sc
-TEST["8d"] = Instance.new("ScrollingFrame", TEST["8c"]);
-TEST["8d"]["Active"] = true;
-TEST["8d"]["ScrollingDirection"] = Enum.ScrollingDirection.X;
-TEST["8d"]["BorderSizePixel"] = 0;
-TEST["8d"]["CanvasSize"] = UDim2.new(2.1, 0, 0, 0);
-TEST["8d"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["8d"]["Name"] = [[sc]];
-TEST["8d"]["ScrollBarImageTransparency"] = 0.28;
-TEST["8d"]["AutomaticCanvasSize"] = Enum.AutomaticSize.X;
-TEST["8d"]["Size"] = UDim2.new(0.98662, 0, 1.05128, 0);
-TEST["8d"]["ScrollBarImageColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["8d"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["8d"]["ScrollBarThickness"] = 3;
-TEST["8d"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["8d"] = Instance.new("ScrollingFrame", PATRICKSHADER["8c"]);
+PATRICKSHADER["8d"]["Active"] = true;
+PATRICKSHADER["8d"]["ScrollingDirection"] = Enum.ScrollingDirection.X;
+PATRICKSHADER["8d"]["BorderSizePixel"] = 0;
+PATRICKSHADER["8d"]["CanvasSize"] = UDim2.new(2.1, 0, 0, 0);
+PATRICKSHADER["8d"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["8d"]["Name"] = [[sc]];
+PATRICKSHADER["8d"]["ScrollBarImageTransparency"] = 0.64;
+PATRICKSHADER["8d"]["AutomaticCanvasSize"] = Enum.AutomaticSize.X;
+PATRICKSHADER["8d"]["Size"] = UDim2.new(0.98662, 0, 1.05128, 0);
+PATRICKSHADER["8d"]["ScrollBarImageColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["8d"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["8d"]["ScrollBarThickness"] = 3;
+PATRICKSHADER["8d"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.pshade.mainmage.main.addtionframe.Frame.add.sc.UIListLayout
-TEST["8e"] = Instance.new("UIListLayout", TEST["8d"]);
-TEST["8e"]["Padding"] = UDim.new(0, 5);
-TEST["8e"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
-TEST["8e"]["FillDirection"] = Enum.FillDirection.Horizontal;
+PATRICKSHADER["8e"] = Instance.new("UIListLayout", PATRICKSHADER["8d"]);
+PATRICKSHADER["8e"]["Padding"] = UDim.new(0, 5);
+PATRICKSHADER["8e"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+PATRICKSHADER["8e"]["FillDirection"] = Enum.FillDirection.Horizontal;
 
 
 -- StarterGui.pshade.mainmage.main.addtionframe.Frame.add.sc.sample
-TEST["8f"] = Instance.new("TextButton", TEST["8d"]);
-TEST["8f"]["TextWrapped"] = true;
-TEST["8f"]["BorderSizePixel"] = 0;
-TEST["8f"]["TextSize"] = 21;
-TEST["8f"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["8f"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["8f"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-TEST["8f"]["RichText"] = true;
-TEST["8f"]["AutomaticSize"] = Enum.AutomaticSize.X;
-TEST["8f"]["Size"] = UDim2.new(0.2, 0, 1, 0);
-TEST["8f"]["BackgroundTransparency"] = 0.85;
-TEST["8f"]["Name"] = [[sample]];
-TEST["8f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["8f"]["Text"] = [[sample]];
-TEST["8f"]["Visible"] = false;
+PATRICKSHADER["8f"] = Instance.new("TextButton", PATRICKSHADER["8d"]);
+PATRICKSHADER["8f"]["TextWrapped"] = true;
+PATRICKSHADER["8f"]["BorderSizePixel"] = 0;
+PATRICKSHADER["8f"]["TextSize"] = 21;
+PATRICKSHADER["8f"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["8f"]["BackgroundColor3"] = Color3.fromRGB(49, 49, 49);
+PATRICKSHADER["8f"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+PATRICKSHADER["8f"]["RichText"] = true;
+PATRICKSHADER["8f"]["AutomaticSize"] = Enum.AutomaticSize.X;
+PATRICKSHADER["8f"]["Size"] = UDim2.new(0.2, 0, 1, 0);
+PATRICKSHADER["8f"]["BackgroundTransparency"] = 0.25;
+PATRICKSHADER["8f"]["Name"] = [[sample]];
+PATRICKSHADER["8f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["8f"]["Text"] = [[sample]];
+PATRICKSHADER["8f"]["Visible"] = false;
 
 
 -- StarterGui.pshade.mainmage.main.addtionframe.Frame.add.sc.sample.UICorner
-TEST["90"] = Instance.new("UICorner", TEST["8f"]);
-TEST["90"]["CornerRadius"] = UDim.new(0.3, 0);
+PATRICKSHADER["90"] = Instance.new("UICorner", PATRICKSHADER["8f"]);
+PATRICKSHADER["90"]["CornerRadius"] = UDim.new(0.3, 0);
 
 
 -- StarterGui.pshade.mainmage.main.addtionframe.Frame.add.sc.sample.UIStroke
-TEST["91"] = Instance.new("UIStroke", TEST["8f"]);
-TEST["91"]["Transparency"] = 0.58;
-TEST["91"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-TEST["91"]["Color"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["91"] = Instance.new("UIStroke", PATRICKSHADER["8f"]);
+PATRICKSHADER["91"]["Transparency"] = 0.58;
+PATRICKSHADER["91"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+PATRICKSHADER["91"]["Color"] = Color3.fromRGB(255, 255, 255);
 
 
 -- StarterGui.pshade.mainmage.main.addtionframe.Frame.toggleshaderframe
-TEST["92"] = Instance.new("Frame", TEST["88"]);
-TEST["92"]["BorderSizePixel"] = 0;
-TEST["92"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["92"]["Size"] = UDim2.new(0.11329, 0, 1, 0);
-TEST["92"]["Position"] = UDim2.new(0.8952, 0, 0, 0);
-TEST["92"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["92"]["Name"] = [[toggleshaderframe]];
-TEST["92"]["BackgroundTransparency"] = 0.85;
+PATRICKSHADER["92"] = Instance.new("Frame", PATRICKSHADER["88"]);
+PATRICKSHADER["92"]["BorderSizePixel"] = 0;
+PATRICKSHADER["92"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["92"]["Size"] = UDim2.new(0.11329, 0, 1, 0);
+PATRICKSHADER["92"]["Position"] = UDim2.new(0.8952, 0, 0, 0);
+PATRICKSHADER["92"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["92"]["Name"] = [[toggleshaderframe]];
+PATRICKSHADER["92"]["BackgroundTransparency"] = 0.85;
 
 
 -- StarterGui.pshade.mainmage.main.addtionframe.Frame.toggleshaderframe.UICorner
-TEST["93"] = Instance.new("UICorner", TEST["92"]);
-TEST["93"]["CornerRadius"] = UDim.new(0.2, 0);
+PATRICKSHADER["93"] = Instance.new("UICorner", PATRICKSHADER["92"]);
+PATRICKSHADER["93"]["CornerRadius"] = UDim.new(0.2, 0);
 
 
 -- StarterGui.pshade.mainmage.main.addtionframe.Frame.toggleshaderframe.UIStroke
-TEST["94"] = Instance.new("UIStroke", TEST["92"]);
-TEST["94"]["Transparency"] = 0.35;
-TEST["94"]["Color"] = Color3.fromRGB(181, 181, 181);
+PATRICKSHADER["94"] = Instance.new("UIStroke", PATRICKSHADER["92"]);
+PATRICKSHADER["94"]["Transparency"] = 0.35;
+PATRICKSHADER["94"]["Color"] = Color3.fromRGB(181, 181, 181);
 
 
 -- StarterGui.pshade.mainmage.main.addtionframe.Frame.toggleshaderframe.handle
-TEST["95"] = Instance.new("ImageButton", TEST["92"]);
-TEST["95"]["BorderSizePixel"] = 0;
-TEST["95"]["ImageTransparency"] = 1;
-TEST["95"]["BackgroundColor3"] = Color3.fromRGB(27, 255, 0);
-TEST["95"]["Image"] = [[rbxasset://textures/ui/GuiImagePlaceholder.png]];
-TEST["95"]["Size"] = UDim2.new(0.48214, 0, 1, 0);
-TEST["95"]["Name"] = [[handle]];
-TEST["95"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["95"]["Position"] = UDim2.new(0.51786, 0, 0, 0);
+PATRICKSHADER["95"] = Instance.new("ImageButton", PATRICKSHADER["92"]);
+PATRICKSHADER["95"]["BorderSizePixel"] = 0;
+PATRICKSHADER["95"]["ImageTransparency"] = 1;
+PATRICKSHADER["95"]["BackgroundColor3"] = Color3.fromRGB(27, 255, 0);
+PATRICKSHADER["95"]["Image"] = [[rbxasset://textures/ui/GuiImagePlaceholder.png]];
+PATRICKSHADER["95"]["Size"] = UDim2.new(0.48214, 0, 1, 0);
+PATRICKSHADER["95"]["Name"] = [[handle]];
+PATRICKSHADER["95"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["95"]["Position"] = UDim2.new(0.51786, 0, 0, 0);
 
 
 -- StarterGui.pshade.mainmage.main.addtionframe.Frame.toggleshaderframe.handle.UICorner
-TEST["96"] = Instance.new("UICorner", TEST["95"]);
-TEST["96"]["CornerRadius"] = UDim.new(0.2, 0);
+PATRICKSHADER["96"] = Instance.new("UICorner", PATRICKSHADER["95"]);
+PATRICKSHADER["96"]["CornerRadius"] = UDim.new(0.2, 0);
 
 
 -- StarterGui.pshade.mainmage.main.propperty sample
-TEST["97"] = Instance.new("Folder", TEST["3"]);
-TEST["97"]["Name"] = [[propperty sample]];
+PATRICKSHADER["97"] = Instance.new("Folder", PATRICKSHADER["3"]);
+PATRICKSHADER["97"]["Name"] = [[propperty sample]];
 
 
 -- StarterGui.pshade.mainmage.main.propperty sample.box
-TEST["98"] = Instance.new("Frame", TEST["97"]);
-TEST["98"]["Visible"] = false;
-TEST["98"]["BorderSizePixel"] = 0;
-TEST["98"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["98"]["Size"] = UDim2.new(1, 0, 0.16, 0);
-TEST["98"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["98"]["Name"] = [[box]];
-TEST["98"]["BackgroundTransparency"] = 0.9;
+PATRICKSHADER["98"] = Instance.new("Frame", PATRICKSHADER["97"]);
+PATRICKSHADER["98"]["Visible"] = false;
+PATRICKSHADER["98"]["BorderSizePixel"] = 0;
+PATRICKSHADER["98"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["98"]["Size"] = UDim2.new(1, 0, 0.16, 0);
+PATRICKSHADER["98"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["98"]["Name"] = [[box]];
+PATRICKSHADER["98"]["BackgroundTransparency"] = 0.9;
 
 
 -- StarterGui.pshade.mainmage.main.propperty sample.box.UICorner
-TEST["99"] = Instance.new("UICorner", TEST["98"]);
-TEST["99"]["CornerRadius"] = UDim.new(0.1, 0);
+PATRICKSHADER["99"] = Instance.new("UICorner", PATRICKSHADER["98"]);
+PATRICKSHADER["99"]["CornerRadius"] = UDim.new(0.1, 0);
 
 
 -- StarterGui.pshade.mainmage.main.propperty sample.box.UIStroke
-TEST["9a"] = Instance.new("UIStroke", TEST["98"]);
-TEST["9a"]["Transparency"] = 0.58;
-TEST["9a"]["Color"] = Color3.fromRGB(181, 181, 181);
+PATRICKSHADER["9a"] = Instance.new("UIStroke", PATRICKSHADER["98"]);
+PATRICKSHADER["9a"]["Transparency"] = 0.58;
+PATRICKSHADER["9a"]["Color"] = Color3.fromRGB(181, 181, 181);
 
 
 -- StarterGui.pshade.mainmage.main.propperty sample.box.ImageLabel
-TEST["9b"] = Instance.new("ImageLabel", TEST["98"]);
-TEST["9b"]["BorderSizePixel"] = 0;
-TEST["9b"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["9b"]["ScaleType"] = Enum.ScaleType.Crop;
-TEST["9b"]["Image"] = [[http://www.roblox.com/asset/?id=6034941708]];
-TEST["9b"]["Size"] = UDim2.new(0.08725, 0, 1, 0);
-TEST["9b"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["9b"]["BackgroundTransparency"] = 0.7;
+PATRICKSHADER["9b"] = Instance.new("ImageLabel", PATRICKSHADER["98"]);
+PATRICKSHADER["9b"]["BorderSizePixel"] = 0;
+PATRICKSHADER["9b"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["9b"]["ScaleType"] = Enum.ScaleType.Crop;
+PATRICKSHADER["9b"]["Image"] = [[http://www.roblox.com/asset/?id=6034941708]];
+PATRICKSHADER["9b"]["Size"] = UDim2.new(0.08725, 0, 1, 0);
+PATRICKSHADER["9b"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["9b"]["BackgroundTransparency"] = 0.7;
 
 
 -- StarterGui.pshade.mainmage.main.propperty sample.box.ImageLabel.UICorner
-TEST["9c"] = Instance.new("UICorner", TEST["9b"]);
-TEST["9c"]["CornerRadius"] = UDim.new(0.3, 0);
+PATRICKSHADER["9c"] = Instance.new("UICorner", PATRICKSHADER["9b"]);
+PATRICKSHADER["9c"]["CornerRadius"] = UDim.new(0.3, 0);
 
 
 -- StarterGui.pshade.mainmage.main.propperty sample.box.UIListLayout
-TEST["9d"] = Instance.new("UIListLayout", TEST["98"]);
-TEST["9d"]["Padding"] = UDim.new(0, 3);
-TEST["9d"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
-TEST["9d"]["FillDirection"] = Enum.FillDirection.Horizontal;
+PATRICKSHADER["9d"] = Instance.new("UIListLayout", PATRICKSHADER["98"]);
+PATRICKSHADER["9d"]["Padding"] = UDim.new(0, 3);
+PATRICKSHADER["9d"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+PATRICKSHADER["9d"]["FillDirection"] = Enum.FillDirection.Horizontal;
 
 
 -- StarterGui.pshade.mainmage.main.propperty sample.box.TextButton
-TEST["9e"] = Instance.new("TextButton", TEST["98"]);
-TEST["9e"]["TextWrapped"] = true;
-TEST["9e"]["BorderSizePixel"] = 0;
-TEST["9e"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-TEST["9e"]["TextSize"] = 14;
-TEST["9e"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["9e"]["TextScaled"] = true;
-TEST["9e"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["9e"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-TEST["9e"]["RichText"] = true;
-TEST["9e"]["Size"] = UDim2.new(0.87919, 0, 1, 0);
-TEST["9e"]["BackgroundTransparency"] = 1;
-TEST["9e"]["LayoutOrder"] = 1;
-TEST["9e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["9e"]["Text"] = [[textbox sample]];
-TEST["9e"]["Position"] = UDim2.new(0.09732, 0, 0, 0);
+PATRICKSHADER["9e"] = Instance.new("TextButton", PATRICKSHADER["98"]);
+PATRICKSHADER["9e"]["TextWrapped"] = true;
+PATRICKSHADER["9e"]["BorderSizePixel"] = 0;
+PATRICKSHADER["9e"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+PATRICKSHADER["9e"]["TextSize"] = 14;
+PATRICKSHADER["9e"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["9e"]["TextScaled"] = true;
+PATRICKSHADER["9e"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["9e"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+PATRICKSHADER["9e"]["RichText"] = true;
+PATRICKSHADER["9e"]["Size"] = UDim2.new(0.87919, 0, 1, 0);
+PATRICKSHADER["9e"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["9e"]["LayoutOrder"] = 1;
+PATRICKSHADER["9e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["9e"]["Text"] = [[textbox sample]];
+PATRICKSHADER["9e"]["Position"] = UDim2.new(0.09732, 0, 0, 0);
 
 
 -- StarterGui.pshade.mainmage.main.propperty sample.box.TextBox
-TEST["9f"] = Instance.new("TextBox", TEST["98"]);
-TEST["9f"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["9f"]["PlaceholderColor3"] = Color3.fromRGB(86, 86, 86);
-TEST["9f"]["BorderSizePixel"] = 0;
-TEST["9f"]["TextWrapped"] = true;
-TEST["9f"]["TextSize"] = 14;
-TEST["9f"]["TextScaled"] = true;
-TEST["9f"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["9f"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-TEST["9f"]["Size"] = UDim2.new(0.163, 0, 1, 0);
-TEST["9f"]["Position"] = UDim2.new(0.09732, 0, 0, 0);
-TEST["9f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["9f"]["BackgroundTransparency"] = 0.5;
+PATRICKSHADER["9f"] = Instance.new("TextBox", PATRICKSHADER["98"]);
+PATRICKSHADER["9f"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["9f"]["PlaceholderColor3"] = Color3.fromRGB(86, 86, 86);
+PATRICKSHADER["9f"]["BorderSizePixel"] = 0;
+PATRICKSHADER["9f"]["TextWrapped"] = true;
+PATRICKSHADER["9f"]["TextSize"] = 14;
+PATRICKSHADER["9f"]["TextScaled"] = true;
+PATRICKSHADER["9f"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["9f"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+PATRICKSHADER["9f"]["Size"] = UDim2.new(0.163, 0, 1, 0);
+PATRICKSHADER["9f"]["Position"] = UDim2.new(0.09732, 0, 0, 0);
+PATRICKSHADER["9f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["9f"]["BackgroundTransparency"] = 0.5;
 
 
 -- StarterGui.pshade.mainmage.main.propperty sample.box.TextBox.UICorner
-TEST["a0"] = Instance.new("UICorner", TEST["9f"]);
-TEST["a0"]["CornerRadius"] = UDim.new(0.3, 0);
+PATRICKSHADER["a0"] = Instance.new("UICorner", PATRICKSHADER["9f"]);
+PATRICKSHADER["a0"]["CornerRadius"] = UDim.new(0.3, 0);
 
 
 -- StarterGui.pshade.mainmage.main.propperty sample.box.TextBox.UIStroke
-TEST["a1"] = Instance.new("UIStroke", TEST["9f"]);
-TEST["a1"]["Transparency"] = 0.56;
-TEST["a1"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-TEST["a1"]["Color"] = Color3.fromRGB(181, 181, 181);
+PATRICKSHADER["a1"] = Instance.new("UIStroke", PATRICKSHADER["9f"]);
+PATRICKSHADER["a1"]["Transparency"] = 0.56;
+PATRICKSHADER["a1"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+PATRICKSHADER["a1"]["Color"] = Color3.fromRGB(181, 181, 181);
 
 
 -- StarterGui.pshade.mainmage.main.propperty sample.button
-TEST["a2"] = Instance.new("Frame", TEST["97"]);
-TEST["a2"]["Visible"] = false;
-TEST["a2"]["BorderSizePixel"] = 0;
-TEST["a2"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["a2"]["Size"] = UDim2.new(1, 0, 0.16, 0);
-TEST["a2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["a2"]["Name"] = [[button]];
-TEST["a2"]["BackgroundTransparency"] = 0.9;
+PATRICKSHADER["a2"] = Instance.new("Frame", PATRICKSHADER["97"]);
+PATRICKSHADER["a2"]["Visible"] = false;
+PATRICKSHADER["a2"]["BorderSizePixel"] = 0;
+PATRICKSHADER["a2"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["a2"]["Size"] = UDim2.new(1, 0, 0.16, 0);
+PATRICKSHADER["a2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["a2"]["Name"] = [[button]];
+PATRICKSHADER["a2"]["BackgroundTransparency"] = 0.9;
 
 
 -- StarterGui.pshade.mainmage.main.propperty sample.button.UICorner
-TEST["a3"] = Instance.new("UICorner", TEST["a2"]);
-TEST["a3"]["CornerRadius"] = UDim.new(0.1, 0);
+PATRICKSHADER["a3"] = Instance.new("UICorner", PATRICKSHADER["a2"]);
+PATRICKSHADER["a3"]["CornerRadius"] = UDim.new(0.1, 0);
 
 
 -- StarterGui.pshade.mainmage.main.propperty sample.button.UIStroke
-TEST["a4"] = Instance.new("UIStroke", TEST["a2"]);
-TEST["a4"]["Transparency"] = 0.58;
-TEST["a4"]["Color"] = Color3.fromRGB(181, 181, 181);
+PATRICKSHADER["a4"] = Instance.new("UIStroke", PATRICKSHADER["a2"]);
+PATRICKSHADER["a4"]["Transparency"] = 0.58;
+PATRICKSHADER["a4"]["Color"] = Color3.fromRGB(181, 181, 181);
 
 
 -- StarterGui.pshade.mainmage.main.propperty sample.button.ImageLabel
-TEST["a5"] = Instance.new("ImageLabel", TEST["a2"]);
-TEST["a5"]["BorderSizePixel"] = 0;
-TEST["a5"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["a5"]["ScaleType"] = Enum.ScaleType.Crop;
-TEST["a5"]["Image"] = [[http://www.roblox.com/asset/?id=6022668955]];
-TEST["a5"]["Size"] = UDim2.new(0.08725, 0, 1, 0);
-TEST["a5"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["a5"]["BackgroundTransparency"] = 0.7;
+PATRICKSHADER["a5"] = Instance.new("ImageLabel", PATRICKSHADER["a2"]);
+PATRICKSHADER["a5"]["BorderSizePixel"] = 0;
+PATRICKSHADER["a5"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["a5"]["ScaleType"] = Enum.ScaleType.Crop;
+PATRICKSHADER["a5"]["Image"] = [[http://www.roblox.com/asset/?id=6022668955]];
+PATRICKSHADER["a5"]["Size"] = UDim2.new(0.08725, 0, 1, 0);
+PATRICKSHADER["a5"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["a5"]["BackgroundTransparency"] = 0.7;
 
 
 -- StarterGui.pshade.mainmage.main.propperty sample.button.ImageLabel.UICorner
-TEST["a6"] = Instance.new("UICorner", TEST["a5"]);
-TEST["a6"]["CornerRadius"] = UDim.new(0.3, 0);
+PATRICKSHADER["a6"] = Instance.new("UICorner", PATRICKSHADER["a5"]);
+PATRICKSHADER["a6"]["CornerRadius"] = UDim.new(0.3, 0);
 
 
 -- StarterGui.pshade.mainmage.main.propperty sample.button.UIListLayout
-TEST["a7"] = Instance.new("UIListLayout", TEST["a2"]);
-TEST["a7"]["Padding"] = UDim.new(0, 3);
-TEST["a7"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
-TEST["a7"]["FillDirection"] = Enum.FillDirection.Horizontal;
+PATRICKSHADER["a7"] = Instance.new("UIListLayout", PATRICKSHADER["a2"]);
+PATRICKSHADER["a7"]["Padding"] = UDim.new(0, 3);
+PATRICKSHADER["a7"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+PATRICKSHADER["a7"]["FillDirection"] = Enum.FillDirection.Horizontal;
 
 
 -- StarterGui.pshade.mainmage.main.propperty sample.button.TextButton
-TEST["a8"] = Instance.new("TextButton", TEST["a2"]);
-TEST["a8"]["TextWrapped"] = true;
-TEST["a8"]["BorderSizePixel"] = 0;
-TEST["a8"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-TEST["a8"]["TextSize"] = 14;
-TEST["a8"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["a8"]["TextScaled"] = true;
-TEST["a8"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["a8"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-TEST["a8"]["RichText"] = true;
-TEST["a8"]["Size"] = UDim2.new(0.87919, 0, 1, 0);
-TEST["a8"]["BackgroundTransparency"] = 1;
-TEST["a8"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["a8"]["Text"] = [[sample button]];
-TEST["a8"]["Position"] = UDim2.new(0.09732, 0, 0, 0);
-
-
--- StarterGui.pshade.mainmage.main.propperty sample.dropdown
-TEST["a9"] = Instance.new("Frame", TEST["97"]);
-TEST["a9"]["Visible"] = false;
-TEST["a9"]["ZIndex"] = 23;
-TEST["a9"]["BorderSizePixel"] = 0;
-TEST["a9"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["a9"]["Size"] = UDim2.new(1, 0, 0.16, 0);
-TEST["a9"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["a9"]["Name"] = [[dropdown]];
-TEST["a9"]["BackgroundTransparency"] = 0.9;
-
-
--- StarterGui.pshade.mainmage.main.propperty sample.dropdown.UIStroke
-TEST["aa"] = Instance.new("UIStroke", TEST["a9"]);
-TEST["aa"]["Transparency"] = 0.58;
-TEST["aa"]["Color"] = Color3.fromRGB(181, 181, 181);
-
-
--- StarterGui.pshade.mainmage.main.propperty sample.dropdown.ImageLabel
-TEST["ab"] = Instance.new("ImageLabel", TEST["a9"]);
-TEST["ab"]["BorderSizePixel"] = 0;
-TEST["ab"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["ab"]["ScaleType"] = Enum.ScaleType.Crop;
-TEST["ab"]["Image"] = [[http://www.roblox.com/asset/?id=6031091004]];
-TEST["ab"]["Size"] = UDim2.new(0.08725, 0, 1, 0);
-TEST["ab"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["ab"]["BackgroundTransparency"] = 0.7;
-
-
--- StarterGui.pshade.mainmage.main.propperty sample.dropdown.ImageLabel.UICorner
-TEST["ac"] = Instance.new("UICorner", TEST["ab"]);
-TEST["ac"]["CornerRadius"] = UDim.new(0.3, 0);
-
-
--- StarterGui.pshade.mainmage.main.propperty sample.dropdown.UIListLayout
-TEST["ad"] = Instance.new("UIListLayout", TEST["a9"]);
-TEST["ad"]["Padding"] = UDim.new(0, 3);
-TEST["ad"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
-TEST["ad"]["FillDirection"] = Enum.FillDirection.Horizontal;
-
-
--- StarterGui.pshade.mainmage.main.propperty sample.dropdown.TextButton
-TEST["ae"] = Instance.new("TextButton", TEST["a9"]);
-TEST["ae"]["TextWrapped"] = true;
-TEST["ae"]["BorderSizePixel"] = 0;
-TEST["ae"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-TEST["ae"]["TextSize"] = 14;
-TEST["ae"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["ae"]["TextScaled"] = true;
-TEST["ae"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["ae"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-TEST["ae"]["RichText"] = true;
-TEST["ae"]["Size"] = UDim2.new(0.36577, 0, 1, 0);
-TEST["ae"]["BackgroundTransparency"] = 1;
-TEST["ae"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["ae"]["Text"] = [[sample dropdown]];
-TEST["ae"]["Position"] = UDim2.new(0.09732, 0, -0, 0);
-
-
--- StarterGui.pshade.mainmage.main.propperty sample.dropdown.drophandle
-TEST["af"] = Instance.new("TextButton", TEST["a9"]);
-TEST["af"]["TextWrapped"] = true;
-TEST["af"]["BorderSizePixel"] = 0;
-TEST["af"]["TextSize"] = 14;
-TEST["af"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["af"]["TextScaled"] = true;
-TEST["af"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["af"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-TEST["af"]["ZIndex"] = 23;
-TEST["af"]["Size"] = UDim2.new(0.52685, 0, 0.99786, 0);
-TEST["af"]["BackgroundTransparency"] = 0.75;
-TEST["af"]["Name"] = [[drophandle]];
-TEST["af"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["af"]["Text"] = [[show]];
-TEST["af"]["Position"] = UDim2.new(0.47315, 0, 0, 0);
-
-
--- StarterGui.pshade.mainmage.main.propperty sample.dropdown.drophandle.UICorner
-TEST["b0"] = Instance.new("UICorner", TEST["af"]);
-TEST["b0"]["CornerRadius"] = UDim.new(0.3, 0);
-
-
--- StarterGui.pshade.mainmage.main.propperty sample.dropdown.drophandle.UIStroke
-TEST["b1"] = Instance.new("UIStroke", TEST["af"]);
-TEST["b1"]["Transparency"] = 0.36;
-TEST["b1"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-TEST["b1"]["Color"] = Color3.fromRGB(181, 181, 181);
-
-
--- StarterGui.pshade.mainmage.main.propperty sample.dropdown.drophandle.Frame
-TEST["b2"] = Instance.new("Frame", TEST["af"]);
-TEST["b2"]["Visible"] = false;
-TEST["b2"]["BorderSizePixel"] = 0;
-TEST["b2"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["b2"]["Size"] = UDim2.new(1, 0, 1.08333, 0);
-TEST["b2"]["Position"] = UDim2.new(0, 0, 1, 0);
-TEST["b2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["b2"]["BackgroundTransparency"] = 1;
-
-
--- StarterGui.pshade.mainmage.main.propperty sample.dropdown.drophandle.Frame.UIListLayout
-TEST["b3"] = Instance.new("UIListLayout", TEST["b2"]);
-TEST["b3"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
-
-
--- StarterGui.pshade.mainmage.main.propperty sample.dropdown.drophandle.Frame.sample
-TEST["b4"] = Instance.new("TextButton", TEST["b2"]);
-TEST["b4"]["TextWrapped"] = true;
-TEST["b4"]["BorderSizePixel"] = 0;
-TEST["b4"]["TextSize"] = 14;
-TEST["b4"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["b4"]["TextScaled"] = true;
-TEST["b4"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["b4"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-TEST["b4"]["RichText"] = true;
-TEST["b4"]["Size"] = UDim2.new(1, 0, 1, 0);
-TEST["b4"]["BackgroundTransparency"] = 0.65;
-TEST["b4"]["Name"] = [[sample]];
-TEST["b4"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["b4"]["Text"] = [[]];
-TEST["b4"]["Visible"] = false;
-
-
--- StarterGui.pshade.mainmage.main.propperty sample.dropdown.drophandle.Frame.sample.TextLabel
-TEST["b5"] = Instance.new("TextLabel", TEST["b4"]);
-TEST["b5"]["TextWrapped"] = true;
-TEST["b5"]["BorderSizePixel"] = 0;
-TEST["b5"]["TextScaled"] = true;
-TEST["b5"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["b5"]["TextSize"] = 14;
-TEST["b5"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-TEST["b5"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["b5"]["BackgroundTransparency"] = 1;
-TEST["b5"]["Size"] = UDim2.new(1, 0, 0.46154, 0);
-TEST["b5"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["b5"]["Text"] = [[sample]];
-TEST["b5"]["Position"] = UDim2.new(0, 0, 0.26923, 0);
-
-
--- StarterGui.pshade.mainmage.main.propperty sample.dropdown.drophandle.Frame.sample.UICorner
-TEST["b6"] = Instance.new("UICorner", TEST["b4"]);
-TEST["b6"]["CornerRadius"] = UDim.new(0.3, 0);
-
-
--- StarterGui.pshade.mainmage.main.propperty sample.dropdown.drophandle.Frame.sample.UIStroke
-TEST["b7"] = Instance.new("UIStroke", TEST["b4"]);
-TEST["b7"]["Transparency"] = 0.36;
-TEST["b7"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-TEST["b7"]["Color"] = Color3.fromRGB(181, 181, 181);
-
-
--- StarterGui.pshade.mainmage.main.propperty sample.dropdown.UICorner
-TEST["b8"] = Instance.new("UICorner", TEST["a9"]);
-TEST["b8"]["CornerRadius"] = UDim.new(0.1, 0);
-
-
--- StarterGui.pshade.mainmage.main.propperty sample.slider
-TEST["b9"] = Instance.new("Frame", TEST["97"]);
-TEST["b9"]["Visible"] = false;
-TEST["b9"]["BorderSizePixel"] = 0;
-TEST["b9"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["b9"]["Size"] = UDim2.new(1, 0, 0.16, 0);
-TEST["b9"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["b9"]["Name"] = [[slider]];
-TEST["b9"]["BackgroundTransparency"] = 0.9;
-
-
--- StarterGui.pshade.mainmage.main.propperty sample.slider.UIStroke
-TEST["ba"] = Instance.new("UIStroke", TEST["b9"]);
-TEST["ba"]["Transparency"] = 0.58;
-TEST["ba"]["Color"] = Color3.fromRGB(181, 181, 181);
-
-
--- StarterGui.pshade.mainmage.main.propperty sample.slider.ImageLabel
-TEST["bb"] = Instance.new("ImageLabel", TEST["b9"]);
-TEST["bb"]["BorderSizePixel"] = 0;
-TEST["bb"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["bb"]["ScaleType"] = Enum.ScaleType.Crop;
-TEST["bb"]["Image"] = [[http://www.roblox.com/asset/?id=6034910907]];
-TEST["bb"]["Size"] = UDim2.new(0.08725, 0, 1, 0);
-TEST["bb"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["bb"]["BackgroundTransparency"] = 0.7;
-
-
--- StarterGui.pshade.mainmage.main.propperty sample.slider.ImageLabel.UICorner
-TEST["bc"] = Instance.new("UICorner", TEST["bb"]);
-TEST["bc"]["CornerRadius"] = UDim.new(0.3, 0);
-
-
--- StarterGui.pshade.mainmage.main.propperty sample.slider.UIListLayout
-TEST["bd"] = Instance.new("UIListLayout", TEST["b9"]);
-TEST["bd"]["Padding"] = UDim.new(0, 3);
-TEST["bd"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
-TEST["bd"]["FillDirection"] = Enum.FillDirection.Horizontal;
-
-
--- StarterGui.pshade.mainmage.main.propperty sample.slider.TextButton
-TEST["be"] = Instance.new("TextButton", TEST["b9"]);
-TEST["be"]["TextWrapped"] = true;
-TEST["be"]["BorderSizePixel"] = 0;
-TEST["be"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-TEST["be"]["TextSize"] = 14;
-TEST["be"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["be"]["TextScaled"] = true;
-TEST["be"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["be"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-TEST["be"]["RichText"] = true;
-TEST["be"]["Size"] = UDim2.new(0.26174, 0, 1, 0);
-TEST["be"]["BackgroundTransparency"] = 1;
-TEST["be"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["be"]["Text"] = [[sample toggle]];
-TEST["be"]["Position"] = UDim2.new(0.09732, 0, 0, 0);
-
-
--- StarterGui.pshade.mainmage.main.propperty sample.slider.num
-TEST["bf"] = Instance.new("TextBox", TEST["b9"]);
-TEST["bf"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["bf"]["BorderSizePixel"] = 0;
-TEST["bf"]["TextWrapped"] = true;
-TEST["bf"]["TextSize"] = 14;
-TEST["bf"]["Name"] = [[num]];
-TEST["bf"]["TextScaled"] = true;
-TEST["bf"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["bf"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-TEST["bf"]["Size"] = UDim2.new(0.09396, 0, 0.99786, 0);
-TEST["bf"]["Position"] = UDim2.new(0.36913, 0, 0, 0);
-TEST["bf"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["bf"]["Text"] = [[0.1]];
-TEST["bf"]["BackgroundTransparency"] = 0.25;
-
-
--- StarterGui.pshade.mainmage.main.propperty sample.slider.num.UICorner
-TEST["c0"] = Instance.new("UICorner", TEST["bf"]);
-TEST["c0"]["CornerRadius"] = UDim.new(0.3, 0);
-
-
--- StarterGui.pshade.mainmage.main.propperty sample.slider.num.UIStroke
-TEST["c1"] = Instance.new("UIStroke", TEST["bf"]);
-TEST["c1"]["Transparency"] = 0.28;
-TEST["c1"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-TEST["c1"]["Thickness"] = 2;
-TEST["c1"]["Color"] = Color3.fromRGB(181, 181, 181);
-
-
--- StarterGui.pshade.mainmage.main.propperty sample.slider.UICorner
-TEST["c2"] = Instance.new("UICorner", TEST["b9"]);
-TEST["c2"]["CornerRadius"] = UDim.new(0.1, 0);
-
-
--- StarterGui.pshade.mainmage.main.propperty sample.slider.Frame
-TEST["c3"] = Instance.new("Frame", TEST["b9"]);
-TEST["c3"]["BorderSizePixel"] = 0;
-TEST["c3"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["c3"]["Size"] = UDim2.new(0.52685, 0, 0.99786, 0);
-TEST["c3"]["Position"] = UDim2.new(0.47315, 0, 0, 0);
-TEST["c3"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["c3"]["BackgroundTransparency"] = 1;
-
-
--- StarterGui.pshade.mainmage.main.propperty sample.slider.Frame.sliderhandle
-TEST["c4"] = Instance.new("Frame", TEST["c3"]);
-TEST["c4"]["ZIndex"] = 3;
-TEST["c4"]["BorderSizePixel"] = 0;
-TEST["c4"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["c4"]["Size"] = UDim2.new(0.8535, 0, 0.25, 0);
-TEST["c4"]["Position"] = UDim2.new(0.0828, 0, 0.375, 0);
-TEST["c4"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["c4"]["Name"] = [[sliderhandle]];
-
-
--- StarterGui.pshade.mainmage.main.propperty sample.slider.Frame.sliderhandle.UICorner
-TEST["c5"] = Instance.new("UICorner", TEST["c4"]);
-TEST["c5"]["CornerRadius"] = UDim.new(0.5, 0);
-
-
--- StarterGui.pshade.mainmage.main.propperty sample.slider.Frame.sliderhandle.drag
-TEST["c6"] = Instance.new("ImageButton", TEST["c4"]);
-TEST["c6"]["BorderSizePixel"] = 0;
-TEST["c6"]["ImageTransparency"] = 1;
-TEST["c6"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["c6"]["Image"] = [[rbxasset://textures/ui/GuiImagePlaceholder.png]];
-TEST["c6"]["Size"] = UDim2.new(0.14925, 0, 4, 0);
-TEST["c6"]["Name"] = [[drag]];
-TEST["c6"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["c6"]["Position"] = UDim2.new(0, 0, -1.5, 0);
-
-
--- StarterGui.pshade.mainmage.main.propperty sample.slider.Frame.sliderhandle.drag.UICorner
-TEST["c7"] = Instance.new("UICorner", TEST["c6"]);
-TEST["c7"]["CornerRadius"] = UDim.new(0.2, 0);
+PATRICKSHADER["a8"] = Instance.new("TextButton", PATRICKSHADER["a2"]);
+PATRICKSHADER["a8"]["TextWrapped"] = true;
+PATRICKSHADER["a8"]["BorderSizePixel"] = 0;
+PATRICKSHADER["a8"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+PATRICKSHADER["a8"]["TextSize"] = 14;
+PATRICKSHADER["a8"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["a8"]["TextScaled"] = true;
+PATRICKSHADER["a8"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["a8"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+PATRICKSHADER["a8"]["RichText"] = true;
+PATRICKSHADER["a8"]["Size"] = UDim2.new(0.87919, 0, 1, 0);
+PATRICKSHADER["a8"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["a8"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["a8"]["Text"] = [[sample button]];
+PATRICKSHADER["a8"]["Position"] = UDim2.new(0.09732, 0, 0, 0);
 
 
 -- StarterGui.pshade.mainmage.main.propperty sample.toggle
-TEST["c8"] = Instance.new("Frame", TEST["97"]);
-TEST["c8"]["Visible"] = false;
-TEST["c8"]["BorderSizePixel"] = 0;
-TEST["c8"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["c8"]["Size"] = UDim2.new(1, 0, 0.16, 0);
-TEST["c8"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["c8"]["Name"] = [[toggle]];
-TEST["c8"]["BackgroundTransparency"] = 0.9;
+PATRICKSHADER["a9"] = Instance.new("Frame", PATRICKSHADER["97"]);
+PATRICKSHADER["a9"]["Visible"] = false;
+PATRICKSHADER["a9"]["BorderSizePixel"] = 0;
+PATRICKSHADER["a9"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["a9"]["Size"] = UDim2.new(1, 0, 0.16, 0);
+PATRICKSHADER["a9"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["a9"]["Name"] = [[toggle]];
+PATRICKSHADER["a9"]["BackgroundTransparency"] = 0.9;
 
 
 -- StarterGui.pshade.mainmage.main.propperty sample.toggle.UICorner
-TEST["c9"] = Instance.new("UICorner", TEST["c8"]);
-TEST["c9"]["CornerRadius"] = UDim.new(0.1, 0);
+PATRICKSHADER["aa"] = Instance.new("UICorner", PATRICKSHADER["a9"]);
+PATRICKSHADER["aa"]["CornerRadius"] = UDim.new(0.1, 0);
 
 
 -- StarterGui.pshade.mainmage.main.propperty sample.toggle.UIStroke
-TEST["ca"] = Instance.new("UIStroke", TEST["c8"]);
-TEST["ca"]["Transparency"] = 0.58;
-TEST["ca"]["Color"] = Color3.fromRGB(181, 181, 181);
+PATRICKSHADER["ab"] = Instance.new("UIStroke", PATRICKSHADER["a9"]);
+PATRICKSHADER["ab"]["Transparency"] = 0.58;
+PATRICKSHADER["ab"]["Color"] = Color3.fromRGB(181, 181, 181);
 
 
 -- StarterGui.pshade.mainmage.main.propperty sample.toggle.ImageLabel
-TEST["cb"] = Instance.new("ImageLabel", TEST["c8"]);
-TEST["cb"]["BorderSizePixel"] = 0;
-TEST["cb"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["cb"]["ScaleType"] = Enum.ScaleType.Crop;
-TEST["cb"]["Image"] = [[http://www.roblox.com/asset/?id=6031068430]];
-TEST["cb"]["Size"] = UDim2.new(0.08725, 0, 1, 0);
-TEST["cb"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["cb"]["BackgroundTransparency"] = 0.7;
+PATRICKSHADER["ac"] = Instance.new("ImageLabel", PATRICKSHADER["a9"]);
+PATRICKSHADER["ac"]["BorderSizePixel"] = 0;
+PATRICKSHADER["ac"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["ac"]["ScaleType"] = Enum.ScaleType.Crop;
+PATRICKSHADER["ac"]["Image"] = [[http://www.roblox.com/asset/?id=6031068430]];
+PATRICKSHADER["ac"]["Size"] = UDim2.new(0.08725, 0, 1, 0);
+PATRICKSHADER["ac"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["ac"]["BackgroundTransparency"] = 0.7;
 
 
 -- StarterGui.pshade.mainmage.main.propperty sample.toggle.ImageLabel.UICorner
-TEST["cc"] = Instance.new("UICorner", TEST["cb"]);
-TEST["cc"]["CornerRadius"] = UDim.new(0.3, 0);
+PATRICKSHADER["ad"] = Instance.new("UICorner", PATRICKSHADER["ac"]);
+PATRICKSHADER["ad"]["CornerRadius"] = UDim.new(0.3, 0);
 
 
 -- StarterGui.pshade.mainmage.main.propperty sample.toggle.UIListLayout
-TEST["cd"] = Instance.new("UIListLayout", TEST["c8"]);
-TEST["cd"]["Padding"] = UDim.new(0, 3);
-TEST["cd"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
-TEST["cd"]["FillDirection"] = Enum.FillDirection.Horizontal;
+PATRICKSHADER["ae"] = Instance.new("UIListLayout", PATRICKSHADER["a9"]);
+PATRICKSHADER["ae"]["Padding"] = UDim.new(0, 3);
+PATRICKSHADER["ae"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+PATRICKSHADER["ae"]["FillDirection"] = Enum.FillDirection.Horizontal;
 
 
 -- StarterGui.pshade.mainmage.main.propperty sample.toggle.TextButton
-TEST["ce"] = Instance.new("TextButton", TEST["c8"]);
-TEST["ce"]["TextWrapped"] = true;
-TEST["ce"]["BorderSizePixel"] = 0;
-TEST["ce"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-TEST["ce"]["TextSize"] = 14;
-TEST["ce"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["ce"]["TextScaled"] = true;
-TEST["ce"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["ce"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-TEST["ce"]["RichText"] = true;
-TEST["ce"]["Size"] = UDim2.new(0.87919, 0, 1, 0);
-TEST["ce"]["BackgroundTransparency"] = 1;
-TEST["ce"]["LayoutOrder"] = 2;
-TEST["ce"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["ce"]["Text"] = [[sample toggle]];
-TEST["ce"]["Position"] = UDim2.new(0.09732, 0, 0, 0);
+PATRICKSHADER["af"] = Instance.new("TextButton", PATRICKSHADER["a9"]);
+PATRICKSHADER["af"]["TextWrapped"] = true;
+PATRICKSHADER["af"]["BorderSizePixel"] = 0;
+PATRICKSHADER["af"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+PATRICKSHADER["af"]["TextSize"] = 14;
+PATRICKSHADER["af"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["af"]["TextScaled"] = true;
+PATRICKSHADER["af"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["af"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+PATRICKSHADER["af"]["RichText"] = true;
+PATRICKSHADER["af"]["Size"] = UDim2.new(0.87919, 0, 1, 0);
+PATRICKSHADER["af"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["af"]["LayoutOrder"] = 2;
+PATRICKSHADER["af"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["af"]["Text"] = [[sample toggle]];
+PATRICKSHADER["af"]["Position"] = UDim2.new(0.09732, 0, 0, 0);
 
 
 -- StarterGui.pshade.mainmage.main.propperty sample.toggle.fhandle
-TEST["cf"] = Instance.new("Frame", TEST["c8"]);
-TEST["cf"]["BorderSizePixel"] = 0;
-TEST["cf"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["cf"]["Size"] = UDim2.new(0.19463, 0, 1.03943, 0);
-TEST["cf"]["Position"] = UDim2.new(0.09732, 0, 0, 0);
-TEST["cf"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["cf"]["Name"] = [[fhandle]];
-TEST["cf"]["BackgroundTransparency"] = 0.5;
+PATRICKSHADER["b0"] = Instance.new("Frame", PATRICKSHADER["a9"]);
+PATRICKSHADER["b0"]["BorderSizePixel"] = 0;
+PATRICKSHADER["b0"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["b0"]["Size"] = UDim2.new(0.19463, 0, 1.03943, 0);
+PATRICKSHADER["b0"]["Position"] = UDim2.new(0.09732, 0, 0, 0);
+PATRICKSHADER["b0"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["b0"]["Name"] = [[fhandle]];
+PATRICKSHADER["b0"]["BackgroundTransparency"] = 0.5;
 
 
 -- StarterGui.pshade.mainmage.main.propperty sample.toggle.fhandle.UICorner
-TEST["d0"] = Instance.new("UICorner", TEST["cf"]);
-TEST["d0"]["CornerRadius"] = UDim.new(0.3, 0);
+PATRICKSHADER["b1"] = Instance.new("UICorner", PATRICKSHADER["b0"]);
+PATRICKSHADER["b1"]["CornerRadius"] = UDim.new(0.3, 0);
 
 
 -- StarterGui.pshade.mainmage.main.propperty sample.toggle.fhandle.UIStroke
-TEST["d1"] = Instance.new("UIStroke", TEST["cf"]);
-TEST["d1"]["Transparency"] = 0.58;
-TEST["d1"]["Color"] = Color3.fromRGB(181, 181, 181);
+PATRICKSHADER["b2"] = Instance.new("UIStroke", PATRICKSHADER["b0"]);
+PATRICKSHADER["b2"]["Transparency"] = 0.58;
+PATRICKSHADER["b2"]["Color"] = Color3.fromRGB(181, 181, 181);
 
 
 -- StarterGui.pshade.mainmage.main.propperty sample.toggle.fhandle.hdl
-TEST["d2"] = Instance.new("ImageButton", TEST["cf"]);
-TEST["d2"]["BorderSizePixel"] = 0;
-TEST["d2"]["ImageTransparency"] = 1;
-TEST["d2"]["BackgroundColor3"] = Color3.fromRGB(255, 0, 0);
-TEST["d2"]["Image"] = [[rbxasset://textures/ui/GuiImagePlaceholder.png]];
-TEST["d2"]["Size"] = UDim2.new(0.5, 0, 1, 0);
-TEST["d2"]["Name"] = [[hdl]];
-TEST["d2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["b3"] = Instance.new("ImageButton", PATRICKSHADER["b0"]);
+PATRICKSHADER["b3"]["BorderSizePixel"] = 0;
+PATRICKSHADER["b3"]["ImageTransparency"] = 1;
+PATRICKSHADER["b3"]["BackgroundColor3"] = Color3.fromRGB(255, 0, 0);
+PATRICKSHADER["b3"]["Image"] = [[rbxasset://textures/ui/GuiImagePlaceholder.png]];
+PATRICKSHADER["b3"]["Size"] = UDim2.new(0.5, 0, 1, 0);
+PATRICKSHADER["b3"]["Name"] = [[hdl]];
+PATRICKSHADER["b3"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 
 
 -- StarterGui.pshade.mainmage.main.propperty sample.toggle.fhandle.hdl.UICorner
-TEST["d3"] = Instance.new("UICorner", TEST["d2"]);
-TEST["d3"]["CornerRadius"] = UDim.new(0.4, 0);
+PATRICKSHADER["b4"] = Instance.new("UICorner", PATRICKSHADER["b3"]);
+PATRICKSHADER["b4"]["CornerRadius"] = UDim.new(0.4, 0);
 
 
 -- StarterGui.pshade.mainmage.main.propperty sample.label
-TEST["d4"] = Instance.new("TextLabel", TEST["97"]);
-TEST["d4"]["TextWrapped"] = true;
-TEST["d4"]["BorderSizePixel"] = 0;
-TEST["d4"]["TextScaled"] = true;
-TEST["d4"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["d4"]["TextSize"] = 14;
-TEST["d4"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-TEST["d4"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["d4"]["BackgroundTransparency"] = 0.6;
-TEST["d4"]["RichText"] = true;
-TEST["d4"]["Size"] = UDim2.new(1, 0, 0.07568, 0);
-TEST["d4"]["Visible"] = false;
-TEST["d4"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["d4"]["Text"] = [[Label sample]];
-TEST["d4"]["Name"] = [[label]];
-TEST["d4"]["Position"] = UDim2.new(0, 0, 0.71983, 0);
+PATRICKSHADER["b5"] = Instance.new("TextLabel", PATRICKSHADER["97"]);
+PATRICKSHADER["b5"]["TextWrapped"] = true;
+PATRICKSHADER["b5"]["BorderSizePixel"] = 0;
+PATRICKSHADER["b5"]["TextScaled"] = true;
+PATRICKSHADER["b5"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["b5"]["TextSize"] = 14;
+PATRICKSHADER["b5"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+PATRICKSHADER["b5"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["b5"]["BackgroundTransparency"] = 0.6;
+PATRICKSHADER["b5"]["RichText"] = true;
+PATRICKSHADER["b5"]["Size"] = UDim2.new(1, 0, 0.07568, 0);
+PATRICKSHADER["b5"]["Visible"] = false;
+PATRICKSHADER["b5"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["b5"]["Text"] = [[Label sample]];
+PATRICKSHADER["b5"]["Name"] = [[label]];
+PATRICKSHADER["b5"]["Position"] = UDim2.new(0, 0, 0.71983, 0);
 
 
 -- StarterGui.pshade.mainmage.main.propperty sample.label.UIStroke
-TEST["d5"] = Instance.new("UIStroke", TEST["d4"]);
-TEST["d5"]["Transparency"] = 0.61;
-TEST["d5"]["Color"] = Color3.fromRGB(181, 181, 181);
+PATRICKSHADER["b6"] = Instance.new("UIStroke", PATRICKSHADER["b5"]);
+PATRICKSHADER["b6"]["Transparency"] = 0.61;
+PATRICKSHADER["b6"]["Color"] = Color3.fromRGB(181, 181, 181);
 
 
 -- StarterGui.pshade.mainmage.main.propperty sample.label.UICorner
-TEST["d6"] = Instance.new("UICorner", TEST["d4"]);
+PATRICKSHADER["b7"] = Instance.new("UICorner", PATRICKSHADER["b5"]);
 
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.slider
+PATRICKSHADER["b8"] = Instance.new("Frame", PATRICKSHADER["97"]);
+PATRICKSHADER["b8"]["Visible"] = false;
+PATRICKSHADER["b8"]["BorderSizePixel"] = 0;
+PATRICKSHADER["b8"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["b8"]["Size"] = UDim2.new(1, 0, 0.16, 0);
+PATRICKSHADER["b8"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["b8"]["Name"] = [[slider]];
+PATRICKSHADER["b8"]["BackgroundTransparency"] = 0.9;
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.slider.UIStroke
+PATRICKSHADER["b9"] = Instance.new("UIStroke", PATRICKSHADER["b8"]);
+PATRICKSHADER["b9"]["Transparency"] = 0.58;
+PATRICKSHADER["b9"]["Color"] = Color3.fromRGB(181, 181, 181);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.slider.ImageLabel
+PATRICKSHADER["ba"] = Instance.new("ImageLabel", PATRICKSHADER["b8"]);
+PATRICKSHADER["ba"]["BorderSizePixel"] = 0;
+PATRICKSHADER["ba"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["ba"]["ScaleType"] = Enum.ScaleType.Crop;
+PATRICKSHADER["ba"]["Image"] = [[http://www.roblox.com/asset/?id=6034910907]];
+PATRICKSHADER["ba"]["Size"] = UDim2.new(0.08725, 0, 1, 0);
+PATRICKSHADER["ba"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["ba"]["BackgroundTransparency"] = 0.7;
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.slider.ImageLabel.UICorner
+PATRICKSHADER["bb"] = Instance.new("UICorner", PATRICKSHADER["ba"]);
+PATRICKSHADER["bb"]["CornerRadius"] = UDim.new(0.3, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.slider.UIListLayout
+PATRICKSHADER["bc"] = Instance.new("UIListLayout", PATRICKSHADER["b8"]);
+PATRICKSHADER["bc"]["Padding"] = UDim.new(0, 3);
+PATRICKSHADER["bc"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+PATRICKSHADER["bc"]["FillDirection"] = Enum.FillDirection.Horizontal;
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.slider.TextButton
+PATRICKSHADER["bd"] = Instance.new("TextButton", PATRICKSHADER["b8"]);
+PATRICKSHADER["bd"]["TextWrapped"] = true;
+PATRICKSHADER["bd"]["BorderSizePixel"] = 0;
+PATRICKSHADER["bd"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+PATRICKSHADER["bd"]["TextSize"] = 14;
+PATRICKSHADER["bd"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["bd"]["TextScaled"] = true;
+PATRICKSHADER["bd"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["bd"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+PATRICKSHADER["bd"]["RichText"] = true;
+PATRICKSHADER["bd"]["Size"] = UDim2.new(0.26174, 0, 1, 0);
+PATRICKSHADER["bd"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["bd"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["bd"]["Text"] = [[sample toggle]];
+PATRICKSHADER["bd"]["Position"] = UDim2.new(0.09732, 0, 0, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.slider.num
+PATRICKSHADER["be"] = Instance.new("TextBox", PATRICKSHADER["b8"]);
+PATRICKSHADER["be"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["be"]["BorderSizePixel"] = 0;
+PATRICKSHADER["be"]["TextWrapped"] = true;
+PATRICKSHADER["be"]["TextSize"] = 14;
+PATRICKSHADER["be"]["Name"] = [[num]];
+PATRICKSHADER["be"]["TextScaled"] = true;
+PATRICKSHADER["be"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["be"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+PATRICKSHADER["be"]["Size"] = UDim2.new(0.09396, 0, 0.99786, 0);
+PATRICKSHADER["be"]["Position"] = UDim2.new(0.36913, 0, 0, 0);
+PATRICKSHADER["be"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["be"]["Text"] = [[0.1]];
+PATRICKSHADER["be"]["BackgroundTransparency"] = 0.3;
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.slider.num.UICorner
+PATRICKSHADER["bf"] = Instance.new("UICorner", PATRICKSHADER["be"]);
+PATRICKSHADER["bf"]["CornerRadius"] = UDim.new(0.3, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.slider.num.UIStroke
+PATRICKSHADER["c0"] = Instance.new("UIStroke", PATRICKSHADER["be"]);
+PATRICKSHADER["c0"]["Transparency"] = 0.28;
+PATRICKSHADER["c0"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+PATRICKSHADER["c0"]["Thickness"] = 2;
+PATRICKSHADER["c0"]["Color"] = Color3.fromRGB(181, 181, 181);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.slider.UICorner
+PATRICKSHADER["c1"] = Instance.new("UICorner", PATRICKSHADER["b8"]);
+PATRICKSHADER["c1"]["CornerRadius"] = UDim.new(0.1, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.slider.Frame
+PATRICKSHADER["c2"] = Instance.new("Frame", PATRICKSHADER["b8"]);
+PATRICKSHADER["c2"]["BorderSizePixel"] = 0;
+PATRICKSHADER["c2"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["c2"]["Size"] = UDim2.new(0.52685, 0, 0.99786, 0);
+PATRICKSHADER["c2"]["Position"] = UDim2.new(0.47315, 0, 0, 0);
+PATRICKSHADER["c2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["c2"]["BackgroundTransparency"] = 1;
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.slider.Frame.sliderhandle
+PATRICKSHADER["c3"] = Instance.new("Frame", PATRICKSHADER["c2"]);
+PATRICKSHADER["c3"]["ZIndex"] = 3;
+PATRICKSHADER["c3"]["BorderSizePixel"] = 0;
+PATRICKSHADER["c3"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["c3"]["Size"] = UDim2.new(0.7624, 0, 0.20894, 0);
+PATRICKSHADER["c3"]["Position"] = UDim2.new(0.0828, 0, 0.41606, 0);
+PATRICKSHADER["c3"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["c3"]["Name"] = [[sliderhandle]];
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.slider.Frame.sliderhandle.UICorner
+PATRICKSHADER["c4"] = Instance.new("UICorner", PATRICKSHADER["c3"]);
+PATRICKSHADER["c4"]["CornerRadius"] = UDim.new(0.7, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.slider.Frame.sliderhandle.drag
+PATRICKSHADER["c5"] = Instance.new("ImageButton", PATRICKSHADER["c3"]);
+PATRICKSHADER["c5"]["BorderSizePixel"] = 0;
+PATRICKSHADER["c5"]["ImageTransparency"] = 1;
+PATRICKSHADER["c5"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["c5"]["Image"] = [[rbxasset://textures/ui/GuiImagePlaceholder.png]];
+PATRICKSHADER["c5"]["Size"] = UDim2.new(0.14925, 0, 4, 0);
+PATRICKSHADER["c5"]["Name"] = [[drag]];
+PATRICKSHADER["c5"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["c5"]["Position"] = UDim2.new(0, 0, -1.5, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.slider.Frame.sliderhandle.drag.UICorner
+PATRICKSHADER["c6"] = Instance.new("UICorner", PATRICKSHADER["c5"]);
+PATRICKSHADER["c6"]["CornerRadius"] = UDim.new(0.2, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.dropdown
+PATRICKSHADER["c7"] = Instance.new("Frame", PATRICKSHADER["97"]);
+PATRICKSHADER["c7"]["Visible"] = false;
+PATRICKSHADER["c7"]["ZIndex"] = 23;
+PATRICKSHADER["c7"]["BorderSizePixel"] = 0;
+PATRICKSHADER["c7"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["c7"]["Size"] = UDim2.new(1, 0, 0.16, 0);
+PATRICKSHADER["c7"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["c7"]["Name"] = [[dropdown]];
+PATRICKSHADER["c7"]["BackgroundTransparency"] = 0.9;
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.dropdown.UIStroke
+PATRICKSHADER["c8"] = Instance.new("UIStroke", PATRICKSHADER["c7"]);
+PATRICKSHADER["c8"]["Transparency"] = 0.58;
+PATRICKSHADER["c8"]["Color"] = Color3.fromRGB(181, 181, 181);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.dropdown.ImageLabel
+PATRICKSHADER["c9"] = Instance.new("ImageLabel", PATRICKSHADER["c7"]);
+PATRICKSHADER["c9"]["BorderSizePixel"] = 0;
+PATRICKSHADER["c9"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["c9"]["ScaleType"] = Enum.ScaleType.Crop;
+PATRICKSHADER["c9"]["Image"] = [[http://www.roblox.com/asset/?id=6031091004]];
+PATRICKSHADER["c9"]["Size"] = UDim2.new(0.08725, 0, 1, 0);
+PATRICKSHADER["c9"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["c9"]["BackgroundTransparency"] = 0.7;
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.dropdown.ImageLabel.UICorner
+PATRICKSHADER["ca"] = Instance.new("UICorner", PATRICKSHADER["c9"]);
+PATRICKSHADER["ca"]["CornerRadius"] = UDim.new(0.3, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.dropdown.UIListLayout
+PATRICKSHADER["cb"] = Instance.new("UIListLayout", PATRICKSHADER["c7"]);
+PATRICKSHADER["cb"]["Padding"] = UDim.new(0, 3);
+PATRICKSHADER["cb"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+PATRICKSHADER["cb"]["FillDirection"] = Enum.FillDirection.Horizontal;
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.dropdown.TextButton
+PATRICKSHADER["cc"] = Instance.new("TextButton", PATRICKSHADER["c7"]);
+PATRICKSHADER["cc"]["TextWrapped"] = true;
+PATRICKSHADER["cc"]["BorderSizePixel"] = 0;
+PATRICKSHADER["cc"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+PATRICKSHADER["cc"]["TextSize"] = 14;
+PATRICKSHADER["cc"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["cc"]["TextScaled"] = true;
+PATRICKSHADER["cc"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["cc"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+PATRICKSHADER["cc"]["RichText"] = true;
+PATRICKSHADER["cc"]["Size"] = UDim2.new(0.36577, 0, 1, 0);
+PATRICKSHADER["cc"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["cc"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["cc"]["Text"] = [[sample dropdown]];
+PATRICKSHADER["cc"]["Position"] = UDim2.new(0.09732, 0, -0, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.dropdown.drophandle
+PATRICKSHADER["cd"] = Instance.new("TextButton", PATRICKSHADER["c7"]);
+PATRICKSHADER["cd"]["TextWrapped"] = true;
+PATRICKSHADER["cd"]["BorderSizePixel"] = 0;
+PATRICKSHADER["cd"]["TextSize"] = 14;
+PATRICKSHADER["cd"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["cd"]["TextScaled"] = true;
+PATRICKSHADER["cd"]["BackgroundColor3"] = Color3.fromRGB(46, 46, 46);
+PATRICKSHADER["cd"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+PATRICKSHADER["cd"]["ZIndex"] = 23;
+PATRICKSHADER["cd"]["Size"] = UDim2.new(0.52685, 0, 0.99786, 0);
+PATRICKSHADER["cd"]["BackgroundTransparency"] = 0.75;
+PATRICKSHADER["cd"]["Name"] = [[drophandle]];
+PATRICKSHADER["cd"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["cd"]["Text"] = [[show]];
+PATRICKSHADER["cd"]["Position"] = UDim2.new(0.47315, 0, 0, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.dropdown.drophandle.UICorner
+PATRICKSHADER["ce"] = Instance.new("UICorner", PATRICKSHADER["cd"]);
+PATRICKSHADER["ce"]["CornerRadius"] = UDim.new(0.3, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.dropdown.drophandle.UIStroke
+PATRICKSHADER["cf"] = Instance.new("UIStroke", PATRICKSHADER["cd"]);
+PATRICKSHADER["cf"]["Transparency"] = 0.36;
+PATRICKSHADER["cf"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+PATRICKSHADER["cf"]["Color"] = Color3.fromRGB(181, 181, 181);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.dropdown.drophandle.Frame
+PATRICKSHADER["d0"] = Instance.new("Frame", PATRICKSHADER["cd"]);
+PATRICKSHADER["d0"]["Visible"] = false;
+PATRICKSHADER["d0"]["BorderSizePixel"] = 0;
+PATRICKSHADER["d0"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["d0"]["Size"] = UDim2.new(1, 0, 1.08333, 0);
+PATRICKSHADER["d0"]["Position"] = UDim2.new(0, 0, 1, 0);
+PATRICKSHADER["d0"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["d0"]["BackgroundTransparency"] = 1;
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.dropdown.drophandle.Frame.UIListLayout
+PATRICKSHADER["d1"] = Instance.new("UIListLayout", PATRICKSHADER["d0"]);
+PATRICKSHADER["d1"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.dropdown.drophandle.Frame.sample
+PATRICKSHADER["d2"] = Instance.new("TextButton", PATRICKSHADER["d0"]);
+PATRICKSHADER["d2"]["TextWrapped"] = true;
+PATRICKSHADER["d2"]["BorderSizePixel"] = 0;
+PATRICKSHADER["d2"]["TextSize"] = 14;
+PATRICKSHADER["d2"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["d2"]["TextScaled"] = true;
+PATRICKSHADER["d2"]["BackgroundColor3"] = Color3.fromRGB(57, 57, 57);
+PATRICKSHADER["d2"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+PATRICKSHADER["d2"]["RichText"] = true;
+PATRICKSHADER["d2"]["Size"] = UDim2.new(1, 0, 1, 0);
+PATRICKSHADER["d2"]["BackgroundTransparency"] = 0.65;
+PATRICKSHADER["d2"]["Name"] = [[sample]];
+PATRICKSHADER["d2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["d2"]["Text"] = [[]];
+PATRICKSHADER["d2"]["Visible"] = false;
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.dropdown.drophandle.Frame.sample.TextLabel
+PATRICKSHADER["d3"] = Instance.new("TextLabel", PATRICKSHADER["d2"]);
+PATRICKSHADER["d3"]["TextWrapped"] = true;
+PATRICKSHADER["d3"]["BorderSizePixel"] = 0;
+PATRICKSHADER["d3"]["TextScaled"] = true;
+PATRICKSHADER["d3"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["d3"]["TextSize"] = 14;
+PATRICKSHADER["d3"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+PATRICKSHADER["d3"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["d3"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["d3"]["Size"] = UDim2.new(1, 0, 0.46154, 0);
+PATRICKSHADER["d3"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["d3"]["Text"] = [[sample]];
+PATRICKSHADER["d3"]["Position"] = UDim2.new(0, 0, 0.26923, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.dropdown.drophandle.Frame.sample.UICorner
+PATRICKSHADER["d4"] = Instance.new("UICorner", PATRICKSHADER["d2"]);
+PATRICKSHADER["d4"]["CornerRadius"] = UDim.new(0.3, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.dropdown.drophandle.Frame.sample.UIStroke
+PATRICKSHADER["d5"] = Instance.new("UIStroke", PATRICKSHADER["d2"]);
+PATRICKSHADER["d5"]["Transparency"] = 0.36;
+PATRICKSHADER["d5"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+PATRICKSHADER["d5"]["Color"] = Color3.fromRGB(181, 181, 181);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.dropdown.UICorner
+PATRICKSHADER["d6"] = Instance.new("UICorner", PATRICKSHADER["c7"]);
+PATRICKSHADER["d6"]["CornerRadius"] = UDim.new(0.1, 0);
 
 
 -- StarterGui.pshade.mainmage.UIAspectRatioConstraint
-TEST["d7"] = Instance.new("UIAspectRatioConstraint", TEST["2"]);
-TEST["d7"]["AspectRatio"] = 1.59341;
+PATRICKSHADER["d7"] = Instance.new("UIAspectRatioConstraint", PATRICKSHADER["2"]);
+PATRICKSHADER["d7"]["AspectRatio"] = 1.59341;
 
 
 -- StarterGui.pshade.dark
-TEST["d8"] = Instance.new("Frame", TEST["1"]);
-TEST["d8"]["Visible"] = false;
-TEST["d8"]["ZIndex"] = -1;
-TEST["d8"]["BorderSizePixel"] = 0;
-TEST["d8"]["BackgroundColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["d8"]["Size"] = UDim2.new(1, 0, 1, 0);
-TEST["d8"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["d8"]["Name"] = [[dark]];
-TEST["d8"]["BackgroundTransparency"] = 0.7;
+PATRICKSHADER["d8"] = Instance.new("Frame", PATRICKSHADER["1"]);
+PATRICKSHADER["d8"]["Visible"] = false;
+PATRICKSHADER["d8"]["ZIndex"] = -1;
+PATRICKSHADER["d8"]["BorderSizePixel"] = 0;
+PATRICKSHADER["d8"]["BackgroundColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["d8"]["Size"] = UDim2.new(1, 0, 1, 0);
+PATRICKSHADER["d8"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["d8"]["Name"] = [[dark]];
+PATRICKSHADER["d8"]["BackgroundTransparency"] = 0.7;
 
 
 -- StarterGui.pshade.colorvalue
-TEST["d9"] = Instance.new("Color3Value", TEST["1"]);
-TEST["d9"]["Name"] = [[colorvalue]];
-TEST["d9"]["Value"] = Color3.fromRGB(0, 252, 255);
+PATRICKSHADER["d9"] = Instance.new("Color3Value", PATRICKSHADER["1"]);
+PATRICKSHADER["d9"]["Name"] = [[colorvalue]];
+PATRICKSHADER["d9"]["Value"] = Color3.fromRGB(21, 6, 176);
 
 
 -- StarterGui.pshade.click
-TEST["da"] = Instance.new("Sound", TEST["1"]);
-TEST["da"]["Name"] = [[click]];
-TEST["da"]["SoundId"] = [[rbxassetid://876939830]];
+PATRICKSHADER["da"] = Instance.new("Sound", PATRICKSHADER["1"]);
+PATRICKSHADER["da"]["Name"] = [[click]];
+PATRICKSHADER["da"]["SoundId"] = [[rbxassetid://876939830]];
 
 
 -- StarterGui.pshade.clicking
-TEST["db"] = Instance.new("Sound", TEST["1"]);
-TEST["db"]["Name"] = [[clicking]];
-TEST["db"]["SoundId"] = [[rbxassetid://4499400560]];
+PATRICKSHADER["db"] = Instance.new("Sound", PATRICKSHADER["1"]);
+PATRICKSHADER["db"]["Name"] = [[clicking]];
+PATRICKSHADER["db"]["SoundId"] = [[rbxassetid://4499400560]];
 
 
 -- StarterGui.pshade.icon
-TEST["dc"] = Instance.new("Frame", TEST["1"]);
-TEST["dc"]["Visible"] = false;
-TEST["dc"]["BorderSizePixel"] = 0;
-TEST["dc"]["BackgroundColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["dc"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
-TEST["dc"]["Size"] = UDim2.new(0.05362, 0, 0.0874, 0);
-TEST["dc"]["Position"] = UDim2.new(0.12469, 0, 0.18293, 0);
-TEST["dc"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["dc"]["Name"] = [[icon]];
-TEST["dc"]["BackgroundTransparency"] = 0.55;
+PATRICKSHADER["dc"] = Instance.new("Frame", PATRICKSHADER["1"]);
+PATRICKSHADER["dc"]["Visible"] = false;
+PATRICKSHADER["dc"]["BorderSizePixel"] = 0;
+PATRICKSHADER["dc"]["BackgroundColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["dc"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+PATRICKSHADER["dc"]["Size"] = UDim2.new(0.05362, 0, 0.0874, 0);
+PATRICKSHADER["dc"]["Position"] = UDim2.new(0.12469, 0, 0.18293, 0);
+PATRICKSHADER["dc"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["dc"]["Name"] = [[icon]];
+PATRICKSHADER["dc"]["BackgroundTransparency"] = 0.55;
 
 
 -- StarterGui.pshade.icon.UICorner
-TEST["dd"] = Instance.new("UICorner", TEST["dc"]);
-TEST["dd"]["CornerRadius"] = UDim.new(1, 0);
+PATRICKSHADER["dd"] = Instance.new("UICorner", PATRICKSHADER["dc"]);
+PATRICKSHADER["dd"]["CornerRadius"] = UDim.new(1, 0);
 
 
 -- StarterGui.pshade.icon.button
-TEST["de"] = Instance.new("ImageButton", TEST["dc"]);
-TEST["de"]["BorderSizePixel"] = 0;
-TEST["de"]["ScaleType"] = Enum.ScaleType.Fit;
-TEST["de"]["ImageTransparency"] = 1;
-TEST["de"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["de"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
-TEST["de"]["Image"] = [[rbxasset://textures/ui/GuiImagePlaceholder.png]];
-TEST["de"]["Size"] = UDim2.new(0.72093, 0, 0.72093, 0);
-TEST["de"]["BackgroundTransparency"] = 0.2;
-TEST["de"]["Name"] = [[button]];
-TEST["de"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["de"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+PATRICKSHADER["de"] = Instance.new("ImageButton", PATRICKSHADER["dc"]);
+PATRICKSHADER["de"]["BorderSizePixel"] = 0;
+PATRICKSHADER["de"]["ScaleType"] = Enum.ScaleType.Fit;
+PATRICKSHADER["de"]["ImageTransparency"] = 1;
+PATRICKSHADER["de"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["de"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+PATRICKSHADER["de"]["Image"] = [[rbxasset://textures/ui/GuiImagePlaceholder.png]];
+PATRICKSHADER["de"]["Size"] = UDim2.new(0.72093, 0, 0.72093, 0);
+PATRICKSHADER["de"]["BackgroundTransparency"] = 0.2;
+PATRICKSHADER["de"]["Name"] = [[button]];
+PATRICKSHADER["de"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["de"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
 
 
 -- StarterGui.pshade.icon.button.UICorner
-TEST["df"] = Instance.new("UICorner", TEST["de"]);
-TEST["df"]["CornerRadius"] = UDim.new(1, 0);
+PATRICKSHADER["df"] = Instance.new("UICorner", PATRICKSHADER["de"]);
+PATRICKSHADER["df"]["CornerRadius"] = UDim.new(1, 0);
 
 
 -- StarterGui.pshade.icon.UIAspectRatioConstraint
-TEST["e0"] = Instance.new("UIAspectRatioConstraint", TEST["dc"]);
+PATRICKSHADER["e0"] = Instance.new("UIAspectRatioConstraint", PATRICKSHADER["dc"]);
 
 
 
 -- StarterGui.pshade.icon.UIStroke
-TEST["e1"] = Instance.new("UIStroke", TEST["dc"]);
-TEST["e1"]["Color"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["e1"] = Instance.new("UIStroke", PATRICKSHADER["dc"]);
+PATRICKSHADER["e1"]["Color"] = Color3.fromRGB(255, 255, 255);
 
 
 -- StarterGui.pshade.notif
-TEST["e2"] = Instance.new("ImageLabel", TEST["1"]);
-TEST["e2"]["BorderSizePixel"] = 0;
-TEST["e2"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["e2"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
-TEST["e2"]["Image"] = [[http://www.roblox.com/asset/?id=132323855237547]];
-TEST["e2"]["Size"] = UDim2.new(0.512, 0, 0.118, 0);
-TEST["e2"]["Visible"] = false;
-TEST["e2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["e2"]["BackgroundTransparency"] = 1;
-TEST["e2"]["Name"] = [[notif]];
-TEST["e2"]["Position"] = UDim2.new(0.5, 0, 0.15, 0);
+PATRICKSHADER["e2"] = Instance.new("ImageLabel", PATRICKSHADER["1"]);
+PATRICKSHADER["e2"]["BorderSizePixel"] = 0;
+PATRICKSHADER["e2"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["e2"]["ImageTransparency"] = 0.36;
+PATRICKSHADER["e2"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+PATRICKSHADER["e2"]["Image"] = [[rbxassetid://72978449934552]];
+PATRICKSHADER["e2"]["Size"] = UDim2.new(0.512, 0, 0.118, 0);
+PATRICKSHADER["e2"]["Visible"] = false;
+PATRICKSHADER["e2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["e2"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["e2"]["Name"] = [[notif]];
+PATRICKSHADER["e2"]["Position"] = UDim2.new(0.5, 0, 0.15, 0);
 
 
 -- StarterGui.pshade.notif.UIAspectRatioConstraint
-TEST["e3"] = Instance.new("UIAspectRatioConstraint", TEST["e2"]);
-TEST["e3"]["AspectRatio"] = 7.08621;
+PATRICKSHADER["e3"] = Instance.new("UIAspectRatioConstraint", PATRICKSHADER["e2"]);
+PATRICKSHADER["e3"]["AspectRatio"] = 7.08621;
 
 
 -- StarterGui.pshade.notif.UICorner
-TEST["e4"] = Instance.new("UICorner", TEST["e2"]);
-TEST["e4"]["CornerRadius"] = UDim.new(0.1, 0);
+PATRICKSHADER["e4"] = Instance.new("UICorner", PATRICKSHADER["e2"]);
+PATRICKSHADER["e4"]["CornerRadius"] = UDim.new(0.1, 0);
 
 
 -- StarterGui.pshade.notif.UIListLayout
-TEST["e5"] = Instance.new("UIListLayout", TEST["e2"]);
-TEST["e5"]["Padding"] = UDim.new(0.01, 0);
-TEST["e5"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
-TEST["e5"]["FillDirection"] = Enum.FillDirection.Horizontal;
+PATRICKSHADER["e5"] = Instance.new("UIListLayout", PATRICKSHADER["e2"]);
+PATRICKSHADER["e5"]["Padding"] = UDim.new(0.01, 0);
+PATRICKSHADER["e5"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+PATRICKSHADER["e5"]["FillDirection"] = Enum.FillDirection.Horizontal;
 
 
 -- StarterGui.pshade.notif.image
-TEST["e6"] = Instance.new("ImageLabel", TEST["e2"]);
-TEST["e6"]["BorderSizePixel"] = 0;
-TEST["e6"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["e6"]["ScaleType"] = Enum.ScaleType.Fit;
-TEST["e6"]["Image"] = [[http://www.roblox.com/asset/?id=6034308946]];
-TEST["e6"]["Size"] = UDim2.new(0.14112, 0, 1, 0);
-TEST["e6"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["e6"]["BackgroundTransparency"] = 1;
-TEST["e6"]["Name"] = [[image]];
+PATRICKSHADER["e6"] = Instance.new("ImageLabel", PATRICKSHADER["e2"]);
+PATRICKSHADER["e6"]["BorderSizePixel"] = 0;
+PATRICKSHADER["e6"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["e6"]["ScaleType"] = Enum.ScaleType.Fit;
+PATRICKSHADER["e6"]["Image"] = [[http://www.roblox.com/asset/?id=6034308946]];
+PATRICKSHADER["e6"]["Size"] = UDim2.new(0.14112, 0, 1, 0);
+PATRICKSHADER["e6"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["e6"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["e6"]["Name"] = [[image]];
 
 
 -- StarterGui.pshade.notif.title
-TEST["e7"] = Instance.new("TextLabel", TEST["e2"]);
-TEST["e7"]["TextWrapped"] = true;
-TEST["e7"]["BorderSizePixel"] = 0;
-TEST["e7"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-TEST["e7"]["TextYAlignment"] = Enum.TextYAlignment.Top;
-TEST["e7"]["TextScaled"] = true;
-TEST["e7"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["e7"]["TextSize"] = 21;
-TEST["e7"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-TEST["e7"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-TEST["e7"]["BackgroundTransparency"] = 1;
-TEST["e7"]["RichText"] = true;
-TEST["e7"]["Size"] = UDim2.new(0.84672, 0, 1, 0);
-TEST["e7"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-TEST["e7"]["Text"] = [[sample]];
-TEST["e7"]["Name"] = [[title]];
-TEST["e7"]["Position"] = UDim2.new(0.15112, 0, 0, 0);
+PATRICKSHADER["e7"] = Instance.new("TextLabel", PATRICKSHADER["e2"]);
+PATRICKSHADER["e7"]["TextWrapped"] = true;
+PATRICKSHADER["e7"]["BorderSizePixel"] = 0;
+PATRICKSHADER["e7"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+PATRICKSHADER["e7"]["TextYAlignment"] = Enum.TextYAlignment.Top;
+PATRICKSHADER["e7"]["TextScaled"] = true;
+PATRICKSHADER["e7"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["e7"]["TextSize"] = 21;
+PATRICKSHADER["e7"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+PATRICKSHADER["e7"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["e7"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["e7"]["RichText"] = true;
+PATRICKSHADER["e7"]["Size"] = UDim2.new(0.84672, 0, 1, 0);
+PATRICKSHADER["e7"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["e7"]["Text"] = [[sample]];
+PATRICKSHADER["e7"]["Name"] = [[title]];
+PATRICKSHADER["e7"]["Position"] = UDim2.new(0.15112, 0, 0, 0);
 
 
 -- StarterGui.pshade.notif.title.UITextSizeConstraint
-TEST["e8"] = Instance.new("UITextSizeConstraint", TEST["e7"]);
-TEST["e8"]["MaxTextSize"] = 21;
+PATRICKSHADER["e8"] = Instance.new("UITextSizeConstraint", PATRICKSHADER["e7"]);
+PATRICKSHADER["e8"]["MaxTextSize"] = 21;
+
+
+-- StarterGui.pshade.intro
+PATRICKSHADER["e9"] = Instance.new("ImageLabel", PATRICKSHADER["1"]);
+PATRICKSHADER["e9"]["BorderSizePixel"] = 0;
+PATRICKSHADER["e9"]["BackgroundColor3"] = Color3.fromRGB(146, 146, 146);
+PATRICKSHADER["e9"]["ImageTransparency"] = 0.4;
+PATRICKSHADER["e9"]["ImageColor3"] = Color3.fromRGB(157, 157, 157);
+PATRICKSHADER["e9"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+PATRICKSHADER["e9"]["Image"] = [[rbxassetid://72978449934552]];
+PATRICKSHADER["e9"]["Size"] = UDim2.new(0.53903, 0, 0.55488, 0);
+PATRICKSHADER["e9"]["Visible"] = false;
+PATRICKSHADER["e9"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["e9"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["e9"]["Name"] = [[intro]];
+PATRICKSHADER["e9"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+
+
+-- StarterGui.pshade.intro.UIAspectRatioConstraint
+PATRICKSHADER["ea"] = Instance.new("UIAspectRatioConstraint", PATRICKSHADER["e9"]);
+PATRICKSHADER["ea"]["AspectRatio"] = 1.59341;
+
+
+-- StarterGui.pshade.intro.main
+PATRICKSHADER["eb"] = Instance.new("Frame", PATRICKSHADER["e9"]);
+PATRICKSHADER["eb"]["BorderSizePixel"] = 0;
+PATRICKSHADER["eb"]["BackgroundColor3"] = Color3.fromRGB(203, 203, 203);
+PATRICKSHADER["eb"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+PATRICKSHADER["eb"]["Size"] = UDim2.new(0.94943, 0, 0.92674, 0);
+PATRICKSHADER["eb"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+PATRICKSHADER["eb"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["eb"]["Name"] = [[main]];
+PATRICKSHADER["eb"]["BackgroundTransparency"] = 0.9;
+
+
+-- StarterGui.pshade.intro.main.TextLabel
+PATRICKSHADER["ec"] = Instance.new("TextLabel", PATRICKSHADER["eb"]);
+PATRICKSHADER["ec"]["TextWrapped"] = true;
+PATRICKSHADER["ec"]["BorderSizePixel"] = 0;
+PATRICKSHADER["ec"]["TextScaled"] = true;
+PATRICKSHADER["ec"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["ec"]["TextSize"] = 14;
+PATRICKSHADER["ec"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+PATRICKSHADER["ec"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+PATRICKSHADER["ec"]["BackgroundTransparency"] = 1;
+PATRICKSHADER["ec"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+PATRICKSHADER["ec"]["Size"] = UDim2.new(0.82851, 0, 0.51329, 0);
+PATRICKSHADER["ec"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["ec"]["Text"] = [[welcome to pshade ultimate]];
+PATRICKSHADER["ec"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
 
 
 
-return TEST["1"];
+return PATRICKSHADER["1"];
