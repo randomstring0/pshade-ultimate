@@ -91,11 +91,11 @@ local src=randomstring..'src/'
 local flare,motionblur
 local wshade=true
 local thick = tick()
-local restore={}
-local shader={}
-local skybox={}
-local new={}
-local wl={}
+local restore: table={}
+local shader: table={}
+local skybox: table={}
+local new: table={}
+local wl: table={}
 shader.__index=shader
 
 
@@ -429,20 +429,7 @@ local random=function(l)
 	return s
 end
 
-local di=debug.info
-local gmm=function(u,f,t)local r;xpcall(f,function()r=di(2,"f")end,u,nil,0)if type(r)~="function"or not t(r)then return f end return r end
-
-local con=gmm(game,function(a,c,b)local r;xpcall(function()r=a[b or 'MouseButton1Click']:Connect(c) end,function(e)r=nil end)return r end,function(f)
-    local e,d,s=xpcall(function()
-        local t,i=Instance.new("BindableEvent"),false
-        local conn=t.Event:Connect(function()i=true end)
-        t:Fire()
-        s=conn and conn.Connected and i
-        conn:Disconnect()
-        t:Destroy()
-    end,function(e)d=true end)
-    return not d and s
-end)
+local con=function(a,c,b) a[b or 'MouseButton1Click']:Connect(c) end
 
 local snap=function(v,s)
 	return mfloor(v/s+0.5)*s
@@ -561,6 +548,7 @@ coroutine['wrap'](function()
 	
 	skybox={
 		['default']=cussky,
+		['game']=defsky,
 		['morning']=httpget(randomsky..'m.json'),
 		['midday']=httpget(randomsky..'n.json'),
 		['afternoon']=httpget(randomsky..'a.json'),
@@ -686,10 +674,11 @@ end
 tween(intro,{Size=UDim2['new'](0,0,0,0)})
 twait(.2)
 intro['Visible']=false
-image['Visible']=true
+--image['Visible']=true
 
 
 con(rs,function()
+if wshade then
 	if motionblur then
 		local mag=(cam['CFrame']['LookVector']-lor)['Magnitude']
 		mblur['Size']=mabs(mag)*bmut*ber/2
@@ -713,7 +702,6 @@ con(rs,function()
 		sflare['Position']=UDim2['new'](0.004,sunpos['X']-zsize['X']/2,0.004,sunpos['Y']-zsize['Y']/2)
 		sflare['Visible']=front
 	end
-	if wshade then
 		if light then
 			check=true
 			
@@ -806,11 +794,6 @@ con(rs,function()
 			flare=false
 			motionblur=false
 			sre['Enabled']=false
-			for _,v in pairs(new) do
-				if not isa(v,"Atmosphere") and not isa(v,"Sky") then
-					v['Enabled']=false
-				end
-			end
 		end
 	end
 end,'RenderStepped')
@@ -851,7 +834,7 @@ local switch=function()
 	tween(image,{Size= (toggle and UDim2['new'](0.539,0,0.555,0) or UDim2['new'](0,0,0,0))},.34)
 	tween(icon,{Size= (toggle and UDim2['new'](0,0,0,0) or UDim2['new'](0.054,0,0.087,0))},.2)
 	tween(icon,{Rotation= (toggle and 180 or 0)})
-	abs(main,.5)
+	--abs(main,.5)
 	twait(.2)
 	image['Visible']=toggle
 	icon['Visible']=not toggle
@@ -1067,6 +1050,12 @@ con(togd,function()
 			v['Enabled']=wshade
 		end
 	end	
+	
+	for _,v in pairs(new) do
+		if not isa(v,"Atmosphere") and not isa(v,"Sky") then
+			v['Enabled']=wshade
+		end
+	end
 
 end)
 
@@ -1434,7 +1423,12 @@ sett:dropdown('gui parent', "coregui", {"playergui",'coregui'}, function(a)
 	if a=='playergui' then
 		sc['Parent']=pg
 	elseif a=='coregui' then
-		sc['Parent']=findclass(game,'CoreGui')
+		local s,_=pcall(function()
+			sc['Parent']=findclass(game,'CoreGui')
+		end)
+		if not s then
+			notif("error your executor doesn't have access to coregui")
+		end
 	end
 end)
 
@@ -1512,7 +1506,7 @@ adj:slider("waterwavesize", 0, 40, function(a)
 	ws['Terrain']['WaterWaveSize']=a
 end, ws['Terrain']['WaterWaveSize'])
 
-adj:dropdown('skybox', "default", {"default","morning","midday","afternoon","evening","rain","cloudy"}, function(a)
+adj:dropdown('skybox', "default", {"default","morning","midday","afternoon","evening","rain","cloudy","game"}, function(a)
 	cussky=skybox[a]
 end)
 
