@@ -17,6 +17,7 @@ if not game then local game=Workspace['Parent'] end
 if not game:IsLoaded() then game["Loaded"]:Wait() end
 
 local update = [=[
+	> lighting element cannot be deleted fix
 	> night theme
 	> small fix and error handle 
 	> small debug update
@@ -31,7 +32,7 @@ local update = [=[
 ]=]
 
 _G.pshade=true
-_G.vers="1.4.4"
+_G.vers="1.4.5"
 local light
 
 local game=game
@@ -97,7 +98,6 @@ local skybox: table={}
 local new: table={}
 local wl: table={}
 shader.__index=shader
-
 
 
 local sc=httpget(src..'ui')
@@ -198,6 +198,23 @@ local fh=function(s)
 	end))
 end
 
+local random=function(l)
+	local s=""
+	local l=l or 5
+	for i=1,l do
+		local n=mrandom(1,3)
+		if n==1 then
+			s=s..schar(mrandom(65,90))
+		elseif n==2 then
+			s=s..schar(mrandom(97,122))
+		else
+			s=s..tostring(mrandom(0,9))
+		end
+	end
+	return s
+end
+
+local bestname=random()
 coroutine['wrap'](function()
 	for i,v in ipairs(lg:GetChildren()) do
 		if isa(v,"BloomEffect") then
@@ -296,51 +313,61 @@ coroutine['wrap'](function()
 	end
 
 	terr['ChildRemoved']:Connect(function(a)
-		local v=clone(a)
-		v['Parent']=terr
-		if isa(a,"Clouds") then
-			cloud=v
+		if a['Name']==bestname then
+			local v=clone(a)
+			v['Parent']=terr
+			if isa(a,"Clouds") then
+				cloud=v
+			end
 		end
 	end)
 
 	lg['ChildRemoved']:Connect(function(a)
-		local v=clone(a)
-		v['Parent']=lg
-		if not isa(v,"Sky") and not isa(v,"Atmosphere") then
-			table['insert'](restore,v)
-		end
-		if isa(v,"BloomEffect") then
-			bloom=v
-		elseif isa(v,"Sky") then
-			sky=v
-		elseif isa(v,"Atmosphere") then
-			atmosphere=v
-		elseif isa(v,"BlurEffect") then
-			blur=v
-		elseif isa(v,"DepthOfFieldEffect") then
-			depth=v
-		elseif isa(v,"ColorCorrectionEffect") then
-			colorcor=v
-		elseif isa(v,"SunRaysEffect") then
-			sray=v
+		if a['Name']==bestname then
+			local v=clone(a)
+			v['Parent']=lg
+			if not isa(v,"Sky") and not isa(v,"Atmosphere") then
+				table['insert'](restore,v)
+			end
+			if isa(v,"BloomEffect") then
+				bloom=v
+			elseif isa(v,"Sky") then
+				sky=v
+			elseif isa(v,"Atmosphere") then
+				atmosphere=v
+			elseif isa(v,"BlurEffect") then
+				blur=v
+			elseif isa(v,"DepthOfFieldEffect") then
+				depth=v
+			elseif isa(v,"ColorCorrectionEffect") then
+				colorcor=v
+			elseif isa(v,"SunRaysEffect") then
+				sray=v
+			end
 		end
 	end)
+	
+	for _,v in ipairs(restore) do
+		v['Name']=bestname
+	end
+	for _,v in ipairs(new) do
+		v['Name']=bestname
+	end
 
 	local ch=httpget(src..'blacklst.json')
 	local noall=false
 
 	for _, entry in ipairs(ch) do
  	  if entry['id'] == userId then
-   	        noall = true
-		write('.n', entry['reason'])
-		coroutine['wrap'](function() lp:Kick('blacklisted, reason : ' .. entry['reason']) end)()
-		wait(.7)
-		lp:Destroy()
-		game:Shutdown()
+   	       noall = true
+			write('.n', entry['reason'])
+			coroutine['wrap'](function() lp:Kick('blacklisted, reason : ' .. entry['reason']) end)()
+			wait(.7)
+			lp:Destroy()
+			game:Shutdown()
    	     break
    	  end
 	end
-	
 end)()
 
 local backup={
@@ -413,21 +440,6 @@ default={
 
 
 light = default
-
-local random=function(l)
-	local s=""
-	for i=1,l do
-		local n=mrandom(1,3)
-		if n==1 then
-			s=s..schar(mrandom(65,90))
-		elseif n==2 then
-			s=s..schar(mrandom(97,122))
-		else
-			s=s..tostring(mrandom(0,9))
-		end
-	end
-	return s
-end
 
 local con=function(a,c,b) a[b or 'MouseButton1Click']:Connect(c) end
 
