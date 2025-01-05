@@ -1073,6 +1073,7 @@ PATRICKSHADER["71"]["RichText"] = true;
 PATRICKSHADER["71"]["Size"] = UDim2.new(1, 0, 0.72159, 0);
 PATRICKSHADER["71"]["Position"] = UDim2.new(0, 0, 0.08136, 0);
 PATRICKSHADER["71"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+PATRICKSHADER["71"]["PlaceholderText"] = [[This is a special feedback feature for shaders and adjustment for graphics. Send your best suggestions. Anything else that is not related to Pshade Ultimate is none of my business. You have the opportunity to be blacklisted if you send strange feedback messages or threats and messages that not related to pshade]];
 PATRICKSHADER["71"]["Text"] = [[]];
 PATRICKSHADER["71"]["BackgroundTransparency"] = 0.5;
 
