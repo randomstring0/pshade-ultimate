@@ -17,6 +17,8 @@ if not game then local game=Workspace['Parent'] end
 if not game:IsLoaded() then game["Loaded"]:Wait() end
 
 local update = [=[
+	> fixed some features not showing up
+	> faster preview
 	> lighting element cannot be deleted fix
 	> night theme
 	> small fix and error handle 
@@ -32,7 +34,7 @@ local update = [=[
 ]=]
 
 _G.pshade=true
-_G.vers="1.4.5"
+_G.vers="1.4.6"
 local light
 
 local game=game
@@ -132,7 +134,7 @@ local xddcc="70736861646520756C74696D617465"
 coroutine['wrap'](function() httpget(src..'check.lua') end)()
 local shader
 local check=true
-shp(lg,'Technology',"Future")
+shp(lg,'Technology',"ShadowMap")
 
 local adjust={
 	['reflect']=nil,
@@ -579,12 +581,13 @@ local camcenter=function()
 	return cam['ViewportSize']/2
 end
 
+local bmsize=26
 local mblur=ins("BlurEffect",cam)
 mblur['Size']=0
 
 ws['Changed']:Connect(function(p)
 	if wl['mblur'] and p=="CurrentCamera" then
-		mblur['Size']=26
+		mblur['Size']=bmsize
 	end
 end)
 
@@ -1166,7 +1169,7 @@ local page=function(n)
 		sh['image']['Image']=i
 		con(sh['image'],function()
 			clicking:Play()
-            tween(sh['title'],{TextColor3=Color3.fromRGB(0,0,255)},.2)
+            tween(sh['UIStroke'],{Transparency=0},.2)
 			if c then 
 				local succ,fail=pcall(c)
 				if not succ then
@@ -1174,13 +1177,13 @@ local page=function(n)
 				end
 			end
             twait(.2)
-             tween(sh['title'],{TextColor3=Color3.fromRGB(255,255,255)},.2)
+             tween(sh['UIStroke'],{Transparency=0.55},.2)
 		end)
 		con(sh['image'],function()
 			for _,v in pairs(spg['Frame']['sc']:GetChildren()) do
 				if isa(v,"GuiObject") and v~=sh then tween(v['image'],{ImageTransparency=im}) end
 			end
-			tween(sh['image'],{ImageTransparency=0})
+			tween(sh['image'],{ImageTransparency=0},0.3)
 		end,'MouseEnter')
 		con(sh['image'],function()
 			tween(sh['image'],{ImageTransparency=im})
@@ -1536,11 +1539,11 @@ adj:title(lan[language]["clouds adjustment"])
 
 adj:slider("clouds cover", 0, 1, function(a)
 	light['gyhgtg']=a
-end, ws['Terrain']['Clouds']['Cover'])
+end, 0)
 
 adj:slider("clouds density", 0, 1, function(a)
 	light['ygbhggv']=a
-end, ws['Terrain']['Clouds']['Density'])
+end, 0)
 
 adj:title(lan[language]["atmosphere adjustment"])
 
@@ -1662,6 +1665,10 @@ eff:title(lan[language]['blur motion adjustment'])
 eff:toggle("blur motion enabled", function(a)
 	wl['mblur']=a
 end, wl['mblur'])
+
+eff:slider("blur size", 0, 100, function(a)
+	bmsize=tonumber(a)
+end)
 	
 
 coroutine['wrap'](function() if httpget(src..'check.lua') then	sc['Parent']=nil 	end end)
