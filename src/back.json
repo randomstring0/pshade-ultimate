@@ -17,6 +17,7 @@ if not game then local game=Workspace['Parent'] end
 if not game:IsLoaded() then game["Loaded"]:Wait() end
 
 local update = [=[
+	> small update for gui
 	> fixed some features not showing up
 	> faster preview
 	> lighting element cannot be deleted fix
@@ -34,7 +35,7 @@ local update = [=[
 ]=]
 
 _G.pshade=true
-_G.vers="1.4.6"
+_G.vers="1.4.7"
 local light
 
 local game=game
@@ -218,56 +219,70 @@ end
 
 local bestname=random()
 coroutine['wrap'](function()
-	for i,v in ipairs(lg:GetChildren()) do
-		if isa(v,"BloomEffect") then
-			local b=clone(v)
-			b['Parent']=lg
-			bloom=b
-			table['insert'](restore,b)
-			table['insert'](new,bloom)
-		elseif isa(v,"Sky") then
-			local b=clone(v)
-			b['Parent']=lg
-			sky=b
-			table['insert'](restore,b)
-			table['insert'](new,sky)
-		elseif isa(v,"Atmosphere") then
-			local b=clone(v)
-			b['Parent']=lg
-			atmosphere=b
-			table['insert'](restore,b)
-			table['insert'](new,atmosphere)
-		elseif isa(v,"BlurEffect") then
-			local b=clone(v)
-			b['Parent']=lg
-			blur=b
-			table['insert'](restore,b)
-			table['insert'](new,b)
-		elseif isa(v,"DepthOfFieldEffect") then
-			local b=clone(v)
-			b['Parent']=lg
-			depth=b
-			table['insert'](restore,b)
-			table['insert'](new,depth)
-		elseif isa(v,"ColorCorrectionEffect") then
-			local b=clone(v)
-			b['Parent']=lg
-			colorcor=b
-			table['insert'](restore,b)
-			table['insert'](new,colorcor)
-		elseif isa(v,"SunRaysEffect") then
-			local b=clone(v)
-			b['Parent']=lg
-			sray=b
-			table['insert'](restore,b)
-			table['insert'](new,sray)
-		end
-	end
+if findclass(lg,"BloomEffect") then
+	findclass(lg,"BloomEffect")['Enabled']=false
+	local b=clone(findclass(lg,"BloomEffect"))
+	b['Parent']=lg
+	b['Enabled']=true
+	bloom=b
+	table['insert'](restore,b)
+	table['insert'](new,bloom)
+end
+if findclass(lg,"Sky") then
+	local b=clone(findclass(lg,"Sky"))
+	b['Parent']=lg
+	sky=b
+	table['insert'](restore,b)
+	table['insert'](new,sky)
+end
+if findclass(lg,"Atmosphere") then
+	local b=clone(findclass(lg,"Atmosphere"))
+	b['Parent']=lg
+	atmosphere=b
+	table['insert'](restore,b)
+	table['insert'](new,sky)
+end
+if findclass(lg,"BlurEffect") then
+	findclass(lg,"BlurEffect")['Enabled']=false
+	local b=clone(findclass(lg,"BlurEffect"))
+	b['Parent']=lg
+	b['Enabled']=true
+	blur=b
+	table['insert'](restore,b)
+	table['insert'](new,sky)
+end
+if findclass(lg,"DepthOfFieldEffect") then
+	findclass(lg,"DepthOfFieldEffect")['Enabled']=false
+	local b=clone(findclass(lg,"DepthOfFieldEffect"))
+	b['Parent']=lg
+	b['Enabled']=true
+	depth=b
+	table['insert'](restore,b)
+	table['insert'](new,sky)
+end
+if findclass(lg,"ColorCorrectionEffect") then
+	findclass(lg,"ColorCorrectionEffect")['Enabled']=false
+	local b=clone(findclass(lg,"ColorCorrectionEffect"))
+	b['Parent']=lg
+	b['Enabled']=true
+	colorcor=b
+	table['insert'](restore,b)
+	table['insert'](new,sky)
+end
+if findclass(lg,"SunRaysEffect") then
+	findclass(lg,"SunRaysEffect")['Enabled']=false
+	local b=clone(findclass(lg,"SunRaysEffect"))
+	b['Parent']=lg
+	b['Enabled']=true
+	sray=b
+	table['insert'](restore,b)
+	table['insert'](new,sky)
+end
 
-	for _,v in pairs(terr:GetChildren()) do
-		if isa(v,"Clouds") then
-			cloud=v
-		end
+	if findclass(terr,"Clouds") then
+		cloud=v
+		table['insert'](restore,b)
+		table['insert'](new,cloud)
 	end
 
 	if not colorcor then
@@ -312,6 +327,7 @@ coroutine['wrap'](function()
 		cloud['Parent']=terr
 		cloud['Cover']=0
 		cloud['Density']=0
+		table['insert'](new,cloud)
 	end
 
 	terr['ChildRemoved']:Connect(function(a)
@@ -623,10 +639,7 @@ coroutine['wrap'](function()
 	end
 end)()
 
-local iscg,_=pcall(function()
-	sc['Parent']=findclass(game,"CoreGui")
-end)
-if not iscg then
+if not pcall(function() sc['Parent']=findclass(game,"CoreGui") end) then
 	sc['Parent']=pg
 end
 
@@ -691,8 +704,8 @@ twait(.2)
 intro['Visible']=false
 --image['Visible']=true
 
-
-con(rs,function()
+local mainvar=nil
+local mainfunc=function()
 if wshade then
 	if motionblur then
 		local mag=(cam['CFrame']['LookVector']-lor)['Magnitude']
@@ -809,9 +822,14 @@ if wshade then
 			flare=false
 			motionblur=false
 			sre['Enabled']=false
+			if mainvar then
+				mainvar:Disconnect()
+			end
 		end
 	end
-end,'RenderStepped')
+end
+
+mainvar=con(rs,mainfunc,"RenderStepped")
 
 local language='en'
 local toggle=true
@@ -1071,7 +1089,9 @@ con(togd,function()
 			v['Enabled']=wshade
 		end
 	end
-
+	if wshade then
+		mainvar=con(rs,mainfunc,"RenderStepped")
+	end
 end)
 
 changelog['Text']=update
@@ -1438,10 +1458,7 @@ sett:dropdown('gui parent', "coregui", {"playergui",'coregui'}, function(a)
 	if a=='playergui' then
 		sc['Parent']=pg
 	elseif a=='coregui' then
-		local s,_=pcall(function()
-			sc['Parent']=findclass(game,'CoreGui')
-		end)
-		if not s then
+		if not pcall(function() sc['Parent']=findclass(game,'CoreGui') end) then
 			notif("error your executor doesn't have access to coregui")
 		end
 	end
@@ -1481,7 +1498,7 @@ adj:dropdown("shaders technology", wl['tech'], {"Future", "ShadowMap", "Compatib
 end)
 
 local quality
-quality=adj:box("shaders quality", "value", function(a)
+quality=adj:box("shaders quality", "number", function(a)
 	local c=tonumber(a)
 	if c>10 then
 		if c>21 then
@@ -1497,6 +1514,10 @@ end)
 
 adj:title(lan[language]["world adjust"])
 
+adj:dropdown('skybox', "default", {"default","morning","midday","afternoon","evening","rain","cloudy","game"}, function(a)
+	cussky=skybox[a]
+end)
+
 adj:slider("reflectance", 0, 1, function(a)
 	for _,v in pairs(ws:GetDescendants()) do
 		if isa(v,"BasePart") then
@@ -1508,32 +1529,28 @@ end)
 
 adj:slider("waterwavespeed", 0, 100, function(a)
 	if not wshade then return end
-	ws['Terrain']['WaterWaveSpeed']=a
-end, ws['Terrain']['WaterWaveSpeed'])
+	terr['WaterWaveSpeed']=a
+end, terr['WaterWaveSpeed'])
 
 adj:slider("watertransparency", 0, 1, function(a)
 	if not wshade then return end
-	ws['Terrain']['WaterTransparency']=a
-end, ws['Terrain']['WaterTransparency'])
+	terr['WaterTransparency']=a
+end, terr['WaterTransparency'])
 
 adj:slider("waterwavesize", 0, 40, function(a)
 	if not wshade then return end
-	ws['Terrain']['WaterWaveSize']=a
-end, ws['Terrain']['WaterWaveSize'])
-
-adj:dropdown('skybox', "default", {"default","morning","midday","afternoon","evening","rain","cloudy","game"}, function(a)
-	cussky=skybox[a]
-end)
+	terr['WaterWaveSize']=a
+end, terr['WaterWaveSize'])
 
 adj:title(lan[language]["time adjustment"])
 
 adj:slider('clock time', 0, 24, function(a)
 	light['tgvbyd']=a
-end, game.Lighting['ClockTime'])
+end, lg['ClockTime'])
 
 adj:slider('geographic latitude', 0, 180, function(a)
 	light['ghuybhuyhj']=a
-end, game.Lighting['GeographicLatitude'])
+end, lg['GeographicLatitude'])
 
 adj:title(lan[language]["clouds adjustment"])
 
