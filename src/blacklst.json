@@ -1,4 +1,5 @@
 return {
   {id=4272087432,reason="racism/hatefull feedback"},
-  {id=7348321565,reason="usare parole dure quando si invia feedback"}
+  {id=7348321565,reason="usare parole dure quando si invia feedback"},
+  {id=8015931589,reason="swearing/hatefull feedback"}
 }
