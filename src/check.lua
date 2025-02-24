@@ -1,4 +1,4 @@
-local v='1.4.7'
+local v='1.4.8'
 if _G.vers then
   if _G.vers~=v then
     game:GetService("StarterGui"):SetCore("SendNotification",{
