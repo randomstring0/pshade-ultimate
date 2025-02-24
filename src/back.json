@@ -16,7 +16,10 @@ if _G.pshade then return warn"pshade already loaded!" end
 if not game then local game=Workspace['Parent'] end
 if not game:IsLoaded() then game["Loaded"]:Wait() end
 
+
+
 local update = [=[
+	> added adjust auto load and fix ui size
 	> small update for gui
 	> fixed some features not showing up
 	> faster preview
@@ -35,7 +38,7 @@ local update = [=[
 ]=]
 
 _G.pshade=true
-_G.vers="1.4.7"
+_G.vers="1.4.8"
 local light
 
 local game=game
@@ -95,11 +98,11 @@ local src=randomstring..'src/'
 local flare,motionblur
 local wshade=true
 local thick = tick()
-local restore: table={}
-local shader: table={}
-local skybox: table={}
-local new: table={}
-local wl: table={}
+local restore={}
+local shader={}
+local skybox={}
+local new={}
+local wl={}
 shader.__index=shader
 
 
@@ -144,7 +147,7 @@ local adjust={
 
 local tween=function(i,p,d)
 	local d=d or 1
-	return tween:Create(i,TweenInfo['new'](d,Enum['EasingStyle']['Linear'],Enum['EasingDirection']['Out']),p):Play()
+	return tween:Create(i,TweenInfo['new'](d,Enum['EasingStyle']['Exponential'],Enum['EasingDirection']['Out']),p):Play()
 end
 
 local drag=function(n,s)
@@ -461,6 +464,14 @@ light = default
 
 local con=function(a,c,b) a[b or 'MouseButton1Click']:Connect(c) end
 
+local function toHex(v) if type(v)=="number" then return v%1==0 and string.format("0x%X",v) or tostring(v) elseif type(v)=="string" then local h={} for i=1,#v do table.insert(h,string.format("\\x%02X",v:byte(i))) end return "\"" .. table.concat(h) .. "\"" else return tostring(v) end end
+local function serializeTable(t,i) i=i or 0 local s=string.rep(" ",i) local r="{\n" for k,v in pairs(t) do local kf=type(k)=="string" and "[\""..k.."\"]" or "["..k.."]" local vf=typeof(v)=="Color3" and string.format("Color3.new(%g, %g, %g)",v.R,v.G,v.B) or (type(v)=="table" and serializeTable(v,i+1) or toHex(v)) r=r..s.." "..kf.."="..vf..",\n" end return r..s.."}" end
+
+local function fromHexNumber(v) return tonumber(v,16) or v end
+local function fromHexString(v) return v:gsub("\\x(%x%x)",function(h) return string.char(tonumber(h,16)) end) end
+local function deserializeTable(t) local function fix(x) for k,v in pairs(x) do if type(v)=="string" then if v:match("^0x[%x]+$") then x[k]=tonumber(v,16) elseif v:match("\\x[%x][%x]") then x[k]=v:gsub("\\x(%x%x)",function(h) return string.char(tonumber(h,16)) end) end elseif type(v)=="table" then fix(v) end end return x end return fix(t) end
+
+
 local snap=function(v,s)
 	return mfloor(v/s+0.5)*s
 end
@@ -510,7 +521,7 @@ mblur['Size']=0
 
 ws['Changed']:Connect(function(p)
 	if wl['mblur'] and p=="CurrentCamera" then
-		mblur['Size']=26
+		mblur['Size']=bmsize
 	end
 end)
 
@@ -645,10 +656,11 @@ end
 
 notif("getting shader please wait..", 2)
 
+local oldsize=intro['Size']
 image['Visible']=false
 intro['Visible']=true
 intro['Size']=UDim2['new'](0,0,0,0)
-tween(intro,{Size=UDim2['new'](0.539,0,0.555,0)})
+tween(intro,{Size=oldsize})
 
 local succ,err=pcall(function()
 shader={
@@ -703,6 +715,38 @@ tween(intro,{Size=UDim2['new'](0,0,0,0)})
 twait(.2)
 intro['Visible']=false
 --image['Visible']=true
+
+if _G.saved then
+	local mf = deserializeTable(_G.saved)
+	
+	light=mf['Shader']
+	cussky=mf['Skybox']
+	wl['bl']=mf['Bloom'][1]
+	light['jnfdhbnfcvh']=mf['Bloom'][1]
+	light['fvtyghj']=mf['Bloom'][2]
+	light['ygbhnj']=mf['Bloom'][3]
+	wl['blr']=mf['Blur Effects']
+	light['tgvbyd']=mf['Shader']['tgvbyd']
+	light['ghuybhuyhj']=mf['Shader']['ghuybhuyhj']
+	depth['Enabled']=mf['Depth Of Field'][1]
+	light['jdfkd']=mf['Depth Of Field'][2]
+	light['fvgsdfg']=mf['Depth Of Field'][3]
+	light['sdkvkflv']=mf['Depth Of Field'][4]
+	light['hbjhd']=mf['Depth Of Field'][5]
+	light['shdbsnjfc']=mf['Atmosphere'][1]
+	light['skdjfkdm']=mf['Atmosphere'][2]
+	light['sejfd']=mf['Atmosphere'][3]
+	light['jddfjsd']=mf['Atmosphere'][4]
+	light['gyhgtg']=mf['Clouds'][1]
+	light['ygbhggv']=mf['Clouds'][2]
+	wl['cor']=mf['ColorCorrection'][1]
+	light['fhnchvhfjsd']=mf['ColorCorrection'][2]
+	light['ugtbbjhygt']=mf['ColorCorrection'][3]
+	light['tfbghuugbnjhg']=mf['ColorCorrection'][4]
+	wl['rays']=mf['Sunrays'][1]
+	sray['Intensity']=mf['Sunrays'][2]
+	sray['Spread']=mf['Sunrays'][3]
+end
 
 local mainvar=nil
 local mainfunc=function()
@@ -829,7 +873,7 @@ if wshade then
 	end
 end
 
-mainvar=con(rs,mainfunc,"RenderStepped")
+mainvar=con(rs,mainfunc,"Heartbeat")
 
 local language='en'
 local toggle=true
@@ -861,10 +905,11 @@ else
 	read,write,file=function() return nil end,function() return end,function() return end
 end
 
+local oldsize=image['Size']
 local switch=function()
 	clicking:Play()
 	toggle=not toggle
-	tween(image,{Size= (toggle and UDim2['new'](0.539,0,0.555,0) or UDim2['new'](0,0,0,0))},.34)
+	tween(image,{Size= (toggle and oldsize or UDim2['new'](0,0,0,0))},.34)
 	tween(icon,{Size= (toggle and UDim2['new'](0,0,0,0) or UDim2['new'](0.054,0,0.087,0))},.2)
 	tween(icon,{Rotation= (toggle and 180 or 0)})
 	--abs(main,.5)
@@ -1090,14 +1135,14 @@ con(togd,function()
 		end
 	end
 	if wshade then
-		mainvar=con(rs,mainfunc,"RenderStepped")
+		mainvar=con(rs,mainfunc,"Heartbeat")
 	end
 end)
 
 changelog['Text']=update
 drag(main,image)
 drag(icon['button'],icon)
-coroutine['wrap'](function() httpget(src..'check.lua') end)()
+coroutine['wrap'](function()  httpget(src..'check.lua') end)()
 
 con(page['sc']['home']['TextButton'],function()
 	if spage['home']['LayoutOrder']==0 then return end
@@ -1240,8 +1285,6 @@ local addpage=function(n)
 	return element(spg['Frame']['sc'])
 end
 
-
-
 local feedtext=spage['feedback']['TextBox']
 local feedsend=spage['feedback']['send']
 local once=false
@@ -1260,7 +1303,8 @@ end)
 
 image['Visible']=true
 image['Size']=UDim2['new'](0,0,0,0)
-tween(image,{Size=UDim2['new'](0.539,0,0.555,0)})
+tween(image,{Size=oldsize})
+local currentshader
 
 local sh=page(lan[language]['shader'])
 local shlite=page(lan[language]['shaderlite'])
@@ -1512,6 +1556,26 @@ quality=adj:box("shaders quality", "number", function(a)
 	end
 end)
 
+
+
+adj:button('copy adjustment',function()
+	local a={
+		["Skybox"]=cussky,
+		["Time"]={light['tgvbyd'],light['ghuybhuyhj']},
+		["Clouds"]={light['gyhgtg'],light['ygbhggv']},
+		["Atmosphere"]={light['shdbsnjfc'],light['skdjfkdm'],light['sejfd'],light['jddfjsd']},
+		["Depth Of Field"]={depth['Enabled'],light['jdfkd'],light['fvgsdfg'],light['sdkvkflv'],light['hbjhd']},
+		["Sunrays"]={wl['rays'],sray['Intensity'],sray['Spread']},
+		["ColorCorrection"]={wl['cor'],light['fhnchvhfjsd'],light['ugtbbjhygt'],light['tfbghuugbnjhg']},
+		["Blur Effects"]=wl['blr'],
+		["Bloom"]={wl['bl'],light['jnfdhbnfcvh'],light['fvtyghj'],light['ygbhnj']},
+		["SunFlare"]=wl['sflare'],
+		["Blur Motion"]=wl['mblur'],
+		["Shader"]=light
+	}
+	setclip("_G.saved = " .. serializeTable(a) .. ' \ --tutorials : https://youtube.com/shorts/GJp-79AZ8I8?feature=share' )
+end)
+
 adj:title(lan[language]["world adjust"])
 
 adj:dropdown('skybox', "default", {"default","morning","midday","afternoon","evening","rain","cloudy","game"}, function(a)
@@ -1624,7 +1688,6 @@ adj:toggle("colorcor enabled", function(a)
 	colorcor['Enabled']=a
 	wl['cor']=a
 end, colorcor['Enabled'])
-
 
 adj:slider("colorcor brightness", -1, 1, function(a)
 	light['fhnchvhfjsd']=a
