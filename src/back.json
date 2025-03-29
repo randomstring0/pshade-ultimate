@@ -1558,7 +1558,7 @@ end)
 
 
 
-adj:button('copy adjustment',function()
+adj:button('copy saved adjustment',function()
 	local a={
 		["Skybox"]=cussky,
 		["Time"]={light['tgvbyd'],light['ghuybhuyhj']},
