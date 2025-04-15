@@ -1,7 +1,6 @@
 # PShade Ultimate
 
-PShade Ultimate is a cutting-edge shader exploit for Roblox that revolutionizes the way shaders are used. With a simple execution process, users can enhance their visuals without any hassle. Just execute it from your preferred executor, and the shader is ready to go!
-
+Pshade Ultimate Is A Shader Roblox shaders exploit that using roblox internal lighting
 ---
 
 ## Features
@@ -33,29 +32,6 @@ PShade Ultimate is a cutting-edge shader exploit for Roblox that revolutionizes 
 
 This tool is provided for educational purposes only. Use responsibly and at your own risk. The developer is not responsible for any misuse or violations of Roblox's terms of service.
 
----
 
-## Contributing
-
-We welcome contributions to improve PShade Ultimate! Feel free to:
-- Report bugs
-- Suggest new features
-- Submit pull requests
-
----
-
-## Support
-
-If you encounter issues or need help, reach out via:
-- [Youtube](https://youtube.com/@im_patrick)
-- [Discord Community](https://discord.gg/uSVyKecrVv)
-
----
-
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for more details.
-
----
 
 > **Note:** Be mindful of Roblox's terms of service and community guidelines when using exploits.
