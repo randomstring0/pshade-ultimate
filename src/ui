@@ -1076,7 +1076,8 @@ PATRICKSHADER["71"]["Position"] = UDim2.new(0, 0, 0.08136, 0);
 PATRICKSHADER["71"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 PATRICKSHADER["71"]["Text"] = [[]];
 PATRICKSHADER["71"]["BackgroundTransparency"] = 0.5;
-
+PATRICKSHADER["71"]["PlaceholderText"] = [[provide feedback with good and clear language and please only provide feedback that is only related to pshade ultimate and not other scripts because other scripts are not made by us and have no relation whatsoever to pshade]];
+PATRICKSHADER["71"]["PlaceholderColor3"] = Color3.fromRGB(25,25,25);
 
 -- StarterGui.newui.mainmage.main.mainpage.showpage.feedback.TextBox.UICorner
 PATRICKSHADER["72"] = Instance.new("UICorner", PATRICKSHADER["71"]);
