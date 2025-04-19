@@ -1943,11 +1943,12 @@ PATRICKSHADER["d2"]["BackgroundColor3"] = Color3.fromRGB(57, 57, 57);
 PATRICKSHADER["d2"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
 PATRICKSHADER["d2"]["RichText"] = true;
 PATRICKSHADER["d2"]["Size"] = UDim2.new(1, 0, 1, 0);
-PATRICKSHADER["d2"]["BackgroundTransparency"] = 0.65;
+PATRICKSHADER["d2"]["BackgroundTransparency"] = 0.45;
 PATRICKSHADER["d2"]["Name"] = [[sample]];
 PATRICKSHADER["d2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 PATRICKSHADER["d2"]["Text"] = [[]];
 PATRICKSHADER["d2"]["Visible"] = false;
+PATRICKSHADER["d2"]["ZIndex"] = 4;
 
 
 -- StarterGui.newui.mainmage.main.propperty sample.dropdown.drophandle.Frame.sample.TextLabel
@@ -1964,6 +1965,7 @@ PATRICKSHADER["d3"]["Size"] = UDim2.new(1, 0, 0.46154, 0);
 PATRICKSHADER["d3"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 PATRICKSHADER["d3"]["Text"] = [[sample]];
 PATRICKSHADER["d3"]["Position"] = UDim2.new(0, 0, 0.26923, 0);
+PATRICKSHADER["d3"]["ZIndex"] = 5;
 
 
 -- StarterGui.newui.mainmage.main.propperty sample.dropdown.drophandle.Frame.sample.UICorner
