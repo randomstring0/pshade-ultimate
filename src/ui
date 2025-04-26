@@ -2045,7 +2045,7 @@ PATRICKSHADER["dd"]["Size"] = UDim2.new(0.05362, 0, 0.0874, 0);
 PATRICKSHADER["dd"]["Position"] = UDim2.new(0.12469, 0, 0.18293, 0);
 PATRICKSHADER["dd"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 PATRICKSHADER["dd"]["Name"] = [[icon]];
-PATRICKSHADER["dd"]["BackgroundTransparency"] = 0.85;
+PATRICKSHADER["dd"]["BackgroundTransparency"] = 0.75;
 
 
 -- StarterGui.newui.icon.UICorner
@@ -2062,7 +2062,7 @@ PATRICKSHADER["df"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
 PATRICKSHADER["df"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
 PATRICKSHADER["df"]["Image"] = [[rbxasset://textures/ui/GuiImagePlaceholder.png]];
 PATRICKSHADER["df"]["Size"] = UDim2.new(0.72093, 0, 0.72093, 0);
-PATRICKSHADER["df"]["BackgroundTransparency"] = 0.8;
+PATRICKSHADER["df"]["BackgroundTransparency"] = 0.7;
 PATRICKSHADER["df"]["Name"] = [[button]];
 PATRICKSHADER["df"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 PATRICKSHADER["df"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
