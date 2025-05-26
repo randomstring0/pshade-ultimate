@@ -19,6 +19,8 @@ if not game:IsLoaded() then game["Loaded"]:Wait() end
 
 
 local update = [=[
+	> running shaders now run realtime perfectly
+	> added global illumination [ beta ]
 	> fixed blur effect
 	> added adjust auto load and fix ui size
 	> small update for gui
@@ -39,7 +41,7 @@ local update = [=[
 ]=]
 
 _G.pshade=true
-_G.vers="1.4.8"
+_G.vers="1.4.9"
 local light
 
 local game=game
@@ -220,6 +222,13 @@ local random=function(l)
 	end
 	return s
 end
+
+tspawn(function()
+	for i=1,mrandom(5,35) do
+		local x=ins("IntValue",lg)
+		x.Name=random()
+	end
+end)
 
 local bestname=random()
 coroutine['wrap'](function()
@@ -517,6 +526,142 @@ local camcenter=function()
 	return cam['ViewportSize']/2
 end
 
+local lightfolder=ins('Folder')
+lightfolder['Parent']=ws
+lightfolder['Name']=random()
+
+
+local globalil={
+	['gridsize']=25,
+	['radius']=80,
+
+	['shadowdirection']={
+		Vector3.new(1, -1, 0), Vector3.new(-1, -1, 0),
+		Vector3.new(0, -1, 1), Vector3.new(0, -1, -1),
+		Vector3.new(1, -1, 1), Vector3.new(-1, -1, -1),
+		Vector3.new(1, -1, -1), Vector3.new(-1, -1, 1)
+	},
+	
+	['shadowlength']=8,
+	['reflectdis']=10,
+
+	['active']={},
+	
+}
+
+local roundToGrid=function(v)
+	return Vector3.new(
+					mfloor(v.X / globalil['gridsize'] + 0.5) * globalil['gridsize'],
+					mfloor(v.Y / globalil['gridsize'] + 0.5) * globalil['gridsize'],
+					mfloor(v.Z / globalil['gridsize'] + 0.5) * globalil['gridsize']
+	)
+end
+
+local hashVec3=function(v)
+	return tostring(v.X).."_"..tostring(v.Y).."_"..tostring(v.Z)
+end
+
+local isIndoors=function(pos)
+	local result = ws:Raycast(pos, Vector3.new(0, 500, 0))
+	return result ~= nil
+end
+
+local simulateShadow=function(pos)
+	for _, dir in ipairs(globalil['shadowdirection']) do
+		local ray = ws:Raycast(pos, dir.Unit * globalil['shadowlength'])
+		if ray then
+			return true
+		end
+	end
+	return false
+end
+
+local sampleSurfaceColor=function(pos)
+	local directions = {Vector3.new(1, 0, 0), Vector3.new(-1, 0, 0), Vector3.new(0, 1, 0), Vector3.new(0, -1, 0), Vector3.new(0, 0, 1), Vector3.new(0, 0, -1)}
+	for _, dir in ipairs(directions) do
+		local ray = ws:Raycast(pos, dir.Unit * globalil['reflectdis'])
+		if ray and ray.Instance and ray.Instance:IsA("BasePart") then
+			return ray.Instance.Color:Lerp(Color3.new(1, 1, 1), 0.3) 
+		end
+	end
+	return nil 
+end
+
+local blendColors=function(c1, c2, alpha)
+	return Color3.new(
+		c1.R * (1 - alpha) + c2.R * alpha,
+		c1.G * (1 - alpha) + c2.G * alpha,
+		c1.B * (1 - alpha) + c2.B * alpha
+	)
+end
+
+local createLightPoint=function(pos)
+	local part = ins("Part")
+	part.Anchored = true
+	part.CanCollide = false
+	part.Transparency = 1
+	part.Size = Vector3.new(1, 1, 1)
+	part.Position = pos
+	part.Name = random()
+	part.Parent = lightfolder
+
+	local clight = ins("PointLight")
+	clight.Range = 24
+	clight.Brightness = 0
+	clight.Shadows = false
+	clight.Color = light['yfbghj']
+	clight.Parent = part
+
+	tspawn(function()
+		while part['Parent'] do
+			local indoor = isIndoors(pos)
+			local inShadow = simulateShadow(pos)
+
+			local baseColor = indoor and Color3.fromRGB(255, 240, 220) or light['hyhnngtf']
+			local brightness = indoor and 0.35 or 0.75
+
+			local r,g,b=0,0,0
+			local hits = 0
+			
+			for _, dir in ipairs({
+				Vector3.new(1, 0, 0), Vector3.new(-1, 0, 0),
+				Vector3.new(0, 1, 0), Vector3.new(0, -1, 0),
+				Vector3.new(0, 0, 1), Vector3.new(0, 0, -1),
+				Vector3.new(1, 1, 0), Vector3.new(-1, -1, 0),
+				Vector3.new(1, 0, 1), Vector3.new(-1, 0, -1)
+			}) do
+				local ray = Workspace:Raycast(pos, dir.Unit * globalil['reflectdis'])
+				if ray and ray.Instance and ray.Instance:IsA("BasePart") then
+					local Color = ray.Instance.Color
+					r+=Color.R
+					g+=Color.G
+					b+=Color.B
+					hits += 1
+				end
+			end
+
+			if hits > 0 then
+				local avgColor = Color3.new(r / hits,g / hits,b / hits)
+				baseColor = blendColors(baseColor, avgColor, 0.7)
+				if inShadow then
+					brightness *= 0.3 
+				end
+			elseif inShadow then
+				brightness = 0
+			end
+
+			clight.Color = baseColor
+			clight.Brightness = brightness
+
+			twait(3)
+		end
+	end)
+
+	return part
+end
+
+
+
 local mblur=ins("BlurEffect",cam)
 mblur['Size']=0
 
@@ -559,7 +704,8 @@ wl={
 	['rays']=false,
 	['sflare']=false,
 	['mblur']=false,
-	['tech']="ShadowMap"
+	['tech']="ShadowMap",
+	['global']=false
 }
 
 local defsky={
@@ -752,6 +898,51 @@ end
 local mainvar=nil
 local mainfunc=function()
 if wshade then
+	if wl['global'] then
+		coroutine.wrap(function()
+			if sett1['Rendering']['QualityLevel'] ~= Enum['QualityLevel']['Automatic'] then
+				if sett1['Rendering']['QualityLevel']['Value'] < 5 then
+					globalil['radius']=80
+				else
+					globalil['radius']=200
+				end
+			end
+			local camPos = ws.CurrentCamera.CFrame.Position
+			local min = camPos - Vector3.new(globalil['radius'], globalil['radius'], globalil['radius'])
+			local max = camPos + Vector3.new(globalil['radius'], globalil['radius'], globalil['radius'])
+			local seen = {}
+
+			for x = min.X, max.X, globalil['gridsize'] do
+				for y = min.Y, max.Y, globalil['gridsize'] do
+					for z = min.Z, max.Z, globalil['gridsize'] do
+						local pos = roundToGrid(Vector3.new(x, y, z))
+						local hash = hashVec3(pos)
+						seen[hash] = true
+
+						if not globalil['active'][hash] then
+							local dist = (pos - camPos).Magnitude
+							if dist <= globalil['radius'] then
+								local lightPart = createLightPoint(pos)
+								globalil['active'][hash] = lightPart
+							end
+						end
+					end
+				end
+			end
+
+			for hash, part in pairs(globalil['active']) do
+				if part and part:IsDescendantOf(ws) then
+					local dist = (part.Position - camPos).Magnitude
+					if dist > (globalil['gridsize'] + globalil['radius']) then
+						part:Destroy()
+						globalil['active'][hash] = nil
+					end
+				end
+			end
+			
+			twait(1.5)
+		end)()
+	end
 	if motionblur then
 		local mag=(cam['CFrame']['LookVector']-lor)['Magnitude']
 		mblur['Size']=mabs(mag)*bmut*ber/2
@@ -870,11 +1061,17 @@ if wshade then
 			if mainvar then
 				mainvar:Disconnect()
 			end
+			for hash, part in pairs(globalil['active']) do
+				if part and part:IsDescendantOf(ws) then
+					part:Destroy()
+					globalil['active'][hash] = nil
+				end
+			end
 		end
 	end
 end
 
-mainvar=con(rs,mainfunc,"Heartbeat")
+mainvar=con(rs,mainfunc,"PreRender")
 
 local language='en'
 local toggle=true
@@ -1136,7 +1333,15 @@ con(togd,function()
 		end
 	end
 	if wshade then
-		mainvar=con(rs,mainfunc,"Heartbeat")
+		mainvar=con(rs,mainfunc,"PreRender")
+	end
+	if not wl['global'] then
+		for hash, part in pairs(globalil['active']) do
+			if part and part:IsDescendantOf(ws) then
+				part:Destroy()
+				globalil['active'][hash] = nil
+			end
+		end
 	end
 end)
 
@@ -1591,6 +1796,19 @@ adj:slider("reflectance", 0, 1, function(a)
 		end
 	end
 end)
+
+adj:toggle("global illumination", function(a)
+	wl['global']=a
+	if wl['global'] == false then
+		for hash, part in pairs(globalil['active']) do
+			if part and part:IsDescendantOf(ws) then
+				part:Destroy()
+				globalil['active'][hash] = nil
+			end
+		end
+	end
+end, wl['global'])
+
 
 adj:slider("waterwavespeed", 0, 100, function(a)
 	if not wshade then return end
